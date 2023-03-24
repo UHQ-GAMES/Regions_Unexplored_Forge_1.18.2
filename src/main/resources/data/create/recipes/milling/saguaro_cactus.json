@@ -1,0 +1,20 @@
+{
+  "type": "create:milling",
+  "ingredients": [
+    {
+      "item": "regions_unexplored:saguaro_cactus"
+    }
+  ],
+  "processingTime": 50,
+  "results": [
+    {
+      "count": 2,
+      "item": "minecraft:green_dye"
+    },
+    {
+      "chance": 0.1,
+      "count": 1,
+      "item": "minecraft:green_dye"
+    }
+  ]
+}

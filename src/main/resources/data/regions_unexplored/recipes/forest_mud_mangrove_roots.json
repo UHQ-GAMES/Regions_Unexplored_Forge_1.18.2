@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "building",
+  "group": "muddy_mangrove_roots",
+  "ingredients": [
+    {
+      "item": "regions_unexplored:forest_mud"
+    },
+    {
+      "item": "minecraft:mangrove_roots"
+    }
+  ],
+  "result": {
+    "item": "minecraft:muddy_mangrove_roots"
+  }
+}

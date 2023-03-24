@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "regions_unexplored:cherry_wood"
+    }
+  ],
+  "results": [
+    {
+      "item": "regions_unexplored:stripped_cherry_wood"
+    }
+  ],
+  "processingTime": 50
+}

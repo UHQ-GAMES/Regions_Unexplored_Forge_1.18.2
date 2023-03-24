@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "glowing_bioshroom_block",
+  "pattern": [
+    "0",
+    "X"
+  ],
+  "key": {
+    "0": {
+      "item": "regions_unexplored:blue_bioshroom_block"
+    },
+    "X": {
+      "item": "minecraft:shroomlight"
+    }
+  },
+  "result": {
+    "count": 2,
+    "item": "regions_unexplored:glowing_blue_bioshroom_block"
+  }
+}

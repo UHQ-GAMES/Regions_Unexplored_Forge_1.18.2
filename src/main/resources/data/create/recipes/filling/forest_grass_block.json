@@ -1,0 +1,18 @@
+{
+  "type": "create:filling",
+  "ingredients": [
+    {
+      "item": "regions_unexplored:forest_dirt"
+    },
+    {
+      "amount": 40500,
+      "fluid": "minecraft:water",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "regions_unexplored:forest_grass_block"
+    }
+  ]
+}

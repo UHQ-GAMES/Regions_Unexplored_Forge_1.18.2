@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:grassy_beach",
+    "regions_unexplored:outback",
+    "regions_unexplored:saguaro_desert",
+    "regions_unexplored:joshua_desert"
+  ]
+}

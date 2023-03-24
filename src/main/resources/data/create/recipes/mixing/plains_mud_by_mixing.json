@@ -1,0 +1,19 @@
+{
+  "type": "create:mixing",
+  "ingredients": [
+    {
+      "type": "create:block_tag_ingredient",
+      "tag": "regions_unexplored:convertable_to_plains_mud"
+    },
+    {
+      "amount": 27000,
+      "fluid": "minecraft:water",
+      "nbt": {}
+    }
+  ],
+  "results": [
+    {
+      "item": "regions_unexplored:plains_mud"
+    }
+  ]
+}

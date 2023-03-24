@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+	"regions_unexplored:blackwood_forest",
+	"regions_unexplored:boreal_forest",
+	"regions_unexplored:golden_boreal_forest",
+	"regions_unexplored:redwoods"
+  ]
+}

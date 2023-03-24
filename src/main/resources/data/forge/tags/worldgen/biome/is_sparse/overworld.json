@@ -1,0 +1,28 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:lush_hills",
+    "regions_unexplored:arid_mountains",
+    "regions_unexplored:chalk_cliffs",
+    "regions_unexplored:pumpkin_fields",
+    "regions_unexplored:willow_forest",
+    "regions_unexplored:fen",
+    "regions_unexplored:alpha_grove",
+    "regions_unexplored:joshua_desert",
+    "regions_unexplored:steppe",
+    "regions_unexplored:temperate_grove",
+    "regions_unexplored:grassland",
+    "regions_unexplored:silver_birch_forest",
+    "regions_unexplored:shrubland",
+    "regions_unexplored:pine_slopes",
+    "regions_unexplored:mountains",
+    "regions_unexplored:sparse_redwoods",
+    "regions_unexplored:eucalyptus_forest",
+    "regions_unexplored:meadow",
+    "regions_unexplored:icy_heights",
+    "regions_unexplored:towering_cliffs",
+    "regions_unexplored:outback",
+    "regions_unexplored:dry_bushland",
+    "regions_unexplored:tropics"
+  ]
+}

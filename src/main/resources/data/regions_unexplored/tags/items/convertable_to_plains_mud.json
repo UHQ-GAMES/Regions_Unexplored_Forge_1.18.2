@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:plains_dirt",
+    "regions_unexplored:plains_coarse_dirt"
+  ]
+}

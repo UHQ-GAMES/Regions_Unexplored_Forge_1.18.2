@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:cold_boreal_forest",
+    "regions_unexplored:icy_heights",
+    "regions_unexplored:frozen_forest",
+    "regions_unexplored:icy_desert",
+    "regions_unexplored:frozen_tundra",
+    "regions_unexplored:cold_deciduous_forest",
+    "regions_unexplored:spires"
+  ]
+}

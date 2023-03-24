@@ -1,0 +1,23 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:maple_forest",
+    "regions_unexplored:pumpkin_fields",
+    "regions_unexplored:autumnal_maple_forest",
+    "regions_unexplored:highland_fields",
+    "regions_unexplored:gravel_beach",
+    "regions_unexplored:boreal_forest",
+    "regions_unexplored:cold_boreal_forest",
+    "regions_unexplored:cold_river",
+    "regions_unexplored:golden_boreal_forest",
+    "regions_unexplored:silver_birch_forest",
+    "regions_unexplored:mountains",
+    "regions_unexplored:icy_heights",
+    "regions_unexplored:frozen_forest",
+    "regions_unexplored:icy_desert",
+    "regions_unexplored:towering_cliffs",
+    "regions_unexplored:frozen_tundra",
+    "regions_unexplored:cold_deciduous_forest",
+    "regions_unexplored:spires"
+  ]
+}

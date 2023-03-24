@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:fen",
+    "regions_unexplored:bayou",
+    "regions_unexplored:flooded_plains",
+    "regions_unexplored:giant_bayou"
+  ]
+}

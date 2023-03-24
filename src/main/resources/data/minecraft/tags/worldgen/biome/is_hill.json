@@ -1,0 +1,9 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:lush_hills",
+    "regions_unexplored:highland_fields",
+    "regions_unexplored:icy_heights",
+    "regions_unexplored:pine_slopes"
+  ]
+}

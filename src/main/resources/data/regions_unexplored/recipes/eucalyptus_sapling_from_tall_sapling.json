@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "saplings",
+  "ingredients": [
+    {
+      "item": "regions_unexplored:tall_eucalyptus_sapling"
+    }
+  ],
+  "result": {
+    "count": 3,
+    "item": "regions_unexplored:eucalyptus_sapling"
+  }
+}

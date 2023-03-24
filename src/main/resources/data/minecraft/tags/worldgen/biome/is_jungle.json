@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:rainforest",
+    "regions_unexplored:old_growth_rainforest",
+    "regions_unexplored:bamboo_forest",
+    "regions_unexplored:eucalyptus_forest",
+    "regions_unexplored:fungal_fen",
+    "regions_unexplored:tropics"
+  ]
+}

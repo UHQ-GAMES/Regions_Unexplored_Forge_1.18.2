@@ -1,0 +1,18 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:maple_forest",
+    "regions_unexplored:blackwood_forest",
+    "regions_unexplored:autumnal_maple_forest",
+    "regions_unexplored:silver_birch_forest",
+    "regions_unexplored:boreal_forest",
+    "regions_unexplored:golden_boreal_forest",
+    "regions_unexplored:deciduous_forest",
+    "regions_unexplored:orchard",
+    "regions_unexplored:cherry_hills",
+    "regions_unexplored:temperate_grove",
+    "regions_unexplored:cold_deciduous_forest",
+    "regions_unexplored:smouldering_woodland",
+    "regions_unexplored:mauve_hills"
+  ]
+}

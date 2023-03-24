@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "regions_unexplored:mauve_wood"
+    }
+  ],
+  "results": [
+    {
+      "item": "regions_unexplored:stripped_mauve_wood"
+    }
+  ],
+  "processingTime": 50
+}

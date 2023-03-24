@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "regions_unexplored:block/sculkwood_log_dark_top",
+    "up": "regions_unexplored:block/sculkwood_log_dark_top",
+    "north": "regions_unexplored:block/sculkwood_log_dark",
+    "east": "regions_unexplored:block/sculkwood_log_dark",
+    "south": "regions_unexplored:block/sculkwood_log_dark",
+    "west": "regions_unexplored:block/sculkwood_log_dark",
+    "particle": "regions_unexplored:block/sculkwood_log_dark_top"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:cold_boreal_forest",
+    "regions_unexplored:icy_desert",
+    "regions_unexplored:frozen_tundra"
+  ]
+}

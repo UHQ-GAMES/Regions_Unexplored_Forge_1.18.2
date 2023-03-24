@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "regions_unexplored:joshua_wood"
+    }
+  ],
+  "results": [
+    {
+      "item": "regions_unexplored:stripped_joshua_wood"
+    }
+  ],
+  "processingTime": 50
+}

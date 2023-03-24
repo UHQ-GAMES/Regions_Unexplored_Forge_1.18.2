@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "painted_planks",
+  "key": {
+    "#": {
+      "item": "minecraft:blue_dye"
+    },
+    "A": {
+      "tag": "minecraft:planks"
+    }
+  },
+  "pattern": [
+    "AAA",
+    "A#A",
+    "AAA"
+  ],
+  "result": {
+    "item": "regions_unexplored:blue_painted_planks",
+    "count": 8
+  }
+}

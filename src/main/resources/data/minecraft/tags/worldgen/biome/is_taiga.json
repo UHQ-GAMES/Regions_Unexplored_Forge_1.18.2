@@ -1,0 +1,15 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:fen",
+    "regions_unexplored:boreal_forest",
+    "regions_unexplored:blackwood_forest",
+    "regions_unexplored:golden_boreal_forest",
+    "regions_unexplored:redwoods",
+    "regions_unexplored:sparse_redwoods",
+    "regions_unexplored:pine_forest",
+    "regions_unexplored:pine_slopes",
+    "regions_unexplored:cold_boreal_forest",
+    "regions_unexplored:frozen_forest"
+  ]
+}

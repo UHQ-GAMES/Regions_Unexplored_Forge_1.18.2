@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "minecraft:block/netherrack",
+    "up": "regions_unexplored:block/sculk_grass_block",
+    "north": "regions_unexplored:block/sculk_grass_block_side",
+    "east": "regions_unexplored:block/sculk_grass_block_side",
+    "south": "regions_unexplored:block/sculk_grass_block_side",
+    "west": "regions_unexplored:block/sculk_grass_block_side",
+    "particle": "regions_unexplored:block/sculk_grass_block"
+  }
+}

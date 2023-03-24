@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:smelting",
+  "category": "misc",
+  "group": "brown_dye",
+  "cookingtime": 200,
+  "experience": 0.5,
+  "ingredient": {
+    "item": "regions_unexplored:small_desert_shrub"
+  },
+  "result": "minecraft:brown_dye"
+}

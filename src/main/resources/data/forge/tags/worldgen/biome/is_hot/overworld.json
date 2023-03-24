@@ -1,0 +1,29 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:bamboo_forest",
+    "regions_unexplored:baobab_savanna",
+    "regions_unexplored:arid_mountains",
+    "regions_unexplored:cherry_hills",
+    "regions_unexplored:rainforest",
+    "regions_unexplored:old_growth_rainforest",
+    "regions_unexplored:joshua_desert",
+    "regions_unexplored:steppe",
+    "regions_unexplored:temperate_grove",
+    "regions_unexplored:grassland",
+    "regions_unexplored:bayou",
+    "regions_unexplored:blackwood_forest",
+    "regions_unexplored:poppy_fields",
+    "regions_unexplored:giant_bayou",
+    "regions_unexplored:tropics",
+    "regions_unexplored:redwoods",
+    "regions_unexplored:sparse_redwoods",
+    "regions_unexplored:eucalyptus_forest",
+    "regions_unexplored:flooded_plains",
+    "regions_unexplored:fungal_fen",
+    "regions_unexplored:outback",
+    "regions_unexplored:dry_bushland",
+    "regions_unexplored:smouldering_woodland",
+    "regions_unexplored:saguaro_desert"
+  ]
+}

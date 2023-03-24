@@ -1,0 +1,26 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:redstone_caves",
+    "regions_unexplored:grassy_beach",
+    "regions_unexplored:bamboo_forest",
+    "regions_unexplored:lush_hills",
+    "regions_unexplored:flower_field",
+    "regions_unexplored:chalk_cliffs",
+    "regions_unexplored:cherry_hills",
+    "regions_unexplored:rainforest",
+    "regions_unexplored:old_growth_rainforest",
+    "regions_unexplored:fen",
+    "regions_unexplored:temperate_grove",
+    "regions_unexplored:grassland",
+    "regions_unexplored:bayou",
+    "regions_unexplored:blackwood_forest",
+    "regions_unexplored:gravel_beach",
+    "regions_unexplored:eucalyptus_forest",
+    "regions_unexplored:mauve_hills",
+    "regions_unexplored:flooded_plains",
+    "regions_unexplored:fungal_fen",
+    "regions_unexplored:giant_bayou",
+    "regions_unexplored:tropics"
+  ]
+}

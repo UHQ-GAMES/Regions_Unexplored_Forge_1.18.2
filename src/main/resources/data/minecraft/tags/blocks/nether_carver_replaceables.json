@@ -1,0 +1,14 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:chalk_grass_block",
+    "regions_unexplored:chalk",
+    "regions_unexplored:deepslate_grass_block",
+    "regions_unexplored:stone_grass_block",
+    "regions_unexplored:viridescent_nylium",
+    "regions_unexplored:deepslate_viridescent_nylium",
+    "regions_unexplored:deepslate_prismoss",
+    "regions_unexplored:prismoss",
+    "regions_unexplored:raw_redstone_block"
+  ]
+}

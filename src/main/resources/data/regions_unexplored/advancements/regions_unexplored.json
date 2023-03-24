@@ -1,0 +1,23 @@
+{
+  "display": {
+    "background": "regions_unexplored:textures/block/redwood_log.png",
+    "icon": {
+      "item": "regions_unexplored:forest_grass_block"
+    },
+    "title": {
+      "translate": "advancements.regions_unexplored.title"
+    },
+    "description": {
+      "translate": "advancements.regions_unexplored.descr"
+    },
+    "frame": "challenge",
+    "show_toast": false,
+    "announce_to_chat": false,
+    "hidden": false
+  },
+  "criteria": {
+    "regions_unexplored": {
+      "trigger": "minecraft:tick"
+    }
+  }
+}

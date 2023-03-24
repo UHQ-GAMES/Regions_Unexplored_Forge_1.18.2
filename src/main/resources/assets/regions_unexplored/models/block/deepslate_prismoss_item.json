@@ -1,0 +1,12 @@
+{
+  "parent": "block/cube",
+  "textures": {
+    "down": "minecraft:block/deepslate",
+    "up": "regions_unexplored:item/prismoss_top",
+    "north": "regions_unexplored:item/deepslate_prismoss_side_2",
+    "east": "regions_unexplored:item/deepslate_prismoss_side",
+    "south": "regions_unexplored:item/deepslate_prismoss_side_2",
+    "west": "regions_unexplored:item/deepslate_prismoss_side_3",
+    "particle": "minecraft:block/deepslate"
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "painted_stairs",
+  "key": {
+    "#": {
+      "item": "regions_unexplored:purple_painted_planks"
+    }
+  },
+  "pattern": [
+    "#  ",
+    "## ",
+    "###"
+  ],
+  "result": {
+    "item": "regions_unexplored:purple_painted_stairs",
+    "count": 4
+  }
+}

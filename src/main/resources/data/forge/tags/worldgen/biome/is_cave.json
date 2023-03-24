@@ -1,0 +1,10 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:redstone_caves",
+    "regions_unexplored:lush_delta",
+    "regions_unexplored:bioshroom_caves",
+    "regions_unexplored:scorching_caves",
+    "regions_unexplored:prismachasm"
+  ]
+}

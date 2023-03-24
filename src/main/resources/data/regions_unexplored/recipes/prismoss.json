@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "prismoss",
+  "key": {
+    "#": {
+      "item": "regions_unexplored:prismoss_sprout"
+    },
+    "*": {
+      "item": "minecraft:stone"
+    }
+  },
+    "pattern": [
+      "#",
+      "*"
+  ],
+  "result": {
+    "count": 1,
+    "item": "regions_unexplored:prismoss"
+  }
+}

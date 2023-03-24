@@ -1,0 +1,17 @@
+{
+  "replace": false,
+  "values": [
+	"regions_unexplored:poppy_fields",
+	"regions_unexplored:grassland",
+	"regions_unexplored:prairie",
+	"regions_unexplored:barley_fields",
+	"regions_unexplored:orchard",
+	"regions_unexplored:willow_forest",
+	"regions_unexplored:temperate_grove",
+	"regions_unexplored:highland_fields",
+	"regions_unexplored:deciduous_forest",
+	"regions_unexplored:flower_field",
+	"regions_unexplored:meadow",
+	"regions_unexplored:eucalyptus_forest"
+  ]
+}

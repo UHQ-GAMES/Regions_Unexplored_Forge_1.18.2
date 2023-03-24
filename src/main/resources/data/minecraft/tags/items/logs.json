@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+    "#regions_unexplored:sculkwood_logs",
+    "#regions_unexplored:dead_logs"
+  ]
+}

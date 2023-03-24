@@ -1,0 +1,3 @@
+// 1.19.3	2023-01-25T18:27:17.9952275	worldgen/noise generator for regions_unexplored
+82d1eaaca066fbbf88ddf6db16fa974fc495d364 data/regions_unexplored/worldgen/noise/shield.json
+82adca48112453dd8434ffcdfdada503d0a0391c data/regions_unexplored/worldgen/noise/weighted.json

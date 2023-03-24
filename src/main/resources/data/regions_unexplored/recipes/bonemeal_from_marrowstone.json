@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "bone_meal",
+  "key": {
+    "1": {
+      "item": "regions_unexplored:marrowstone"
+    }
+  },
+  "pattern": [
+    "1"
+  ],
+  "result": {
+    "item": "minecraft:bone_meal",
+    "count": 4
+  }
+}

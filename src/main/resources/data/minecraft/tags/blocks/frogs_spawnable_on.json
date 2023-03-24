@@ -1,0 +1,11 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:forest_grass_block",
+    "regions_unexplored:forest_mud",
+    "regions_unexplored:plains_grass_block",
+    "regions_unexplored:plains_mud",
+    "regions_unexplored:viridescent_nylium",
+    "regions_unexplored:deepslate_viridescent_nylium"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "painted_slabs",
+  "key": {
+    "#": {
+      "item": "regions_unexplored:light_blue_painted_planks"
+    }
+  },
+  "pattern": [
+    "###"
+  ],
+  "result": {
+    "item": "regions_unexplored:light_blue_painted_slab",
+    "count": 6
+  }
+}

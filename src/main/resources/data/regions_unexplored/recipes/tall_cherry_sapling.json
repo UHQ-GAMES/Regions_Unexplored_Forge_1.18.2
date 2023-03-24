@@ -1,0 +1,18 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "tall_saplings",
+  "key": {
+    "#": {
+      "item": "regions_unexplored:cherry_sapling"
+    }
+  },
+  "pattern": [
+    "#",
+    "#"
+  ],
+  "result": {
+    "count": 1,
+    "item": "regions_unexplored:tall_cherry_sapling"
+  }
+}

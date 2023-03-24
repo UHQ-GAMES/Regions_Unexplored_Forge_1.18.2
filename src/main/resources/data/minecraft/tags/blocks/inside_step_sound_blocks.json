@@ -1,0 +1,12 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:mycotoxic_grass",
+    "regions_unexplored:glistering_sprout",
+    "regions_unexplored:sculk_sprout",
+    "regions_unexplored:sculk_tendril",
+    "regions_unexplored:cobalt_roots",
+    "regions_unexplored:duckweed",
+    "regions_unexplored:joshua_leaves"
+  ]
+}

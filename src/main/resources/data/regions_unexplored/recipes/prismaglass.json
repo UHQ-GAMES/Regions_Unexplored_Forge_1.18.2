@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "building",
+  "group": "stained_glass",
+  "key": {
+    "#": {
+      "tag": "forge:glass"
+    },
+    "*": {
+      "tag": "regions_unexplored:prismarite_crystals"
+    }
+  },
+  "pattern": [
+    " * ",
+    "*#*",
+    " * "
+  ],
+  "result": {
+    "count": 1,
+    "item": "regions_unexplored:prismaglass"
+  }
+}

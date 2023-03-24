@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "branches",
+  "key": {
+    "#": {
+      "item": "regions_unexplored:pine_log_transition"
+    },
+    "*": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "#*"
+  ],
+  "result": {
+    "item": "regions_unexplored:pine_branch"
+  }
+}

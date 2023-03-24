@@ -1,0 +1,12 @@
+{
+  "values": [
+    "minecraft:nether_wastes",
+    "minecraft:soul_sand_valley",
+    "minecraft:crimson_forest",
+    "minecraft:warped_forest",
+    "minecraft:basalt_deltas",
+    "regions_unexplored:redstone_hell",
+    "regions_unexplored:mycotoxic_undergrowth",
+    "regions_unexplored:glistering_meadow"
+  ]
+}

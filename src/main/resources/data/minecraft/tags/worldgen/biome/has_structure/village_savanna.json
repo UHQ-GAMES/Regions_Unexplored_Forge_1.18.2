@@ -1,0 +1,7 @@
+{
+  "replace": false,
+  "values": [
+	"regions_unexplored:steppe",
+	"regions_unexplored:dry_bushland"
+  ]
+}

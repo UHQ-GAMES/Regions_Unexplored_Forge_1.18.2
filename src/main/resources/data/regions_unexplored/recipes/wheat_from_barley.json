@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "barley",
+  "ingredients": [
+    {
+      "item": "regions_unexplored:barley"
+    }
+  ],
+  "result": {
+    "item": "minecraft:wheat"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "replace": false,
+  "values": [
+    "regions_unexplored:lupine_plains",
+    "regions_unexplored:pumpkin_fields",
+    "regions_unexplored:steppe",
+    "regions_unexplored:grassland",
+    "regions_unexplored:prairie",
+    "regions_unexplored:barley_fields",
+    "regions_unexplored:poppy_fields",
+    "regions_unexplored:shrubland",
+    "regions_unexplored:highland_fields",
+    "regions_unexplored:frozen_tundra",
+    "regions_unexplored:meadow"
+  ]
+}

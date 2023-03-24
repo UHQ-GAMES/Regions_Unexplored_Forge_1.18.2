@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "group": "branches",
+  "key": {
+    "#": {
+      "item": "regions_unexplored:joshua_log"
+    },
+    "*": {
+      "item": "minecraft:stick"
+    }
+  },
+  "pattern": [
+    "#*"
+  ],
+  "result": {
+    "item": "regions_unexplored:joshua_beard"
+  }
+}
