@@ -29,6 +29,7 @@ public class RuColors {
     @OnlyIn(Dist.CLIENT)
     public static void registerRenderLayers() {
         ItemBlockRenderTypes.setRenderLayer(RegionsUnexploredBlocks.PRISMARITE_CLUSTER.get(), renderType -> renderType == RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(RegionsUnexploredBlocks.PRISMAGLASS.get(), renderType -> renderType == RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(RegionsUnexploredBlocks.LARGE_PRISMARITE_CLUSTER.get(), renderType -> renderType == RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(RegionsUnexploredBlocks.HANGING_PRISMARITE.get(), renderType -> renderType == RenderType.translucent());
         ItemBlockRenderTypes.setRenderLayer(RegionsUnexploredBlocks.PRISMOSS_SPROUT.get(), renderType -> renderType == RenderType.cutout());
@@ -160,8 +161,8 @@ public class RuColors {
         ItemBlockRenderTypes.setRenderLayer(RegionsUnexploredBlocks.SPRUCE_BRANCH.get(), renderType -> renderType == RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(RegionsUnexploredBlocks.WILLOW_BRANCH.get(), renderType -> renderType == RenderType.cutout());
 
-        ItemBlockRenderTypes.setRenderLayer(RegionsUnexploredBlocks.EUCALYPTUS_WOOD.get(), renderType -> renderType == RenderType.cutout());
-        ItemBlockRenderTypes.setRenderLayer(RegionsUnexploredBlocks.EUCALYPTUS_LOG.get(), renderType -> renderType == RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(RegionsUnexploredBlocks.EUCALYPTUS_WOOD.get(), renderType -> renderType == RenderType.translucent());
+        ItemBlockRenderTypes.setRenderLayer(RegionsUnexploredBlocks.EUCALYPTUS_LOG.get(), renderType -> renderType == RenderType.translucent());
 
         ItemBlockRenderTypes.setRenderLayer(RegionsUnexploredBlocks.ALPHA_SAPLING.get(), renderType -> renderType == RenderType.cutout());
         ItemBlockRenderTypes.setRenderLayer(RegionsUnexploredBlocks.APPLE_OAK_SAPLING.get(), renderType -> renderType == RenderType.cutout());
