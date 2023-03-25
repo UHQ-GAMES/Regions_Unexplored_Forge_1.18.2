@@ -4,7 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.SnowLayerBlock;
@@ -36,7 +36,7 @@ public abstract class ChalkDirtBlock extends SnowyDirtBlock {
       return canBeGrass(state, reader, pos) && !reader.getFluidState(blockpos).is(FluidTags.WATER);
    }
 
-   public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+   public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
       if (!canBeGrass(state, level, pos)) {
          if (!level.isAreaLoaded(pos, 1)) return;
          level.setBlockAndUpdate(pos, RegionsUnexploredBlocks.CHALK.get().defaultBlockState());

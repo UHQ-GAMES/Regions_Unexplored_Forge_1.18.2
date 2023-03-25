@@ -37,11 +37,16 @@ public class MeadowRock extends Feature<NoneFeatureConfiguration> {
 
     public static Feature<?> feature() {
         FEATURE = new MeadowRock();
-        CONFIGURED_FEATURE = FeatureUtils.register("regions_unexplored:meadow_rock", FEATURE, FeatureConfiguration.NONE);
-        PLACED_FEATURE = PlacementUtils.register("regions_unexplored:meadow_rock", CONFIGURED_FEATURE, List.of(BiomeFilter.biome()));
+        CONFIGURED_FEATURE = FeatureUtils.register("regions_unexplored:meadow_rocks", FEATURE, FeatureConfiguration.NONE);
+        PLACED_FEATURE = PlacementUtils.register("regions_unexplored:meadow_rocks", CONFIGURED_FEATURE, List.of());
         return FEATURE;
     }
 
+    public static Holder<PlacedFeature> placedFeature() {
+        return PLACED_FEATURE;
+    }
+
+    public static final Set<ResourceLocation> GENERATE_BIOMES = Set.of(new ResourceLocation("regions_unexplored:meadow"), new ResourceLocation("regions_unexplored:temperate_grove"), new ResourceLocation("regions_unexplored:golden_boreal_forest"), new ResourceLocation("regions_unexplored:lush_hills"));
     private final Set<ResourceKey<Level>> generate_dimensions = Set.of(Level.OVERWORLD);
     private final List<Block> base_blocks;
     private StructureTemplate template = null;
@@ -94,7 +99,3 @@ public class MeadowRock extends Feature<NoneFeatureConfiguration> {
         return anyPlaced;
     }
 }
-
-
-
-

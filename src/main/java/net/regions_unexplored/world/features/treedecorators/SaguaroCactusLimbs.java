@@ -1,5 +1,6 @@
 package net.regions_unexplored.world.features.treedecorators;
 
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraftforge.registries.ForgeRegistries;
 
@@ -16,6 +17,10 @@ import net.minecraft.world.level.block.HorizontalDirectionalBlock;
 import net.regions_unexplored.world.level.block.SaguaroCactusBlock;
 import net.regions_unexplored.world.level.block.state.properties.SaguaroCactusShape;
 
+import java.util.List;
+import java.util.Random;
+import java.util.function.BiConsumer;
+
 public class SaguaroCactusLimbs extends TrunkVineDecorator {
 	public static final SaguaroCactusLimbs INSTANCE = new SaguaroCactusLimbs();
 	public static com.mojang.serialization.Codec<SaguaroCactusLimbs> codec;
@@ -23,6 +28,8 @@ public class SaguaroCactusLimbs extends TrunkVineDecorator {
 	static {
 		codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
 		tdt = new TreeDecoratorType<>(codec);
+		tdt.setRegistryName("saguaro_cactus_limbs");
+		
 	}
 
 	@Override
@@ -31,17 +38,17 @@ public class SaguaroCactusLimbs extends TrunkVineDecorator {
 	}
 
 	@Override
-	public void place(TreeDecorator.Context context) {
+	public void place(LevelSimulatedReader levelReader, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> listBlockPos, List<BlockPos> listBlockPos2) {
 				
-			int bpx1 = context.random().nextInt(2)+3;
-			int bpx2 = context.random().nextInt(2)+3;
-			int bpx3 = context.random().nextInt(2)+3;
-			int bpx4 = context.random().nextInt(2)+3;
+			int bpx1 = random.nextInt(2)+3;
+			int bpx2 = random.nextInt(2)+3;
+			int bpx3 = random.nextInt(2)+3;
+			int bpx4 = random.nextInt(2)+3;
 			
-			BlockPos newpos = context.logs().get(bpx1);
-			BlockPos newpos1 = context.logs().get(bpx2);
-			BlockPos newpos2 = context.logs().get(bpx3);
-			BlockPos newpos3 = context.logs().get(bpx4);
+			BlockPos newpos = listBlockPos.get(bpx1);
+			BlockPos newpos1 = listBlockPos.get(bpx2);
+			BlockPos newpos2 = listBlockPos.get(bpx3);
+			BlockPos newpos3 = listBlockPos.get(bpx4);
 			
 			BlockPos px = newpos.west();
 			BlockPos nx = newpos1.east();
@@ -68,95 +75,95 @@ public class SaguaroCactusLimbs extends TrunkVineDecorator {
 			BlockPos pzd2 = pzd1.above();
 			BlockPos nzd2 = nzd1.above();
 
-			if (isReplaceable(context.level(), px)) {
-				context.setBlock(px, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState().setValue(SaguaroCactusBlock.SHAPE, SaguaroCactusShape.EAST_WEST));
+			if (isReplaceable(levelReader, px)) {
+				biConsumer.accept(px, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState().setValue(SaguaroCactusBlock.SHAPE, SaguaroCactusShape.EAST_WEST));
 			}
 
-			if (isReplaceable(context.level(), nx)) {
-				context.setBlock(nx, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState().setValue(SaguaroCactusBlock.SHAPE, SaguaroCactusShape.EAST_WEST));
+			if (isReplaceable(levelReader, nx)) {
+				biConsumer.accept(nx, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState().setValue(SaguaroCactusBlock.SHAPE, SaguaroCactusShape.EAST_WEST));
 			}
 
-			if (isReplaceable(context.level(), pz)) {
-			    context.setBlock(pz, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState().setValue(SaguaroCactusBlock.SHAPE, SaguaroCactusShape.NORTH_SOUTH));
+			if (isReplaceable(levelReader, pz)) {
+			    biConsumer.accept(pz, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState().setValue(SaguaroCactusBlock.SHAPE, SaguaroCactusShape.NORTH_SOUTH));
 			}
 
-			if (isReplaceable(context.level(), nz)) {
-			    context.setBlock(nz, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState().setValue(SaguaroCactusBlock.SHAPE, SaguaroCactusShape.NORTH_SOUTH));
+			if (isReplaceable(levelReader, nz)) {
+			    biConsumer.accept(nz, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState().setValue(SaguaroCactusBlock.SHAPE, SaguaroCactusShape.NORTH_SOUTH));
 			}
 
 
 			
-			if (isReplaceable(context.level(), px1)) {
-				context.setBlock(px1, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState().setValue(SaguaroCactusBlock.SHAPE, SaguaroCactusShape.WEST_UP));
+			if (isReplaceable(levelReader, px1)) {
+				biConsumer.accept(px1, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState().setValue(SaguaroCactusBlock.SHAPE, SaguaroCactusShape.WEST_UP));
 			}
 
-			if (isReplaceable(context.level(), nx1)) {
-				context.setBlock(nx1, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState().setValue(SaguaroCactusBlock.SHAPE, SaguaroCactusShape.EAST_UP));
+			if (isReplaceable(levelReader, nx1)) {
+				biConsumer.accept(nx1, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState().setValue(SaguaroCactusBlock.SHAPE, SaguaroCactusShape.EAST_UP));
 			}
 
-			if (isReplaceable(context.level(), pz1)) {
-			    context.setBlock(pz1, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState().setValue(SaguaroCactusBlock.SHAPE, SaguaroCactusShape.NORTH_UP));
+			if (isReplaceable(levelReader, pz1)) {
+			    biConsumer.accept(pz1, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState().setValue(SaguaroCactusBlock.SHAPE, SaguaroCactusShape.NORTH_UP));
 			}
 
-			if (isReplaceable(context.level(), nz1)) {
-			    context.setBlock(nz1, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState().setValue(SaguaroCactusBlock.SHAPE, SaguaroCactusShape.SOUTH_UP));
-			}
-
-
-
-			if (isReplaceable(context.level(), pxd)) {
-				context.setBlock(pxd, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState());
-			}
-
-			if (isReplaceable(context.level(), nxd)) {
-				context.setBlock(nxd, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState());
-			}
-
-			if (isReplaceable(context.level(), pzd)) {
-			    context.setBlock(pzd, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState());
-			}
-
-			if (isReplaceable(context.level(), nzd)) {
-			    context.setBlock(nzd, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState());
+			if (isReplaceable(levelReader, nz1)) {
+			    biConsumer.accept(nz1, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState().setValue(SaguaroCactusBlock.SHAPE, SaguaroCactusShape.SOUTH_UP));
 			}
 
 
 
-			if (isReplaceable(context.level(), pxd1)) {
-				context.setBlock(pxd1, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState());
+			if (isReplaceable(levelReader, pxd)) {
+				biConsumer.accept(pxd, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState());
 			}
 
-			if (isReplaceable(context.level(), nxd1)) {
-				context.setBlock(nxd1, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState());
+			if (isReplaceable(levelReader, nxd)) {
+				biConsumer.accept(nxd, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState());
 			}
 
-			if (isReplaceable(context.level(), pzd1)) {
-			    context.setBlock(pzd1, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState());
+			if (isReplaceable(levelReader, pzd)) {
+			    biConsumer.accept(pzd, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState());
 			}
 
-			if (isReplaceable(context.level(), nzd1)) {
-			    context.setBlock(nzd1, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState());
+			if (isReplaceable(levelReader, nzd)) {
+			    biConsumer.accept(nzd, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState());
 			}
 
 
-			if (context.random().nextInt(2)==0){
-			if (context.isAir(pxd2)) {
-				context.setBlock(pxd2, RegionsUnexploredBlocks.CACTUS_FLOWER.get().defaultBlockState());
+
+			if (isReplaceable(levelReader, pxd1)) {
+				biConsumer.accept(pxd1, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState());
+			}
+
+			if (isReplaceable(levelReader, nxd1)) {
+				biConsumer.accept(nxd1, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState());
+			}
+
+			if (isReplaceable(levelReader, pzd1)) {
+			    biConsumer.accept(pzd1, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState());
+			}
+
+			if (isReplaceable(levelReader, nzd1)) {
+			    biConsumer.accept(nzd1, RegionsUnexploredBlocks.SAGUARO_CACTUS.get().defaultBlockState());
+			}
+
+
+			if (random.nextInt(2)==0){
+			if (isAirBlock(levelReader, pxd2)) {
+				biConsumer.accept(pxd2, RegionsUnexploredBlocks.CACTUS_FLOWER.get().defaultBlockState());
 			}}
 			
-			if (context.random().nextInt(2)==0){
-			if (context.isAir(nxd2)) {
-				context.setBlock(nxd2, RegionsUnexploredBlocks.CACTUS_FLOWER.get().defaultBlockState());
+			if (random.nextInt(2)==0){
+			if (isAirBlock(levelReader, nxd2)) {
+				biConsumer.accept(nxd2, RegionsUnexploredBlocks.CACTUS_FLOWER.get().defaultBlockState());
 			}}
 
-			if (context.random().nextInt(2)==0){
-			if (context.isAir(pzd2)) {
-			    context.setBlock(pzd2, RegionsUnexploredBlocks.CACTUS_FLOWER.get().defaultBlockState());
+			if (random.nextInt(2)==0){
+			if (isAirBlock(levelReader, pzd2)) {
+			    biConsumer.accept(pzd2, RegionsUnexploredBlocks.CACTUS_FLOWER.get().defaultBlockState());
 			}}
 
-			if (context.random().nextInt(2)==0){
-			if (context.isAir(nzd2)) {
-			    context.setBlock(nzd2, RegionsUnexploredBlocks.CACTUS_FLOWER.get().defaultBlockState());
+			if (random.nextInt(2)==0){
+			if (isAirBlock(levelReader, nzd2)) {
+			    biConsumer.accept(nzd2, RegionsUnexploredBlocks.CACTUS_FLOWER.get().defaultBlockState());
 			}}
 
 		}
@@ -168,6 +175,14 @@ public class SaguaroCactusLimbs extends TrunkVineDecorator {
    	public static boolean isReplaceable(LevelSimulatedReader p_65789_, BlockPos p_65790_) {
       	return p_65789_.isStateAtPosition(p_65790_, SaguaroCactusLimbs::isReplaceablePlant);
    	}
+
+	public static boolean isAir(BlockState p_159760_) {
+		return p_159760_.is(Blocks.AIR)||p_159760_.is(Blocks.CAVE_AIR)||p_159760_.is(Blocks.VOID_AIR);
+	}
+
+	public static boolean isAirBlock(LevelSimulatedReader p_65789_, BlockPos p_65790_) {
+		return p_65789_.isStateAtPosition(p_65790_, SaguaroCactusLimbs::isAir);
+	}
 
    	public static boolean isFluids(BlockState p_159760_) {
       	return p_159760_.is(RegionsUnexploredTags.FLUIDS);

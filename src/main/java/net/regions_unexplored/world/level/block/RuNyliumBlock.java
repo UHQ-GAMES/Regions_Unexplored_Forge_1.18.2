@@ -5,7 +5,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.resources.ResourceKey;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -32,7 +32,7 @@ public class RuNyliumBlock extends Block implements BonemealableBlock {
         return i < level.getMaxLightLevel();
     }
 
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         if (!canBeNylium(state, level, pos)) {
             level.setBlockAndUpdate(pos, Blocks.NETHERRACK.defaultBlockState());
         }
@@ -43,11 +43,11 @@ public class RuNyliumBlock extends Block implements BonemealableBlock {
         return level.getBlockState(pos.above()).isAir();
     }
 
-    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level level, Random random, BlockPos pos, BlockState state) {
         return true;
     }
 
-    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel level, Random random, BlockPos pos, BlockState state) {
         BlockState blockState = level.getBlockState(pos);
         BlockPos blockPos = pos.above();
         ChunkGenerator chunkgenerator = level.getChunkSource().getGenerator();
@@ -63,7 +63,7 @@ public class RuNyliumBlock extends Block implements BonemealableBlock {
 
     }
 
-    private void place(Registry<ConfiguredFeature<?, ?>> featureRegistry, ResourceKey<ConfiguredFeature<?, ?>> key, ServerLevel level, ChunkGenerator generator, RandomSource random, BlockPos pos) {
+    private void place(Registry<ConfiguredFeature<?, ?>> featureRegistry, ResourceKey<ConfiguredFeature<?, ?>> key, ServerLevel level, ChunkGenerator generator, Random random, BlockPos pos) {
         featureRegistry.getHolder(key).ifPresent((p_255920_) -> {
             p_255920_.value().place(level, generator, random, pos);
         });

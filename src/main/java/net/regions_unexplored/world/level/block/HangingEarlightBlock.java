@@ -1,7 +1,7 @@
 package net.regions_unexplored.world.level.block;
 
 import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.GrowingPlantHeadBlock;
 import net.minecraft.world.level.block.NetherVines;
@@ -16,7 +16,7 @@ public class HangingEarlightBlock extends GrowingPlantHeadBlock {
         super(properties, Direction.DOWN, SHAPE, false, 0.1D);
     }
 
-    protected int getBlocksToGrowWhenBonemealed(RandomSource random) {
+    protected int getBlocksToGrowWhenBonemealed(Random random) {
         return NetherVines.getBlocksToGrowWhenBonemealed(random);
     }
 

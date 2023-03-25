@@ -2,11 +2,9 @@ package net.regions_unexplored.world.level.block.grass;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
-import net.minecraft.world.level.LevelReader;
 import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -14,6 +12,8 @@ import net.minecraft.world.level.material.PushReaction;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
+
+import java.util.Random;
 
 import static net.minecraft.world.level.block.DoublePlantBlock.copyWaterloggedFrom;
 
@@ -39,7 +39,7 @@ public class RuTallGrassBlock extends BushBlock implements BonemealableBlock, ne
         return true;
     }
 
-    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level level, Random random, BlockPos pos, BlockState state) {
         return true;
     }
 
@@ -47,7 +47,7 @@ public class RuTallGrassBlock extends BushBlock implements BonemealableBlock, ne
         level.setBlock(pos, copyWaterloggedFrom(level, pos, state), i);
     }
 
-    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+    public void performBonemeal(ServerLevel level, Random random, BlockPos pos, BlockState state) {
         if(state.is(RegionsUnexploredBlocks.MEDIUM_GRASS.get())){
             TallGrassBlock grass = (TallGrassBlock) Blocks.GRASS;
             if (grass.defaultBlockState().canSurvive(level, pos)) {

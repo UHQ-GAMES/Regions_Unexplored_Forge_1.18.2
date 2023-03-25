@@ -6,6 +6,7 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientGamePacketListener;
 import net.minecraft.network.protocol.game.ClientboundAddEntityPacket;
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.vehicle.Boat;
@@ -86,7 +87,7 @@ public class RuBoat extends Boat {
                         this.kill();
                         if (this.level.getGameRules().getBoolean(GameRules.RULE_DOENTITYDROPS)) {
                             for(int i = 0; i < 3; ++i) {
-                                this.spawnAtLocation(this.getModel().getPlanks());
+                                this.spawnAtLocation(this.getBoatType().getPlanks());
                             }
 
                             for(int j = 0; j < 2; ++j) {
@@ -97,7 +98,7 @@ public class RuBoat extends Boat {
                 }
 
                 this.resetFallDistance();
-            } else if (!this.canBoatInFluid(this.level.getFluidState(this.blockPosition().below())) && distance < 0.0D) {
+            } else if (!this.level.getFluidState(this.blockPosition().below()).is(FluidTags.WATER) && distance < 0.0D) {
                 this.fallDistance -= (float)distance;
             }
 

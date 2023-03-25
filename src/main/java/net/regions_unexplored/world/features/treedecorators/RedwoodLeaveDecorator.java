@@ -14,25 +14,29 @@
 */
 package net.regions_unexplored.world.features.treedecorators;
 
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.core.BlockPos;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 
+import java.util.List;
+import java.util.Random;
+import java.util.function.BiConsumer;
+
 public class RedwoodLeaveDecorator extends LeaveVineDecorator {
 	public static final RedwoodLeaveDecorator INSTANCE = new RedwoodLeaveDecorator();
-	public static com.mojang.serialization.Codec<LeaveVineDecorator> codec;
+	public static com.mojang.serialization.Codec<RedwoodLeaveDecorator> codec;
 	public static TreeDecoratorType<?> tdt;
 	static {
 		codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
 		tdt = new TreeDecoratorType<>(codec);
-	}
-
-	public RedwoodLeaveDecorator() {
-		super(1f);
+		tdt.setRegistryName("redwood_leave_decorator");
+		
 	}
 
 	@Override
@@ -41,27 +45,27 @@ public class RedwoodLeaveDecorator extends LeaveVineDecorator {
 	}
 
 	@Override
-	public void place(TreeDecorator.Context context) {
-		context.leaves().forEach((blockpos) -> {
+	public void place(LevelSimulatedReader levelReader, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> listBlockPos, List<BlockPos> listBlockPos2) {
+		listBlockPos2.forEach((blockpos) -> {
 			
 
-			if (context.random().nextInt(2) == 0) {
+			if (random.nextInt(2) == 0) {
 				BlockPos bp4 = blockpos.above();
-				if (context.isAir(bp4)) {
-					addVine(bp4, context);
+				if (Feature.isAir(levelReader, bp4)) {
+					addVine(levelReader, bp4, biConsumer);
 				}
 			}
-			if (context.random().nextInt(2) == 0) {
+			if (random.nextInt(2) == 0) {
 				BlockPos bp5 = blockpos.below();
-				if (context.isAir(bp5)) {
-					addVine(bp5, context);
+				if (Feature.isAir(levelReader, bp5)) {
+					addVine(levelReader, bp5, biConsumer);
 				}
 			}
 			
 		});
 	}
 
-	private static void addVine(BlockPos pos, TreeDecorator.Context context) {
-		context.setBlock(pos, RegionsUnexploredBlocks.REDWOOD_LEAVES.get().defaultBlockState());
+	private static void addVine(LevelSimulatedReader levelReader, BlockPos blockPos, BiConsumer<BlockPos, BlockState> biConsumer) {
+		biConsumer.accept(blockPos, RegionsUnexploredBlocks.REDWOOD_LEAVES.get().defaultBlockState());
 	}
 }

@@ -21,22 +21,22 @@ import net.minecraft.world.level.levelgen.placement.RandomOffsetPlacement;
 import net.minecraft.world.level.levelgen.placement.RarityFilter;
 import net.minecraft.world.level.levelgen.placement.BiomeFilter;
 import net.minecraft.world.level.material.Fluids;
+import net.regions_unexplored.data.worldgen.features.RuFeatureRegistry;
 import net.regions_unexplored.data.worldgen.features.RuFeatures;
 import net.regions_unexplored.data.worldgen.features.RuVegetationFeatures;
 import net.minecraft.world.level.levelgen.placement.CountOnEveryLayerPlacement;
+import net.regions_unexplored.data.worldgen.structures.MeadowRock;
 
 import java.util.List;
 
 
 public class RuPlacements {
-    public static final Holder<PlacedFeature>  RU_CLAY = PlacementUtils.register("regions_unexplored:ru_clay", RuFeatures.RU_DISK_CLAY, InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)), BiomeFilter.biome());
-    public static final Holder<PlacedFeature>  RU_MUD = PlacementUtils.register("regions_unexplored:ru_mud", RuFeatures.RU_DISK_MUD, InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)), BiomeFilter.biome());
-    public static final Holder<PlacedFeature>  RU_GRAVEL = PlacementUtils.register("regions_unexplored:ru_gravel", RuFeatures.RU_DISK_GRAVEL, InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)), BiomeFilter.biome());
-    public static final Holder<PlacedFeature>  RU_SAND = PlacementUtils.register("regions_unexplored:ru_sand", RuFeatures.RU_DISK_SAND, CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)), BiomeFilter.biome());
-    public static final Holder<PlacedFeature>  RU_MUD_BIG = PlacementUtils.register("regions_unexplored:ru_mud_big", RuFeatures.RU_DISK_MUD_BIG, CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BlockPredicateFilter.forPredicate(BlockPredicate.matchesFluids(Fluids.WATER)), BiomeFilter.biome());
+    public static final Holder<PlacedFeature> RU_CLAY = PlacementUtils.register("regions_unexplored:ru_clay", RuFeatures.RU_DISK_CLAY, InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());
+    public static final Holder<PlacedFeature> RU_MUD = PlacementUtils.register("regions_unexplored:ru_mud", RuFeatures.RU_DISK_MUD, InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());
+    public static final Holder<PlacedFeature> RU_GRAVEL = PlacementUtils.register("regions_unexplored:ru_gravel", RuFeatures.RU_DISK_GRAVEL, InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());
+    public static final Holder<PlacedFeature> RU_SAND = PlacementUtils.register("regions_unexplored:ru_sand", RuFeatures.RU_DISK_SAND, CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());
+    public static final Holder<PlacedFeature> RU_MUD_BIG = PlacementUtils.register("regions_unexplored:ru_mud_big", RuFeatures.RU_DISK_MUD_BIG, CountPlacement.of(3), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, BiomeFilter.biome());
     public static final Holder<PlacedFeature>  MARSHES = PlacementUtils.register("regions_unexplored:marshes", RuFeatures.MARSH, CountPlacement.of(125), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP_TOP_SOLID, EnvironmentScanPlacement.scanningFor(Direction.DOWN, BlockPredicate.solid(), BlockPredicate.ONLY_IN_AIR_PREDICATE, 12), RandomOffsetPlacement.vertical(ConstantInt.of(1)), BiomeFilter.biome());
-    public static final Holder<PlacedFeature>  MEADOW_ROCKS = PlacementUtils.register("regions_unexplored:meadow_rocks_placed", RuFeatures.MEADOW_ROCKS, List.of(BiomeFilter.biome()));
-    public static final Holder<PlacedFeature>  SPIRES = PlacementUtils.register("regions_unexplored:spires_placed", RuFeatures.SPIRES, List.of(BiomeFilter.biome()));
     public static final Holder<PlacedFeature>  NOISE_PUMPKINS = PlacementUtils.register("regions_unexplored:noise_pumpkins", RuFeatures.PUMPKINS, List.of(CountPlacement.of(18), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));
     public static final Holder<PlacedFeature>  NOISE_MUD = PlacementUtils.register("regions_unexplored:noise_mud", RuFeatures.MARSH_MUD, List.of(CountPlacement.of(35), InSquarePlacement.spread(), SurfaceWaterDepthFilter.forMaxDepth(1), PlacementUtils.HEIGHTMAP_OCEAN_FLOOR, RuVegetationFeatures.MARSH, BiomeFilter.biome()));
     public static final Holder<PlacedFeature>  NOISE_ROCKS = PlacementUtils.register("regions_unexplored:noise_rocks", RuFeatures.STONES, List.of(CountPlacement.of(25), InSquarePlacement.spread(), PlacementUtils.HEIGHTMAP, BiomeFilter.biome()));

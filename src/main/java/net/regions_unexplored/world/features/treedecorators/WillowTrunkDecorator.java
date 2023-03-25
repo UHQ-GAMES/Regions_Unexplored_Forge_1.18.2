@@ -14,13 +14,18 @@
 */
 package net.regions_unexplored.world.features.treedecorators;
 
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.core.BlockPos;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraft.world.level.block.Blocks;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
+
+import java.util.List;
+import java.util.Random;
+import java.util.function.BiConsumer;
 
 public class WillowTrunkDecorator extends TrunkVineDecorator {
 	public static final WillowTrunkDecorator INSTANCE = new WillowTrunkDecorator();
@@ -29,6 +34,8 @@ public class WillowTrunkDecorator extends TrunkVineDecorator {
 	static {
 		codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
 		tdt = new TreeDecoratorType<>(codec);
+		tdt.setRegistryName("willow_trunk_decorator");
+		
 	}
 
 	@Override
@@ -37,44 +44,44 @@ public class WillowTrunkDecorator extends TrunkVineDecorator {
 	}
 
 	@Override
-	public void place(TreeDecorator.Context context) {
+	public void place(LevelSimulatedReader levelReader, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> listBlockPos, List<BlockPos> listBlockPos2) {
 			int size = 3;
-			for(int i = 0; i < context.logs().size(); i++){
-			BlockPos newpos = context.logs().get(i);
+			for(int i = 0; i < listBlockPos.size(); i++){
+			BlockPos newpos = listBlockPos.get(i);
 
 			BlockPos bp = newpos.west();
 			if(i==0){
-				context.setBlock(bp, Blocks.DIRT.defaultBlockState());
+				biConsumer.accept(bp, Blocks.DIRT.defaultBlockState());
 			}
 			else if(i<=size && i>0){
-				context.setBlock(bp, RegionsUnexploredBlocks.WILLOW_LOG.get().defaultBlockState());
+				biConsumer.accept(bp, RegionsUnexploredBlocks.WILLOW_LOG.get().defaultBlockState());
 			}
 			
 
 			BlockPos bp1 = newpos.east();
 			if(i==0){
-				context.setBlock(bp1, Blocks.DIRT.defaultBlockState());
+				biConsumer.accept(bp1, Blocks.DIRT.defaultBlockState());
 			}
 			else if(i<=size && i>0){
-				context.setBlock(bp1, RegionsUnexploredBlocks.WILLOW_LOG.get().defaultBlockState());
+				biConsumer.accept(bp1, RegionsUnexploredBlocks.WILLOW_LOG.get().defaultBlockState());
 			}
 			
 
 			BlockPos bp2 = newpos.north();
 			if(i==0){
-				context.setBlock(bp2, Blocks.DIRT.defaultBlockState());
+				biConsumer.accept(bp2, Blocks.DIRT.defaultBlockState());
 			}
 			else if(i<=size && i>0){
-				context.setBlock(bp2, RegionsUnexploredBlocks.WILLOW_LOG.get().defaultBlockState());
+				biConsumer.accept(bp2, RegionsUnexploredBlocks.WILLOW_LOG.get().defaultBlockState());
 			}
 			
 
 			BlockPos bp3 = newpos.south();
 			if(i==0){
-				context.setBlock(bp3, Blocks.DIRT.defaultBlockState());
+				biConsumer.accept(bp3, Blocks.DIRT.defaultBlockState());
 			}
 			else if(i<=size && i>0){
-				context.setBlock(bp3, RegionsUnexploredBlocks.WILLOW_LOG.get().defaultBlockState());
+				biConsumer.accept(bp3, RegionsUnexploredBlocks.WILLOW_LOG.get().defaultBlockState());
 			}
 			
 			}

@@ -16,7 +16,6 @@ public class RegionsUnexploredCommonConfigs {
     public static final ForgeConfigSpec.ConfigValue<Integer> REGION_PRIMARY_WEIGHT;
     public static final ForgeConfigSpec.ConfigValue<Integer> REGION_SECONDARY_WEIGHT;
     public static final ForgeConfigSpec.ConfigValue<Integer> REGION_NETHER_WEIGHT;
-    public static final ForgeConfigSpec.ConfigValue<Integer> REGION_VANILLA_MODIFIED_WEIGHT;
 
     public static final ForgeConfigSpec.ConfigValue<Boolean> TOGGLE_REDSTONE_CAVES;
     public static final ForgeConfigSpec.ConfigValue<Boolean> TOGGLE_BIOSHROOM_CAVES;
@@ -104,11 +103,6 @@ public class RegionsUnexploredCommonConfigs {
 
         REGION_NETHER_WEIGHT = BUILDER.comment("Sets Terrablender region weight for Nether region.")
                 .defineInRange("nether_region_weight", 14, 0, 2147483646);
-
-
-        BUILDER.comment("(NOTICE: set to 0 by default. Set vanilla region weight in the Terrablender config to 0 before setting this to 10)");
-        REGION_VANILLA_MODIFIED_WEIGHT = BUILDER.comment("Sets Terrablender region weight for the modified vanilla region.")
-                .defineInRange("experimental_modified_vanilla_region_weight", 0, 0, 2147483646);
 
         BUILDER.pop();
         BUILDER.push("biome_toggles");

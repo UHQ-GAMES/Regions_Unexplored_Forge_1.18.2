@@ -20,8 +20,13 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.data.tags.RegionsUnexploredTags;
+
+import java.util.List;
+import java.util.Random;
+import java.util.function.BiConsumer;
 
 public class SmallYellowBioshroomCaps extends TrunkVineDecorator {
 	public static final SmallYellowBioshroomCaps INSTANCE = new SmallYellowBioshroomCaps();
@@ -30,6 +35,8 @@ public class SmallYellowBioshroomCaps extends TrunkVineDecorator {
 	static {
 		codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
 		tdt = new TreeDecoratorType<>(codec);
+		tdt.setRegistryName("small_yellow_bioshroom_caps");
+		
 	}
 
 	@Override
@@ -38,40 +45,40 @@ public class SmallYellowBioshroomCaps extends TrunkVineDecorator {
 	}
 
 	@Override
-	public void place(Context context) {
-				BlockPos newpos = context.logs().get(context.logs().size()-1);
+	public void place(LevelSimulatedReader levelReader, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> listBlockPos, List<BlockPos> listBlockPos2) {
+				BlockPos newpos = listBlockPos.get(listBlockPos.size()-1);
 				BlockPos px1 = new BlockPos(newpos.getX(),newpos.getY()+1,newpos.getZ());
 				BlockPos px1e = new BlockPos(newpos.getX()+1,newpos.getY()+1,newpos.getZ());
 				BlockPos px1w = new BlockPos(newpos.getX()-1,newpos.getY()+1,newpos.getZ());
 				BlockPos px1s = new BlockPos(newpos.getX(),newpos.getY()+1,newpos.getZ()+1);
 				BlockPos px1n = new BlockPos(newpos.getX(),newpos.getY()+1,newpos.getZ()-1);
 
-				if (isReplaceable(context.level(), px1)) {
-					context.setBlock(px1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+				if (isReplaceable(levelReader, px1)) {
+					biConsumer.accept(px1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 				}
-				if (isReplaceable(context.level(), px1e)) {
-					context.setBlock(px1e, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+				if (isReplaceable(levelReader, px1e)) {
+					biConsumer.accept(px1e, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 				}
-				if (isReplaceable(context.level(), px1w)) {
-					context.setBlock(px1w, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+				if (isReplaceable(levelReader, px1w)) {
+					biConsumer.accept(px1w, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 				}
-				if (isReplaceable(context.level(), px1s)) {
-					context.setBlock(px1s, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+				if (isReplaceable(levelReader, px1s)) {
+					biConsumer.accept(px1s, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 				}
-				if (isReplaceable(context.level(), px1n)) {
-					context.setBlock(px1n, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+				if (isReplaceable(levelReader, px1n)) {
+					biConsumer.accept(px1n, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 				}
-				if (isReplaceable(context.level(), px1s.west())) {
-					context.setBlock(px1s.west(), RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+				if (isReplaceable(levelReader, px1s.west())) {
+					biConsumer.accept(px1s.west(), RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 				}
-				if (isReplaceable(context.level(), px1n.west())) {
-					context.setBlock(px1n.west(), RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+				if (isReplaceable(levelReader, px1n.west())) {
+					biConsumer.accept(px1n.west(), RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 				}
-				if (isReplaceable(context.level(), px1s.east())) {
-					context.setBlock(px1s.east(), RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+				if (isReplaceable(levelReader, px1s.east())) {
+					biConsumer.accept(px1s.east(), RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 				}
-				if (isReplaceable(context.level(), px1n.east())) {
-					context.setBlock(px1n.east(), RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+				if (isReplaceable(levelReader, px1n.east())) {
+					biConsumer.accept(px1n.east(), RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 				}
 		}
 

@@ -1,38 +1,30 @@
-/**
- * The code of this mod element is always locked.
- *
- * You can register new events in this class too.
- *
- * If you want to make a plain independent class, create it using
- * Project Browser -> New... and make sure to make the class
- * outside net.mcreator.regionsunexplored as this package is managed by MCreator.
- *
- * If you change workspace package, modid or prefix, you will need
- * to manually adapt this file to these changes or remake it.
- *
- * This class will be added in the mod root package.
-*/
 package net.regions_unexplored.world.features.treedecorators;
 
 
-import com.mojang.serialization.Codec;
-import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraftforge.registries.ForgeRegistries;
 
 
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.minecraft.core.BlockPos;
 
+import java.util.List;
+import java.util.Random;
+import java.util.function.BiConsumer;
+
 public class BambooLeaveDecorator extends TrunkVineDecorator {
 	public static final BambooLeaveDecorator INSTANCE = new BambooLeaveDecorator();
-	public static Codec<BambooLeaveDecorator> codec;
+	public static com.mojang.serialization.Codec<BambooLeaveDecorator> codec;
 	public static TreeDecoratorType<?> tdt;
 	static {
-		codec = Codec.unit(() -> INSTANCE);
+		codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
 		tdt = new TreeDecoratorType<>(codec);
+		tdt.setRegistryName("bamboo_leave_decorator");
+		
 	}
 
 	@Override
@@ -40,9 +32,10 @@ public class BambooLeaveDecorator extends TrunkVineDecorator {
 		return tdt;
 	}
 
+
 	@Override
-	public void place(TreeDecorator.Context context) {
-			BlockPos newpos = context.logs().get(context.logs().size()-1);
+	public void place(LevelSimulatedReader levelReader, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> listBlockPos, List<BlockPos> listBlockPos2) {
+			BlockPos newpos = listBlockPos.get(listBlockPos.size()-1);
 
 			BlockPos up1 = new BlockPos(newpos.getX(),newpos.getY()+5,newpos.getZ());
 			BlockPos up2 = new BlockPos(newpos.getX(),newpos.getY()+6,newpos.getZ());
@@ -103,155 +96,155 @@ public class BambooLeaveDecorator extends TrunkVineDecorator {
 			BlockPos pzp = pzm.below();
 			BlockPos nzp = nzm.below();
 			
-			if (context.isAir(px1)) {
-			context.setBlock(px1, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, px1)) {
+			biConsumer.accept( px1, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(px2)) {
-			context.setBlock(px2, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, px2)) {
+			biConsumer.accept( px2, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(px3)) {
-			context.setBlock(px3, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			
-			if (context.isAir(nx1)) {
-			context.setBlock(nx1, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(nx2)) {
-			context.setBlock(nx2, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(nx3)) {
-			context.setBlock(nx3, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, px3)) {
+			biConsumer.accept( px3, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
 			}
 			
-			if (context.isAir(pz1)) {
-			context.setBlock(pz1, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, nx1)) {
+			biConsumer.accept( nx1, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(pz2)) {
-			context.setBlock(pz2, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, nx2)) {
+			biConsumer.accept( nx2, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(pz3)) {
-			context.setBlock(pz3, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			
-			if (context.isAir(nz1)) {
-			context.setBlock(nz1, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(nz2)) {
-			context.setBlock(nz2, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(nz3)) {
-			context.setBlock(nz3, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-
-			if (context.isAir(px)) {
-			context.setBlock(px, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(nx)) {
-			context.setBlock(nx, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(pz)) {
-			context.setBlock(pz, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(nz)) {
-			context.setBlock(pz, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-
-			if (context.isAir(pxt)) {
-			context.setBlock(pxt, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(nxt)) {
-			context.setBlock(nxt, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(pzt)) {
-			context.setBlock(pzt, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(nzt)) {
-			context.setBlock(pzt, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-
-			if (context.isAir(pxq)) {
-			context.setBlock(pxq, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(nxq)) {
-			context.setBlock(nxq, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(pz)) {
-			context.setBlock(pzq, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(nzq)) {
-			context.setBlock(pzq, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-
-			if (context.isAir(pxc)) {
-			context.setBlock(pxc, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(nxc)) {
-			context.setBlock(nxc, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(pzc)) {
-			context.setBlock(pzc, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(nzc)) {
-			context.setBlock(pzc, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-
-			if (context.isAir(pxz)) {
-			context.setBlock(pxz, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(nxz)) {
-			context.setBlock(nxz, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(pzz)) {
-			context.setBlock(pzz, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(nzz)) {
-			context.setBlock(pzz, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, nx3)) {
+			biConsumer.accept( nx3, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
 			}
 			
-			if (context.isAir(up1)) {
-			context.setBlock(up1, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, pz1)) {
+			biConsumer.accept( pz1, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(up2)) {
-			context.setBlock(up2, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, pz2)) {
+			biConsumer.accept( pz2, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
 			}
-
-			if (context.isAir(pxo)) {
-			context.setBlock(pxo, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, pz3)) {
+			biConsumer.accept( pz3, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(nxo)) {
-			context.setBlock(nxo, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			
+			if (Feature.isAir(levelReader, nz1)) {
+			biConsumer.accept( nz1, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(pzo)) {
-			context.setBlock(pzo, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, nz2)) {
+			biConsumer.accept( nz2, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(nzo)) {
-			context.setBlock(pzo, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-
-			if (context.isAir(pxm)) {
-			context.setBlock(pxm, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(nxm)) {
-			context.setBlock(nxm, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(pzm)) {
-			context.setBlock(pzm, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(nzm)) {
-			context.setBlock(pzm, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, nz3)) {
+			biConsumer.accept( nz3, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
 			}
 
-			if (context.isAir(pxp)) {
-			context.setBlock(pxp, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, px)) {
+			biConsumer.accept( px, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(nxp)) {
-			context.setBlock(nxp, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, nx)) {
+			biConsumer.accept( nx, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(pzp)) {
-			context.setBlock(pzp, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, pz)) {
+			biConsumer.accept( pz, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(nzp)) {
-			context.setBlock(pzp, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, nz)) {
+			biConsumer.accept( pz, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+
+			if (Feature.isAir(levelReader, pxt)) {
+			biConsumer.accept( pxt, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nxt)) {
+			biConsumer.accept( nxt, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, pzt)) {
+			biConsumer.accept( pzt, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nzt)) {
+			biConsumer.accept( pzt, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+
+			if (Feature.isAir(levelReader, pxq)) {
+			biConsumer.accept( pxq, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nxq)) {
+			biConsumer.accept( nxq, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, pz)) {
+			biConsumer.accept( pzq, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nzq)) {
+			biConsumer.accept( pzq, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+
+			if (Feature.isAir(levelReader, pxc)) {
+			biConsumer.accept( pxc, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nxc)) {
+			biConsumer.accept( nxc, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, pzc)) {
+			biConsumer.accept( pzc, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nzc)) {
+			biConsumer.accept( pzc, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+
+			if (Feature.isAir(levelReader, pxz)) {
+			biConsumer.accept( pxz, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nxz)) {
+			biConsumer.accept( nxz, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, pzz)) {
+			biConsumer.accept( pzz, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nzz)) {
+			biConsumer.accept( pzz, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			
+			if (Feature.isAir(levelReader, up1)) {
+			biConsumer.accept( up1, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, up2)) {
+			biConsumer.accept( up2, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+
+			if (Feature.isAir(levelReader, pxo)) {
+			biConsumer.accept( pxo, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nxo)) {
+			biConsumer.accept( nxo, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, pzo)) {
+			biConsumer.accept( pzo, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nzo)) {
+			biConsumer.accept( pzo, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+
+			if (Feature.isAir(levelReader, pxm)) {
+			biConsumer.accept( pxm, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nxm)) {
+			biConsumer.accept( nxm, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, pzm)) {
+			biConsumer.accept( pzm, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nzm)) {
+			biConsumer.accept( pzm, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+
+			if (Feature.isAir(levelReader, pxp)) {
+			biConsumer.accept( pxp, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nxp)) {
+			biConsumer.accept( nxp, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, pzp)) {
+			biConsumer.accept( pzp, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nzp)) {
+			biConsumer.accept( pzp, RegionsUnexploredBlocks.BAMBOO_LEAVES.get().defaultBlockState());
 			}
 		}
 	}

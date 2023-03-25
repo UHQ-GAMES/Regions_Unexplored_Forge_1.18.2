@@ -3,7 +3,6 @@ package net.regions_unexplored.world.level.block.grass;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelReader;
@@ -16,6 +15,8 @@ import net.minecraft.world.level.material.Material;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.level.material.PushReaction;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
+
+import java.util.Random;
 
 public class CactusSaplingBlock extends SaplingBlock {
     public CactusSaplingBlock(AbstractTreeGrower tree) {
@@ -44,7 +45,7 @@ public class CactusSaplingBlock extends SaplingBlock {
     }
 
     @Override
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         if (!level.isAreaLoaded(pos, 1)) return;
         if (level.getMaxLocalRawBrightness(pos.above()) >= 9 && random.nextInt(7) == 0&&level.getBlockState(pos.below()).is(BlockTags.SAND)) {
             this.advanceTree(level, pos, state, random);

@@ -1,5 +1,6 @@
 package net.regions_unexplored.item;
 
+import net.minecraft.core.BlockPos;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -17,7 +18,6 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 import net.regions_unexplored.entity.custom.RuBoat;
-import net.regions_unexplored.entity.custom.RuChestBoat;
 
 import java.util.List;
 import java.util.function.Predicate;
@@ -25,11 +25,10 @@ import java.util.function.Predicate;
 public class RuBoatItem extends Item {
     private static final Predicate<Entity> ENTITY_PREDICATE = EntitySelector.NO_SPECTATORS.and(Entity::isPickable);
     private final RuBoat.ModelType model;
-    private final boolean chest;
 
-    public RuBoatItem(boolean chest, RuBoat.ModelType model, Item.Properties properties) {
-        super(properties); this.model = model; this.chest = chest;
-        DispenserBlock.registerBehavior(this, new RuBoatItemBehaviour(chest, model));
+    public RuBoatItem(RuBoat.ModelType model, Item.Properties properties) {
+        super(properties); this.model = model;
+        DispenserBlock.registerBehavior(this, new RuBoatItemBehaviour(model));
     }
 
     @Override
@@ -53,13 +52,8 @@ public class RuBoatItem extends Item {
 
             if (hitResult.getType() == HitResult.Type.BLOCK) {
                 Boat boat;
-                if (this.chest) {
-                    boat = new RuChestBoat(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z);
-                    ((RuChestBoat)boat).setModel(this.model);
-                } else {
                     boat = new RuBoat(level, hitResult.getLocation().x, hitResult.getLocation().y, hitResult.getLocation().z);
                     ((RuBoat)boat).setModel(this.model);
-                }
                 boat.setYRot(player.getYRot());
 
                 if (!level.noCollision(boat, boat.getBoundingBox())) {
@@ -67,7 +61,7 @@ public class RuBoatItem extends Item {
                 } else {
                     if (!level.isClientSide) {
                         level.addFreshEntity(boat);
-                        level.gameEvent(player, GameEvent.ENTITY_PLACE, hitResult.getLocation());
+                        level.gameEvent(player, GameEvent.ENTITY_PLACE, new BlockPos(hitResult.getLocation()));
                         if (!player.getAbilities().instabuild) {
                             itemStack.shrink(1);
                         }

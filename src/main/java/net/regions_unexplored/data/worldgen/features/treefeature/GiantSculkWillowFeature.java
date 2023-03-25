@@ -55,7 +55,7 @@ public class GiantSculkWillowFeature extends Feature<NoneFeatureConfiguration> {
         if(worldgenlevel.getBlockState(pos.north().east()).getBlock() == RegionsUnexploredBlocks.SCULKWOOD_LOG_DARK.get()){
             return false;
         }
-        if(worldgenlevel.getBlockState(pos.below()).getBlock()== RegionsUnexploredBlocks.SCULK_GRASS_BLOCK.get()||worldgenlevel.getBlockState(pos.below()).getBlock()== Blocks.SCULK||worldgenlevel.getBlockState(pos.below()).is(BlockTags.NYLIUM)||worldgenlevel.getBlockState(pos.below()).is(BlockTags.DIRT)){
+        if(worldgenlevel.getBlockState(pos.below()).getBlock()== RegionsUnexploredBlocks.SCULK_GRASS_BLOCK.get()||worldgenlevel.getBlockState(pos.below()).is(BlockTags.NYLIUM)||worldgenlevel.getBlockState(pos.below()).is(BlockTags.DIRT)){
         }
         else{
             return false;
@@ -363,9 +363,7 @@ public class GiantSculkWillowFeature extends Feature<NoneFeatureConfiguration> {
             if(isReplaceable(level, pos.north())){
                 if(isReplaceable(level, pos.north().north().north())){
                     level.setBlock(pos.north().north().north(), RegionsUnexploredBlocks.SCULKWOOD_LOG_DARK.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z), 2);
-                    if(isReplaceable(level, pos.north().north())){
-                        level.setBlock(pos.north().north(), Blocks.SCULK_VEIN.defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.NORTH), true).setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true), 2);
-                    }
+
                 }
                 if(isReplaceable(level, pos.north().below().north())){
                     level.setBlock(pos.north().below().north(), RegionsUnexploredBlocks.SCULKWOOD_LOG_DARK.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y), 2);
@@ -387,9 +385,7 @@ public class GiantSculkWillowFeature extends Feature<NoneFeatureConfiguration> {
             if(isReplaceable(level, pos.south())){
                 if(isReplaceable(level, pos.south().south().south())){
                     level.setBlock(pos.south().south().south(), RegionsUnexploredBlocks.SCULKWOOD_LOG_DARK.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z), 2);
-                    if(isReplaceable(level, pos.south().south())){
-                        level.setBlock(pos.south().south(), Blocks.SCULK_VEIN.defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.SOUTH), true).setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true), 2);
-                    }
+
                 }
                 if(isReplaceable(level, pos.south().below().south())){
                     level.setBlock(pos.south().below().south(), RegionsUnexploredBlocks.SCULKWOOD_LOG_DARK.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y), 2);
@@ -411,9 +407,7 @@ public class GiantSculkWillowFeature extends Feature<NoneFeatureConfiguration> {
             if(isReplaceable(level, pos.east())){
                 if(isReplaceable(level, pos.east().east().east())){
                     level.setBlock(pos.east().east().east(), RegionsUnexploredBlocks.SCULKWOOD_LOG_DARK.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X), 2);
-                    if(isReplaceable(level, pos.east().east())){
-                        level.setBlock(pos.east().east(), Blocks.SCULK_VEIN.defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.EAST), true).setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true), 2);
-                    }
+
                 }
                 if(isReplaceable(level, pos.east().below().east())){
                     level.setBlock(pos.east().below().east(), RegionsUnexploredBlocks.SCULKWOOD_LOG_DARK.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y), 2);
@@ -435,9 +429,7 @@ public class GiantSculkWillowFeature extends Feature<NoneFeatureConfiguration> {
             if(isReplaceable(level, pos.west())){
                 if(isReplaceable(level, pos.west().west().west())){
                     level.setBlock(pos.west().west().west(), RegionsUnexploredBlocks.SCULKWOOD_LOG_DARK.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X), 2);
-                    if(isReplaceable(level, pos.west().west())){
-                        level.setBlock(pos.west().west(), Blocks.SCULK_VEIN.defaultBlockState().setValue(MultifaceBlock.getFaceProperty(Direction.WEST), true).setValue(MultifaceBlock.getFaceProperty(Direction.DOWN), true), 2);
-                    }
+
                 }
                 if(isReplaceable(level, pos.west().below().west())){
                     level.setBlock(pos.west().below().west(), RegionsUnexploredBlocks.SCULKWOOD_LOG_DARK.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Y), 2);

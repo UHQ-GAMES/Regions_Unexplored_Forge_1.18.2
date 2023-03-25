@@ -3,7 +3,7 @@ package net.regions_unexplored.world.level.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.item.context.UseOnContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
@@ -32,11 +32,11 @@ public class AlphaGrassBlock extends SpreadingAlphaDirtBlock implements Bonemeal
       return p_256229_.getBlockState(p_256432_.above()).isAir();
    }
 
-   public boolean isBonemealSuccess(Level p_221275_, RandomSource p_221276_, BlockPos p_221277_, BlockState p_221278_) {
+   public boolean isBonemealSuccess(Level p_221275_, Random p_221276_, BlockPos p_221277_, BlockState p_221278_) {
       return true;
    }
 
-   public void performBonemeal(ServerLevel p_221270_, RandomSource p_221271_, BlockPos p_221272_, BlockState p_221273_) {
+   public void performBonemeal(ServerLevel p_221270_, Random p_221271_, BlockPos p_221272_, BlockState p_221273_) {
       BlockPos blockpos = p_221272_.above();
       BlockState blockstate = Blocks.GRASS.defaultBlockState();
 

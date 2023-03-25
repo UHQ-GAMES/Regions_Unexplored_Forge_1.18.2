@@ -45,43 +45,6 @@ public class TillableDirtBlock extends Block {
         return SHAPE;
     }
 
-    @Override
-    public InteractionResult use(BlockState state, Level level, BlockPos pos, Player player, InteractionHand hand, BlockHitResult result) {
-
-        if (PotionUtils.getPotion(player.getItemInHand(hand))== Potions.WATER) {
-            for (int i = 0; i < 5; ++i) {
-                level.addParticle(ParticleTypes.SPLASH, (double) pos.getX() + level.random.nextDouble(), (double) (pos.getY() + 1), (double) pos.getZ() + level.random.nextDouble(), (double) (level.random.nextFloat() / 2.0F), 5.0E-5D, (double) (level.random.nextFloat() / 2.0F));
-            }
-            level.playSound((Player) null, pos, SoundEvents.BOTTLE_EMPTY, SoundSource.BLOCKS, 1.0F, 1.0F);
-            if(level.getBlockState(pos)==RegionsUnexploredBlocks.FOREST_DIRT.get().defaultBlockState()||level.getBlockState(pos)==RegionsUnexploredBlocks.FOREST_COARSE_DIRT.get().defaultBlockState()){
-                level.setBlock(pos, RegionsUnexploredBlocks.FOREST_MUD.get().defaultBlockState(), 2);
-                level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, RegionsUnexploredBlocks.FOREST_MUD.get().defaultBlockState()));
-            }
-            else if(level.getBlockState(pos)==RegionsUnexploredBlocks.PLAINS_DIRT.get().defaultBlockState()||level.getBlockState(pos)==RegionsUnexploredBlocks.PLAINS_COARSE_DIRT.get().defaultBlockState()){
-                level.setBlock(pos, RegionsUnexploredBlocks.PLAINS_MUD.get().defaultBlockState(), 2);
-                level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, RegionsUnexploredBlocks.PLAINS_MUD.get().defaultBlockState()));
-            }
-            else{
-                level.setBlock(pos, Blocks.MUD.defaultBlockState(), 2);
-                level.gameEvent(GameEvent.BLOCK_CHANGE, pos, GameEvent.Context.of(player, Blocks.MUD.defaultBlockState()));
-            }
-            if (player instanceof ServerPlayer serverPlayer) {
-                if(serverPlayer.gameMode.getGameModeForPlayer() != GameType.CREATIVE){
-                    player.setItemInHand(hand, new ItemStack(Items.GLASS_BOTTLE, 1));
-                }
-            }
-            else if (player.level.isClientSide()) {
-                if(Minecraft.getInstance().getConnection().getPlayerInfo(player.getGameProfile().getId()) != null && Minecraft.getInstance().getConnection().getPlayerInfo(player.getGameProfile().getId()).getGameMode() != GameType.CREATIVE){
-                    player.setItemInHand(hand, new ItemStack(Items.GLASS_BOTTLE, 1));
-                }
-            }
-            return InteractionResult.sidedSuccess(level.isClientSide);
-        }
-        else {
-            return super.use(state, level, pos, player, hand, result);
-        }
-    }
-
     @Nullable
     public BlockState getToolModifiedState(BlockState state, UseOnContext context, ToolAction action, boolean simulate) {
 

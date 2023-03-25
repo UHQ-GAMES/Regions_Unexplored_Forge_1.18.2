@@ -12,7 +12,6 @@ import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.vehicle.Boat;
 import net.regions_unexplored.RegionsUnexploredMod;
 import net.regions_unexplored.entity.custom.RuBoat;
-import net.regions_unexplored.entity.custom.RuChestBoat;
 import org.jetbrains.annotations.NotNull;
 
 import java.util.Map;
@@ -22,25 +21,25 @@ public class RuBoatRenderer extends BoatRenderer
 {
     private final Map<RuBoat.ModelType, Pair<ResourceLocation, ListModel<Boat>>> boatResources;
 
-    public RuBoatRenderer(EntityRendererProvider.Context context, boolean chest) {
-        super(context, false);
+    public RuBoatRenderer(EntityRendererProvider.Context context) {
+        super(context);
         this.boatResources = Stream.of(RuBoat.ModelType.values()).collect(ImmutableMap.toImmutableMap((key) -> key, (model) ->
-                Pair.of(new ResourceLocation(RegionsUnexploredMod.MOD_ID, getTextureLocation(model, chest)), createBoatModel(context, model, chest))));
+                Pair.of(new ResourceLocation(RegionsUnexploredMod.MOD_ID, getTextureLocation(model)), createBoatModel(context, model))));
     }
 
     @Override
     public @NotNull Pair<ResourceLocation, BoatModel> getModelWithLocation(Boat boat) {
-        return boat instanceof RuChestBoat ? (Pair)this.boatResources.get(((RuChestBoat)boat).getModel()) : (Pair)this.boatResources.get(((RuBoat)boat).getModel());
+        return (Pair)this.boatResources.get(((RuBoat)boat).getModel());
     }
 
-    private static String getTextureLocation(RuBoat.ModelType type, boolean chest) {
-        return chest ? "textures/entity/chest_boat/" + type.getName() + ".png" : "textures/entity/boat/" + type.getName() + ".png";
+    private static String getTextureLocation(RuBoat.ModelType type) {
+        return "textures/entity/boat/" + type.getName() + ".png";
     }
 
-    private BoatModel createBoatModel(EntityRendererProvider.Context context, RuBoat.ModelType type, boolean hasChest) {
-        ModelLayerLocation modellayerlocation = hasChest ? chestBoatTextureLocation(type) : boatTextureLocation(type);
+    private BoatModel createBoatModel(EntityRendererProvider.Context context, RuBoat.ModelType type) {
+        ModelLayerLocation modellayerlocation = boatTextureLocation(type);
         ModelPart baked = context.bakeLayer(modellayerlocation);
-        return hasChest ? new BoatModel(baked, true) : new BoatModel(baked, false);
+        return new BoatModel(baked);
     }
 
     private static ModelLayerLocation getModel(String name, String model) {
@@ -49,9 +48,5 @@ public class RuBoatRenderer extends BoatRenderer
 
     public static ModelLayerLocation boatTextureLocation(RuBoat.ModelType type) {
         return getModel("boat/" + type.getName(), "main");
-    }
-
-    public static ModelLayerLocation chestBoatTextureLocation(RuBoat.ModelType type) {
-        return getModel("chest_boat/" + type.getName(), "main");
     }
 }

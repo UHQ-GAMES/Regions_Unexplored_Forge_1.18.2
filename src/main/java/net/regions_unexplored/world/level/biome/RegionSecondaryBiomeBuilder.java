@@ -253,7 +253,7 @@ public class RegionSecondaryBiomeBuilder {
                 this.addSurfaceBiome(builder, temperature, humidity, Climate.Parameter.span(this.midInlandContinentalness, this.farInlandContinentalness), this.erosions[5], weirdness, 0.0F, shatteredBiome);
                 if(i==4){
                     if(j==0||j==1){
-                        this.addSurfaceBiome(builder, temperature, humidity, Climate.Parameter.span(this.coastContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.FUNGAL_FEN) ? RuBiomes.FUNGAL_FEN : Biomes.MANGROVE_SWAMP);
+                        this.addSurfaceBiome(builder, temperature, humidity, Climate.Parameter.span(this.coastContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.FUNGAL_FEN) ? RuBiomes.FUNGAL_FEN : Biomes.SWAMP);
                     }
                     else{
                         this.addSurfaceBiome(builder, temperature, humidity, Climate.Parameter.span(this.coastContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, middleBiome);
@@ -277,9 +277,9 @@ public class RegionSecondaryBiomeBuilder {
         this.addSurfaceBiome(builder, this.temperatures[1], this.FULL_RANGE, Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.FEN) ? RuBiomes.FEN : Biomes.SWAMP);
         this.addSurfaceBiome(builder, this.temperatures[2], this.FULL_RANGE, Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, weirdness.max() < 0L ? giantBayouBiome : bayouBiome);
         //MANGROVE_REPLACE
-        this.addSurfaceBiome(builder, Climate.Parameter.span(this.temperatures[3], this.temperatures[4]), Climate.Parameter.span(this.humidities[2], this.humidities[4]), Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.TROPICS) ? RuBiomes.TROPICS : Biomes.MANGROVE_SWAMP);
-        this.addSurfaceBiome(builder, this.temperatures[3], Climate.Parameter.span(this.humidities[0], this.humidities[1]), Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.FLOODED_PLAINS) ? RuBiomes.FLOODED_PLAINS : Biomes.MANGROVE_SWAMP);
-        this.addSurfaceBiome(builder, this.temperatures[4], Climate.Parameter.span(this.humidities[0], this.humidities[1]), Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.FUNGAL_FEN) ? RuBiomes.FUNGAL_FEN : Biomes.MANGROVE_SWAMP);
+        this.addSurfaceBiome(builder, Climate.Parameter.span(this.temperatures[3], this.temperatures[4]), Climate.Parameter.span(this.humidities[2], this.humidities[4]), Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.TROPICS) ? RuBiomes.TROPICS : Biomes.SWAMP);
+        this.addSurfaceBiome(builder, this.temperatures[3], Climate.Parameter.span(this.humidities[0], this.humidities[1]), Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.FLOODED_PLAINS) ? RuBiomes.FLOODED_PLAINS : Biomes.SWAMP);
+        this.addSurfaceBiome(builder, this.temperatures[4], Climate.Parameter.span(this.humidities[0], this.humidities[1]), Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.FUNGAL_FEN) ? RuBiomes.FUNGAL_FEN : Biomes.SWAMP);
 
         for(int i = 0; i < this.temperatures.length; ++i) {
             Climate.Parameter temperature = this.temperatures[i];
@@ -337,9 +337,9 @@ public class RegionSecondaryBiomeBuilder {
         this.addSurfaceBiome(builder, this.temperatures[1], this.FULL_RANGE, Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.FEN) ? RuBiomes.FEN : Biomes.SWAMP);
         this.addSurfaceBiome(builder, this.temperatures[2], this.FULL_RANGE, Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, weirdness.max() < 0L ? giantBayouBiome : bayouBiome);
         //MANGROVE_REPLACE
-        this.addSurfaceBiome(builder, Climate.Parameter.span(this.temperatures[3], this.temperatures[4]), Climate.Parameter.span(this.humidities[2], this.humidities[4]), Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.TROPICS) ? RuBiomes.TROPICS : Biomes.MANGROVE_SWAMP);
-        this.addSurfaceBiome(builder, this.temperatures[3], Climate.Parameter.span(this.humidities[0], this.humidities[1]), Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.FLOODED_PLAINS) ? RuBiomes.FLOODED_PLAINS : Biomes.MANGROVE_SWAMP);
-        this.addSurfaceBiome(builder, this.temperatures[4], Climate.Parameter.span(this.humidities[0], this.humidities[1]), Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.FUNGAL_FEN) ? RuBiomes.FUNGAL_FEN : Biomes.MANGROVE_SWAMP);
+        this.addSurfaceBiome(builder, Climate.Parameter.span(this.temperatures[3], this.temperatures[4]), Climate.Parameter.span(this.humidities[2], this.humidities[4]), Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.TROPICS) ? RuBiomes.TROPICS : Biomes.SWAMP);
+        this.addSurfaceBiome(builder, this.temperatures[3], Climate.Parameter.span(this.humidities[0], this.humidities[1]), Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.FLOODED_PLAINS) ? RuBiomes.FLOODED_PLAINS : Biomes.SWAMP);
+        this.addSurfaceBiome(builder, this.temperatures[4], Climate.Parameter.span(this.humidities[0], this.humidities[1]), Climate.Parameter.span(this.nearInlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.FUNGAL_FEN) ? RuBiomes.FUNGAL_FEN : Biomes.SWAMP);
 
         for(int i = 0; i < this.temperatures.length; ++i) {
             Climate.Parameter temperature = this.temperatures[i];
@@ -378,9 +378,9 @@ public class RegionSecondaryBiomeBuilder {
         this.addSurfaceBiome(builder, this.temperatures[1], this.FULL_RANGE, Climate.Parameter.span(this.inlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.FEN) ? RuBiomes.FEN : Biomes.SWAMP);
         this.addSurfaceBiome(builder, this.temperatures[2], this.FULL_RANGE, Climate.Parameter.span(this.inlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, weirdness.max() < 0L ? giantBayouBiome : bayouBiome);
         //MANGROVE_REPLACE
-        this.addSurfaceBiome(builder, Climate.Parameter.span(this.temperatures[3], this.temperatures[4]), Climate.Parameter.span(this.humidities[2], this.humidities[4]), Climate.Parameter.span(this.inlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.TROPICS) ? RuBiomes.TROPICS : Biomes.MANGROVE_SWAMP);
-        this.addSurfaceBiome(builder, this.temperatures[3], Climate.Parameter.span(this.humidities[0], this.humidities[1]), Climate.Parameter.span(this.inlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.FLOODED_PLAINS) ? RuBiomes.FLOODED_PLAINS : Biomes.MANGROVE_SWAMP);
-        this.addSurfaceBiome(builder, this.temperatures[4], Climate.Parameter.span(this.humidities[0], this.humidities[1]), Climate.Parameter.span(this.inlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.FUNGAL_FEN) ? RuBiomes.FUNGAL_FEN : Biomes.MANGROVE_SWAMP);
+        this.addSurfaceBiome(builder, Climate.Parameter.span(this.temperatures[3], this.temperatures[4]), Climate.Parameter.span(this.humidities[2], this.humidities[4]), Climate.Parameter.span(this.inlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.TROPICS) ? RuBiomes.TROPICS : Biomes.SWAMP);
+        this.addSurfaceBiome(builder, this.temperatures[3], Climate.Parameter.span(this.humidities[0], this.humidities[1]), Climate.Parameter.span(this.inlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.FLOODED_PLAINS) ? RuBiomes.FLOODED_PLAINS : Biomes.SWAMP);
+        this.addSurfaceBiome(builder, this.temperatures[4], Climate.Parameter.span(this.humidities[0], this.humidities[1]), Climate.Parameter.span(this.inlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.FUNGAL_FEN) ? RuBiomes.FUNGAL_FEN : Biomes.SWAMP);
 
         this.addSurfaceBiome(builder, this.FROZEN_RANGE, this.FULL_RANGE, Climate.Parameter.span(this.inlandContinentalness, this.farInlandContinentalness), this.erosions[6], weirdness, 0.0F, Biomes.FROZEN_RIVER);
 
@@ -399,7 +399,7 @@ public class RegionSecondaryBiomeBuilder {
                 this.addSurfaceBiome(builder, temperature, humidity, Climate.Parameter.span(this.coastContinentalness, this.farInlandContinentalness), Climate.Parameter.span(this.erosions[2], this.erosions[5]), weirdness, 0.0F, riverBiome);
                 if(i==3||i==4){
                     if(j==2||j==3||j==4){
-                        this.addSurfaceBiome(builder, temperature, humidity, this.coastContinentalness, this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.TROPICS) ? RuBiomes.TROPICS : Biomes.MANGROVE_SWAMP);
+                        this.addSurfaceBiome(builder, temperature, humidity, this.coastContinentalness, this.erosions[6], weirdness, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.TROPICS) ? RuBiomes.TROPICS : Biomes.SWAMP);
                     }
                     else{
                         this.addSurfaceBiome(builder, temperature, humidity, this.coastContinentalness, this.erosions[6], weirdness, 0.0F, riverBiome);
@@ -426,8 +426,8 @@ public class RegionSecondaryBiomeBuilder {
         this.addUndergroundBiome(builder, this.FULL_RANGE, Climate.Parameter.span(0.65F, 1.0F), this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(-1.0F, 0.0F), 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.BIOSHROOM_CAVES) ? RuBiomes.BIOSHROOM_CAVES : Biomes.LUSH_CAVES);
         this.addUndergroundBiome(builder, this.FULL_RANGE, Climate.Parameter.span(0.65F, 1.0F), this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(0.0F, 1.0F), 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.LUSH_DELTA) ? RuBiomes.LUSH_DELTA : Biomes.LUSH_CAVES);
 
-        this.addBottomBiome(builder, this.FULL_RANGE, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(this.erosions[0], this.erosions[1]), this.FULL_RANGE, 0.0F, Biomes.DEEP_DARK);
-        this.addBottomBiome(builder, this.FULL_RANGE, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(this.erosions[2], this.erosions[3]), this.FULL_RANGE, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.SCORCHING_CAVES) ? RuBiomes.SCORCHING_CAVES : Biomes.DEEP_DARK);
+        this.addBottomBiome(builder, this.FULL_RANGE, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(this.erosions[0], this.erosions[1]), this.FULL_RANGE, 0.0F, Biomes.LUSH_CAVES);
+        this.addBottomBiome(builder, this.FULL_RANGE, this.FULL_RANGE, this.FULL_RANGE, Climate.Parameter.span(this.erosions[2], this.erosions[3]), this.FULL_RANGE, 0.0F, CheckBiomeConfig.isBiomeEnabled(RuBiomes.SCORCHING_CAVES) ? RuBiomes.SCORCHING_CAVES : Biomes.DRIPSTONE_CAVES);
     }
 
     private ResourceKey<Biome> pickMiddleBiome(int temperature, int humidity, Climate.Parameter weirdness) {

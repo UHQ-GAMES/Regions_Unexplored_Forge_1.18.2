@@ -6,7 +6,7 @@ import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -46,7 +46,7 @@ public class AshBlock extends Block implements Fallable {
         return super.updateShape(state, direction, state1, level, pos, pos1);
     }
 
-    public void tick(BlockState blockState, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void tick(BlockState blockState, ServerLevel level, BlockPos pos, Random random) {
         if(level.getBlockState(pos) == this.defaultBlockState().setValue(AshBlock.HAS_GRAVITY, true)){
             if (isFree(level.getBlockState(pos.below())) && pos.getY() >= level.getMinBuildHeight()) {
                 FallingBlockEntity fallingblockentity = FallingBlockEntity.fall(level, pos, blockState);
@@ -67,7 +67,7 @@ public class AshBlock extends Block implements Fallable {
         return state.isAir() || state.is(BlockTags.FIRE) || material.isLiquid() || state.getMaterial().isReplaceable();
     }
 
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
         if (random.nextInt(16) == 0) {
             BlockPos blockpos = pos.below();
             if (isFree(level.getBlockState(blockpos))) {

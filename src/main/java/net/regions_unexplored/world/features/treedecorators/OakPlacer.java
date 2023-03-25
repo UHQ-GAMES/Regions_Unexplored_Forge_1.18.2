@@ -14,12 +14,17 @@
 */
 package net.regions_unexplored.world.features.treedecorators;
 
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.core.BlockPos;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraft.world.level.block.Blocks;
+
+import java.util.List;
+import java.util.Random;
+import java.util.function.BiConsumer;
 
 public class OakPlacer extends TrunkVineDecorator {
 	public static final OakPlacer INSTANCE = new OakPlacer();
@@ -28,6 +33,8 @@ public class OakPlacer extends TrunkVineDecorator {
 	static {
 		codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
 		tdt = new TreeDecoratorType<>(codec);
+		tdt.setRegistryName("oak_placer");
+		
 	}
 
 	@Override
@@ -36,12 +43,12 @@ public class OakPlacer extends TrunkVineDecorator {
 	}
 
 	@Override
-	public void place(TreeDecorator.Context context) {
-		BlockPos newpos = context.logs().get(context.logs().size()-1);
+	public void place(LevelSimulatedReader levelReader, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> listBlockPos, List<BlockPos> listBlockPos2) {
+		BlockPos newpos = listBlockPos.get(listBlockPos.size()-1);
 		BlockPos px1 = new BlockPos(newpos.getX(),newpos.getY()+1,newpos.getZ());
 
 
-		context.setBlock(px1, Blocks.OAK_LEAVES.defaultBlockState());
+		biConsumer.accept(px1, Blocks.OAK_LEAVES.defaultBlockState());
 			
 		}
 	}

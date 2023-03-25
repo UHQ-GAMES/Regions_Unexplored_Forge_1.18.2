@@ -33,7 +33,7 @@ public class RegionsUnexploredTabs {
 
         TAB_REGIONS_UNEXPLORED_OTHER = new CreativeModeTab("regions_unexplored_other_tab") {
             @Override
-            public ItemStack makeIcon() {return new ItemStack(RegionsUnexploredItems.BAOBAB_CHEST_BOAT.get());}
+            public ItemStack makeIcon() {return new ItemStack(RegionsUnexploredItems.BAOBAB_BOAT.get());}
 
             @OnlyIn(Dist.CLIENT)
             public boolean hasSearchBar() {return false;}

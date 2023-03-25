@@ -52,38 +52,38 @@ public class RegionsUnexploredMod {
 
         IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
         //register decorators before anything
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("bamboo_leave_decorator", BambooLeaveDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("cypress_trunk_decorator", CypressTrunkDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("birch_stem_decorator", BirchStemDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("blackwood_bioshroom", BlackwoodBioshroom.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("blackwood_branch_decorator", BlackwoodBranchDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("dead_branch_decorator", DeadBranchDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("dead_pine_branch_decorator", DeadPineBranchDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("dead_placer", DeadPlacer.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("dead_stem_decorator", DeadStemDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("eucalyptus_leave_decorator", EucalyptusLeaveDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("eucalyptus_trunk_decorator", EucalyptusTrunkDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("giant_cypress_leave_decorator", GiantCypressLeaveDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("giant_cypress_trunk_decorator", GiantCypressTrunkDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("giant_redwood_branch_decorator", GiantRedwoodBranchDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("maple_placer", MaplePlacer.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("oak_placer", OakPlacer.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("palm_leaves_placer", PalmLeavesPlacer.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("pine_branch_decorator", PineBranchDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("pine_trunk_decorator", PineTrunkDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("redwood_branch_decorator", RedwoodBranchDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("redwood_leave_decorator", RedwoodLeaveDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("redwood_trunk_decorator", RedwoodTrunkDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("saguaro_cactus_limbs", SaguaroCactusLimbs.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("silver_birch_placer", SilverBirchPlacer.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("spanish_moss_decorator", SpanishMossDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("silver_birch_trunk_decorator", SilverBirchTrunkDecorator.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("small_yellow_bioshroom_caps", SmallYellowBioshroomCaps.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("medium_yellow_bioshroom_caps", MediumYellowBioshroomCaps.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("big_yellow_bioshroom_caps", BigYellowBioshroomCaps.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("willow_palm_placer", WillowPalmPlacer.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("willow_placer", WillowPlacer.tdt);
-        ForgeRegistries.TREE_DECORATOR_TYPES.register("willow_trunk_decorator", WillowTrunkDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(BambooLeaveDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(CypressTrunkDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(BirchStemDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(BlackwoodBioshroom.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(BlackwoodBranchDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(DeadBranchDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(DeadPineBranchDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(DeadPlacer.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(DeadStemDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(EucalyptusLeaveDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(EucalyptusTrunkDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(GiantCypressLeaveDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(GiantCypressTrunkDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(GiantRedwoodBranchDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(MaplePlacer.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(OakPlacer.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(PalmLeavesPlacer.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(PineBranchDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(PineTrunkDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(RedwoodBranchDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(RedwoodLeaveDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(RedwoodTrunkDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(SaguaroCactusLimbs.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(SilverBirchPlacer.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(SpanishMossDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(SilverBirchTrunkDecorator.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(SmallYellowBioshroomCaps.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(MediumYellowBioshroomCaps.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(BigYellowBioshroomCaps.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(WillowPalmPlacer.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(WillowPlacer.tdt);
+        ForgeRegistries.TREE_DECORATOR_TYPES.register(WillowTrunkDecorator.tdt);
 
         RegionsUnexploredTabs.load();
         RuBiomeRegistry.registerBiomes();
@@ -91,11 +91,11 @@ public class RegionsUnexploredMod {
         RegionsUnexploredBlockEntities.BLOCK_ENTITIES.register(bus);
         RegionsUnexploredEntities.ENTITIES.register(bus);
         RuNoises.NOISE_PARAMETERS.register(bus);
+        RuFeatureRegistry.REGISTRY.register(bus);
 
         RegionsUnexploredItems.register(bus);
         RegionsUnexploredBlocks.register(bus);
 
-        RuFeatureRegistry.REGISTRY.register(bus);
         RegionsUnexploredParticleTypes.REGISTRY.register(bus);
 
 
@@ -125,7 +125,6 @@ public class RegionsUnexploredMod {
         event.enqueueWork(() -> {
             Regions.register(new RuRegionPrimary(RegionsUnexploredCommonConfigs.REGION_PRIMARY_WEIGHT.get()));
             Regions.register(new RuRegionSecondary(RegionsUnexploredCommonConfigs.REGION_SECONDARY_WEIGHT.get()));
-            Regions.register(new RuRegionModifiedVanilla(RegionsUnexploredCommonConfigs.REGION_VANILLA_MODIFIED_WEIGHT.get()));
             Regions.register(new RuRegionNether(RegionsUnexploredCommonConfigs.REGION_NETHER_WEIGHT.get()));
             SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.OVERWORLD, RegionsUnexploredMod.MOD_ID, RuSurfaceRuleData.makeRules());
             SurfaceRuleManager.addSurfaceRules(SurfaceRuleManager.RuleCategory.NETHER, RegionsUnexploredMod.MOD_ID, RuNetherSurfaceRuleData.makeRules());

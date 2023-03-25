@@ -11,7 +11,7 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.FluidTags;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntitySelector;
@@ -114,7 +114,7 @@ public class PointedRedstoneBlock extends Block implements Fallable, SimpleWater
 
     }
 
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
         if (canDrip(state)) {
             float f = random.nextFloat();
             if (!(f > 0.12F)) {
@@ -127,7 +127,7 @@ public class PointedRedstoneBlock extends Block implements Fallable, SimpleWater
         }
     }
 
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         if (isStalagmite(state) && !this.canSurvive(state, level, pos)) {
             level.destroyBlock(pos, true);
         } else {
@@ -136,7 +136,7 @@ public class PointedRedstoneBlock extends Block implements Fallable, SimpleWater
 
     }
 
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         if (random.nextFloat() < 0.011377778F && isStalactiteStartPos(state, level, pos)) {
             growStalactiteOrStalagmiteIfPossible(state, level, pos, random);
         }
@@ -234,7 +234,7 @@ public class PointedRedstoneBlock extends Block implements Fallable, SimpleWater
     }
 
     @VisibleForTesting
-    public static void growStalactiteOrStalagmiteIfPossible(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public static void growStalactiteOrStalagmiteIfPossible(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         BlockState blockState = level.getBlockState(pos.above(1));
         BlockState blockState1 = level.getBlockState(pos.above(2));
         if (canGrow(blockState, blockState1)) {
@@ -440,7 +440,7 @@ public class PointedRedstoneBlock extends Block implements Fallable, SimpleWater
             BlockPos blockpos = pos1.above();
             BlockState blockstate = level.getBlockState(blockpos);
             Fluid fluid;
-            if (blockstate.is(Blocks.MUD) && !level.dimensionType().ultraWarm()) {
+            if (blockstate.is(Blocks.WATER) && !level.dimensionType().ultraWarm()) {
                 fluid = Fluids.WATER;
             } else {
                 fluid = level.getFluidState(blockpos).getType();

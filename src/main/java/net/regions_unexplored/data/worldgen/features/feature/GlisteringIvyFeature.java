@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
@@ -25,7 +25,7 @@ public class GlisteringIvyFeature extends Feature<NoneFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
         WorldGenLevel worldgenlevel = context.level();
         BlockPos pos = context.origin();
-        RandomSource randomsource = context.random();
+        Random Random = context.random();
         if (!worldgenlevel.isEmptyBlock(pos)) {
             return false;
         } else {
@@ -33,14 +33,14 @@ public class GlisteringIvyFeature extends Feature<NoneFeatureConfiguration> {
             if (!blockstate.is(Blocks.NETHERRACK) && !blockstate.is(RegionsUnexploredBlocks.GLISTERING_WART.get())) {
                 return false;
             } else {
-                this.placeRoofGlisteringWart(worldgenlevel, randomsource, pos);
-                this.placeRoofGlisteringIvy(worldgenlevel, randomsource, pos);
+                this.placeRoofGlisteringWart(worldgenlevel, Random, pos);
+                this.placeRoofGlisteringIvy(worldgenlevel, Random, pos);
                 return true;
             }
         }
     }
 
-    private void placeRoofGlisteringWart(LevelAccessor level, RandomSource random, BlockPos pos) {
+    private void placeRoofGlisteringWart(LevelAccessor level, Random random, BlockPos pos) {
         level.setBlock(pos, RegionsUnexploredBlocks.GLISTERING_WART.get().defaultBlockState(), 2);
         BlockPos.MutableBlockPos pos1 = new BlockPos.MutableBlockPos();
         BlockPos.MutableBlockPos pos2 = new BlockPos.MutableBlockPos();
@@ -69,7 +69,7 @@ public class GlisteringIvyFeature extends Feature<NoneFeatureConfiguration> {
 
     }
 
-    private void placeRoofGlisteringIvy(LevelAccessor level, RandomSource random, BlockPos pos) {
+    private void placeRoofGlisteringIvy(LevelAccessor level, Random random, BlockPos pos) {
         BlockPos.MutableBlockPos pos1 = new BlockPos.MutableBlockPos();
 
         for(int i = 0; i < 100; ++i) {
@@ -93,7 +93,7 @@ public class GlisteringIvyFeature extends Feature<NoneFeatureConfiguration> {
 
     }
 
-    public static void placeGlisteringIvyColumn(LevelAccessor level, RandomSource random, BlockPos.MutableBlockPos pos, int length, int low, int high) {
+    public static void placeGlisteringIvyColumn(LevelAccessor level, Random random, BlockPos.MutableBlockPos pos, int length, int low, int high) {
         for(int i = 0; i <= length; ++i) {
             if (level.isEmptyBlock(pos)) {
                 if (i == length || !level.isEmptyBlock(pos.below())) {

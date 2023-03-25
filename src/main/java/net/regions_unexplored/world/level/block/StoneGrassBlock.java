@@ -4,7 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Holder;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
@@ -25,11 +25,11 @@ public class StoneGrassBlock extends StoneDirtBlock implements BonemealableBlock
       return level.getBlockState(pos.above()).isAir();
    }
 
-   public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
+   public boolean isBonemealSuccess(Level level, Random random, BlockPos pos, BlockState state) {
       return true;
    }
 
-   public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+   public void performBonemeal(ServerLevel level, Random random, BlockPos pos, BlockState state) {
       BlockPos blockPos = pos.above();
       BlockState blockState = Blocks.GRASS.defaultBlockState();
 

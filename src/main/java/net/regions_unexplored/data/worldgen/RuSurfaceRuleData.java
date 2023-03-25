@@ -31,7 +31,7 @@ public class RuSurfaceRuleData
     private static final SurfaceRules.RuleSource WATER = makeStateRule(Blocks.WATER);
     private static final SurfaceRules.RuleSource MUD = makeStateRule(RegionsUnexploredBlocks.FOREST_MUD.get());
     private static final SurfaceRules.RuleSource MOSSY_STONE = makeStateRule(RegionsUnexploredBlocks.MOSSY_STONE.get());
-    private static final SurfaceRules.RuleSource VANILLA_MUD = makeStateRule(Blocks.MUD);
+    private static final SurfaceRules.RuleSource VANILLA_MUD = makeStateRule(RegionsUnexploredBlocks.FOREST_MUD.get());
     private static final SurfaceRules.RuleSource ASH = makeStateRule(RegionsUnexploredBlocks.ASH.get());
     private static final SurfaceRules.RuleSource VIRIDESCENT_NYLIUM = makeStateRule(RegionsUnexploredBlocks.VIRIDESCENT_NYLIUM.get());
     private static final SurfaceRules.RuleSource DEEPSLATE_VIRIDESCENT_NYLIUM = makeStateRule(RegionsUnexploredBlocks.DEEPSLATE_VIRIDESCENT_NYLIUM.get());

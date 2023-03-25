@@ -3,7 +3,9 @@ package net.regions_unexplored.world.level.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
+
+import net.minecraft.tags.FluidTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
@@ -70,14 +72,14 @@ public class PlainsFarmBlock extends Block {
         return SHAPE;
     }
 
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         if (!state.canSurvive(level, pos)) {
             turnToDirt(state, level, pos);
         }
 
     }
 
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         int i = state.getValue(MOISTURE);
         if (!isNearWater(level, pos) && !level.isRainingAt(pos.above())) {
             if (i > 0) {
@@ -112,7 +114,7 @@ public class PlainsFarmBlock extends Block {
     private static boolean isNearWater(LevelReader level, BlockPos pos) {
         BlockState state = level.getBlockState(pos);
         for(BlockPos blockpos : BlockPos.betweenClosed(pos.offset(-4, 0, -4), pos.offset(4, 1, 4))) {
-            if (state.canBeHydrated(level, pos, level.getFluidState(blockpos), blockpos)) {
+            if (level.getFluidState(blockpos).is(FluidTags.WATER)) {
                 return true;
             }
         }

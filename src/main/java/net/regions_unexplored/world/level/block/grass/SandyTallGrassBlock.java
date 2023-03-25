@@ -2,7 +2,6 @@ package net.regions_unexplored.world.level.block.grass;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
@@ -15,6 +14,8 @@ import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.data.tags.RegionsUnexploredTags;
+
+import java.util.Random;
 
 import static net.minecraft.world.level.block.DoublePlantBlock.copyWaterloggedFrom;
 
@@ -34,7 +35,7 @@ public class SandyTallGrassBlock extends BushBlock implements BonemealableBlock,
         return true;
     }
 
-    public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
+    public boolean isBonemealSuccess(Level level, Random random, BlockPos pos, BlockState state) {
         return true;
     }
 
@@ -55,7 +56,7 @@ public class SandyTallGrassBlock extends BushBlock implements BonemealableBlock,
     }
 
 
-    public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState p_222581_) {
+    public void performBonemeal(ServerLevel level, Random random, BlockPos pos, BlockState p_222581_) {
         if(p_222581_.is(RegionsUnexploredBlocks.SANDY_GRASS.get())){
             DoublePlantBlock sandyTallGrass = (DoublePlantBlock) RegionsUnexploredBlocks.SANDY_TALL_GRASS.get();
             if (sandyTallGrass.defaultBlockState().canSurvive(level, pos) && level.isEmptyBlock(pos.above())) {

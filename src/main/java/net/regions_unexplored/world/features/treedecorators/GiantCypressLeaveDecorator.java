@@ -15,22 +15,27 @@
 package net.regions_unexplored.world.features.treedecorators;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.treedecorators.LeaveVineDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 
+import java.util.List;
+import java.util.Random;
+import java.util.function.BiConsumer;
+
 public class GiantCypressLeaveDecorator extends LeaveVineDecorator {
 	public static final GiantCypressLeaveDecorator INSTANCE = new GiantCypressLeaveDecorator();
-	public static com.mojang.serialization.Codec<LeaveVineDecorator> codec;
+	public static com.mojang.serialization.Codec<GiantCypressLeaveDecorator> codec;
 	public static TreeDecoratorType<?> tdt;
 	static {
 		codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
 		tdt = new TreeDecoratorType<>(codec);
-	}
-
-	public GiantCypressLeaveDecorator() {
-		super(1f);
+		tdt.setRegistryName("giant_cypress_leave_decorator");
+		
 	}
 
 	@Override
@@ -39,27 +44,27 @@ public class GiantCypressLeaveDecorator extends LeaveVineDecorator {
 	}
 
 	@Override
-	public void place(Context context) {
-		context.leaves().forEach((blockpos) -> {
+	public void place(LevelSimulatedReader levelReader, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> listBlockPos, List<BlockPos> listBlockPos2) {
+		listBlockPos2.forEach((blockpos) -> {
 			
 
-			if (context.random().nextInt(2) == 0) {
+			if (random.nextInt(2) == 0) {
 				BlockPos bp4 = blockpos.above();
-				if (context.isAir(bp4)) {
-					addVine(bp4, context);
+				if (Feature.isAir(levelReader, bp4)) {
+					addVine(levelReader, bp4, biConsumer);
 				}
 			}
-			if (context.random().nextInt(2) == 0) {
+			if (random.nextInt(2) == 0) {
 				BlockPos bp5 = blockpos.below();
-				if (context.isAir(bp5)) {
-					addVine(bp5, context);
+				if (Feature.isAir(levelReader, bp5)) {
+					addVine(levelReader, bp5, biConsumer);
 				}
 			}
 			
 		});
 	}
 
-	private static void addVine(BlockPos pos, Context context) {
-		context.setBlock(pos, RegionsUnexploredBlocks.CYPRESS_LEAVES.get().defaultBlockState());
+	private static void addVine(LevelSimulatedReader levelReader, BlockPos blockPos, BiConsumer<BlockPos, BlockState> biConsumer) {
+		biConsumer.accept(blockPos, RegionsUnexploredBlocks.CYPRESS_LEAVES.get().defaultBlockState());
 	}
 }

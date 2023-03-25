@@ -15,7 +15,6 @@ public class RuNetherSurfaceRuleData
 
     private static final SurfaceRules.RuleSource BEDROCK = makeStateRule(Blocks.BEDROCK);
     private static final SurfaceRules.RuleSource BLACKSTONE = makeStateRule(Blocks.BLACKSTONE);
-    private static final SurfaceRules.RuleSource SCULK = makeStateRule(Blocks.SCULK);
     private static final SurfaceRules.RuleSource SCULK_GRASS_BLOCK = makeStateRule(RegionsUnexploredBlocks.SCULK_GRASS_BLOCK.get());
     private static final SurfaceRules.RuleSource MYCOTOXIC_MOSS = makeStateRule(RegionsUnexploredBlocks.MYCOTOXIC_NYLIUM.get());
     private static final SurfaceRules.RuleSource GLISTERING_NYLIUM = makeStateRule(RegionsUnexploredBlocks.GLISTERING_NYLIUM.get());
@@ -42,7 +41,7 @@ public class RuNetherSurfaceRuleData
 
                         //CORRUPTED_HOLT
                         SurfaceRules.ifTrue(SurfaceRules.isBiome(RuBiomes.CORRUPTED_HOLT),
-                                SurfaceRules.sequence(SurfaceRules.ifTrue(shieldNoise(-0.1D), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, true, 8, CaveSurface.FLOOR), SCULK)), SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR), SCULK_GRASS_BLOCK)))
+                                SurfaceRules.ifTrue(SurfaceRules.stoneDepthCheck(0, false, 0, CaveSurface.FLOOR), SCULK_GRASS_BLOCK))
 
                 ))
 

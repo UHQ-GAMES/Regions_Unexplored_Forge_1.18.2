@@ -3,6 +3,8 @@ package net.regions_unexplored.world.level.block.state.properties;
 import net.minecraft.world.level.block.state.properties.*;
 
 public class RuBlockStateProperties {
+    public static final int MAX_AGE_4 = 4;
+    public static final IntegerProperty AGE_4 = IntegerProperty.create("age", 0, 4);
     public static final BooleanProperty HAS_GRAVITY = BooleanProperty.create("has_gravity");
     public static final BooleanProperty LEAVES = BooleanProperty.create("leaves");
     public static final BooleanProperty NATURAL = BooleanProperty.create("natural");

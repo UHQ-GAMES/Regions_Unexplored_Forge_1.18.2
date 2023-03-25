@@ -3,7 +3,7 @@ package net.regions_unexplored.data.worldgen.features.feature;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
@@ -19,7 +19,7 @@ public class LavaDeltaFeature extends VegetationPatchFeature {
         super(p_160635_);
     }
 
-    protected Set<BlockPos> placeGroundPatch(WorldGenLevel p_225339_, VegetationPatchConfiguration p_225340_, RandomSource p_225341_, BlockPos p_225342_, Predicate<BlockState> p_225343_, int p_225344_, int p_225345_) {
+    protected Set<BlockPos> placeGroundPatch(WorldGenLevel p_225339_, VegetationPatchConfiguration p_225340_, Random p_225341_, BlockPos p_225342_, Predicate<BlockState> p_225343_, int p_225344_, int p_225345_) {
         Set<BlockPos> set = super.placeGroundPatch(p_225339_, p_225340_, p_225341_, p_225342_, p_225343_, p_225344_, p_225345_);
         Set<BlockPos> set1 = new HashSet<>();
         BlockPos.MutableBlockPos blockpos$mutableblockpos = new BlockPos.MutableBlockPos();

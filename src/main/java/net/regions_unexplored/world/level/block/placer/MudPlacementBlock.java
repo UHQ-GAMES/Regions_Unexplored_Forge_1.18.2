@@ -21,8 +21,7 @@ public class MudPlacementBlock extends BushBlock {
 
     @Override
     public boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {
-        return state.is(RegionsUnexploredBlocks.FOREST_MUD.get()) || state.is(RegionsUnexploredBlocks.PLAINS_MUD.get())
-                || state.is(Blocks.MUD);
+        return state.is(RegionsUnexploredBlocks.FOREST_MUD.get()) || state.is(RegionsUnexploredBlocks.PLAINS_MUD.get());
     }
 
 

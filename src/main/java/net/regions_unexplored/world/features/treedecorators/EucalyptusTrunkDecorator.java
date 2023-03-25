@@ -14,12 +14,18 @@
 */
 package net.regions_unexplored.world.features.treedecorators;
 
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.core.BlockPos;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
+
+import java.util.List;
+import java.util.Random;
+import java.util.function.BiConsumer;
 
 public class EucalyptusTrunkDecorator extends TrunkVineDecorator {
 	public static final EucalyptusTrunkDecorator INSTANCE = new EucalyptusTrunkDecorator();
@@ -28,6 +34,8 @@ public class EucalyptusTrunkDecorator extends TrunkVineDecorator {
 	static {
 		codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
 		tdt = new TreeDecoratorType<>(codec);
+		tdt.setRegistryName("eucalyptus_trunk_decorator");
+		
 	}
 
 	@Override
@@ -36,43 +44,43 @@ public class EucalyptusTrunkDecorator extends TrunkVineDecorator {
 	}
 
 	@Override
-	public void place(TreeDecorator.Context context) {
+	public void place(LevelSimulatedReader levelReader, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> listBlockPos, List<BlockPos> listBlockPos2) {
 			int size = 3;
-			for(int i = 0; i < context.logs().size(); i++){
-			BlockPos newpos = context.logs().get(i);
+			for(int i = 0; i < listBlockPos.size(); i++){
+			BlockPos newpos = listBlockPos.get(i);
 
 			BlockPos bp = newpos.west();
 			if(i>5){
-				if(context.random().nextInt(6)==0){
-					if (context.isAir(bp)) {
-						context.setBlock(bp, RegionsUnexploredBlocks.EUCALYPTUS_LEAVES.get().defaultBlockState());
+				if(random.nextInt(6)==0){
+					if (Feature.isAir(levelReader, bp)) {
+						biConsumer.accept(bp, RegionsUnexploredBlocks.EUCALYPTUS_LEAVES.get().defaultBlockState());
 					}
 				}
 			}
 			
 			BlockPos bp1 = newpos.east();
 			if(i>5){
-				if(context.random().nextInt(6)==0){
-					if (context.isAir(bp1)) {
-						context.setBlock(bp1, RegionsUnexploredBlocks.EUCALYPTUS_LEAVES.get().defaultBlockState());
+				if(random.nextInt(6)==0){
+					if (Feature.isAir(levelReader, bp1)) {
+						biConsumer.accept(bp1, RegionsUnexploredBlocks.EUCALYPTUS_LEAVES.get().defaultBlockState());
 					}	
 				}
 			}
 			
 			BlockPos bp2 = newpos.north();
 			if(i>5){
-				if(context.random().nextInt(6)==0){
-					if (context.isAir(bp2)) {
-						context.setBlock(bp2, RegionsUnexploredBlocks.EUCALYPTUS_LEAVES.get().defaultBlockState());
+				if(random.nextInt(6)==0){
+					if (Feature.isAir(levelReader, bp2)) {
+						biConsumer.accept(bp2, RegionsUnexploredBlocks.EUCALYPTUS_LEAVES.get().defaultBlockState());
 					}
 				}
 			}
 			
 			BlockPos bp3 = newpos.south();
 			if(i>5){
-				if(context.random().nextInt(6)==0){
-					if (context.isAir(bp3)) {
-						context.setBlock(bp3, RegionsUnexploredBlocks.EUCALYPTUS_LEAVES.get().defaultBlockState());
+				if(random.nextInt(6)==0){
+					if (Feature.isAir(levelReader, bp3)) {
+						biConsumer.accept(bp3, RegionsUnexploredBlocks.EUCALYPTUS_LEAVES.get().defaultBlockState());
 					}
 				}
 			}

@@ -2,7 +2,7 @@ package net.regions_unexplored.data.worldgen.features.feature;
 
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.Feature;
@@ -18,7 +18,7 @@ public class NetherBlockBlobFeature extends Feature<BlockStateConfiguration> {
     public boolean place(FeaturePlaceContext<BlockStateConfiguration> context) {
         BlockPos pos = context.origin();
         WorldGenLevel level = context.level();
-        RandomSource random = context.random();
+        Random random = context.random();
 
         BlockStateConfiguration stateConfiguration;
         for(stateConfiguration = context.config(); pos.getY() > level.getMinBuildHeight() + 3; pos = pos.below()) {

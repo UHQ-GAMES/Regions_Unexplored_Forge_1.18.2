@@ -10,15 +10,13 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.DispenserBlock;
 import net.minecraft.world.phys.Vec3;
 import net.regions_unexplored.entity.custom.RuBoat;
-import net.regions_unexplored.entity.custom.RuChestBoat;
 
 public class RuBoatItemBehaviour extends DefaultDispenseItemBehavior {
     private final DefaultDispenseItemBehavior dispenseItemBehavior = new DefaultDispenseItemBehavior();
     private final RuBoat.ModelType model;
-    private final boolean chest;
 
-    public RuBoatItemBehaviour(boolean chest, RuBoat.ModelType model) {
-        this.model = model; this.chest = chest;
+    public RuBoatItemBehaviour(RuBoat.ModelType model) {
+        this.model = model;
     }
 
     @Override
@@ -42,11 +40,7 @@ public class RuBoatItemBehaviour extends DefaultDispenseItemBehavior {
             d3 = 0.0D;
         }
 
-        if (this.chest) {
-            boat = new RuChestBoat(blockSource.getLevel(), pos.x, pos.y + d3, pos.z); ((RuChestBoat)boat).setModel(this.model);
-        } else {
             boat = new RuBoat(blockSource.getLevel(), pos.x, pos.y + d3, pos.z); ((RuBoat)boat).setModel(this.model);
-        }
 
         boat.setYRot(direction.toYRot());
         blockSource.getLevel().addFreshEntity(boat);

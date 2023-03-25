@@ -65,7 +65,7 @@ public class SculkWillowFeature extends Feature<NoneFeatureConfiguration> {
             return false;
         }
 
-        if(level.getBlockState(pos.below()).getBlock()== Blocks.SCULK||level.getBlockState(pos.below()).getBlock()== RegionsUnexploredBlocks.SCULK_GRASS_BLOCK.get()||level.getBlockState(pos.below()).is(BlockTags.NYLIUM)||level.getBlockState(pos.below()).is(BlockTags.DIRT)){
+        if(level.getBlockState(pos.below()).getBlock()== RegionsUnexploredBlocks.SCULK_GRASS_BLOCK.get()||level.getBlockState(pos.below()).is(BlockTags.NYLIUM)||level.getBlockState(pos.below()).is(BlockTags.DIRT)){
         }
         else{
             return false;

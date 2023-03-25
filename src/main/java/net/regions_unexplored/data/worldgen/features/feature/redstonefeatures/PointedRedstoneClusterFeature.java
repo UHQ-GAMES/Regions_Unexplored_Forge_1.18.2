@@ -6,7 +6,7 @@ import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.tags.FluidTags;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.util.valueproviders.ClampedNormalFloat;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelReader;
@@ -30,7 +30,7 @@ public class PointedRedstoneClusterFeature extends Feature<PointedRedstoneCluste
         WorldGenLevel level = context.level();
         BlockPos pos = context.origin();
         PointedRedstoneClusterConfiguration redstoneClusterConfiguration = context.config();
-        RandomSource random = context.random();
+        Random random = context.random();
         if (!PointedRedstoneUtils.isEmptyOrWater(level, pos)) {
             return false;
         } else {
@@ -52,7 +52,7 @@ public class PointedRedstoneClusterFeature extends Feature<PointedRedstoneCluste
         }
     }
 
-    private void placeColumn(WorldGenLevel level, RandomSource random, BlockPos pos, int i4, int i5, float v, double v1, int i6, float v2, PointedRedstoneClusterConfiguration redstoneClusterConfiguration) {
+    private void placeColumn(WorldGenLevel level, Random random, BlockPos pos, int i4, int i5, float v, double v1, int i6, float v2, PointedRedstoneClusterConfiguration redstoneClusterConfiguration) {
         Optional<Column> optional = Column.scan(level, pos, redstoneClusterConfiguration.floorToCeilingSearchRange, PointedRedstoneUtils::isEmptyOrWater, PointedRedstoneUtils::isNeitherEmptyNorWater);
         if (optional.isPresent()) {
             OptionalInt optionalInt = optional.get().getCeiling();
@@ -133,7 +133,7 @@ public class PointedRedstoneClusterFeature extends Feature<PointedRedstoneCluste
         return level.getBlockState(pos).is(Blocks.LAVA);
     }
 
-    private int getRedstoneHeight(RandomSource random, int i1, int i2, float v, int i3, PointedRedstoneClusterConfiguration redstoneClusterConfiguration) {
+    private int getRedstoneHeight(Random random, int i1, int i2, float v, int i3, PointedRedstoneClusterConfiguration redstoneClusterConfiguration) {
         if (random.nextFloat() > v) {
             return 0;
         } else {
@@ -187,7 +187,7 @@ public class PointedRedstoneClusterFeature extends Feature<PointedRedstoneCluste
         return (double)Mth.clampedMap((float)k, 0.0F, (float)redstoneClusterConfiguration.maxDistanceFromEdgeAffectingChanceOfRedstoneColumn, redstoneClusterConfiguration.chanceOfRedstoneColumnAtMaxDistanceFromCenter, 1.0F);
     }
 
-    private static float randomBetweenBiased(RandomSource random, float v, float v1, float v2, float v3) {
+    private static float randomBetweenBiased(Random random, float v, float v1, float v2, float v3) {
         return ClampedNormalFloat.sample(random, v2, v3, v, v1);
     }
 }

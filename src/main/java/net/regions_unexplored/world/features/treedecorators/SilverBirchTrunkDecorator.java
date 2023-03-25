@@ -14,15 +14,18 @@
 */
 package net.regions_unexplored.world.features.treedecorators;
 
-import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.LevelSimulatedReader;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.core.BlockPos;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
+
+import java.util.List;
+import java.util.Random;
+import java.util.function.BiConsumer;
 
 public class SilverBirchTrunkDecorator extends TrunkVineDecorator {
 	public static final SilverBirchTrunkDecorator INSTANCE = new SilverBirchTrunkDecorator();
@@ -31,6 +34,8 @@ public class SilverBirchTrunkDecorator extends TrunkVineDecorator {
 	static {
 		codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
 		tdt = new TreeDecoratorType<>(codec);
+		tdt.setRegistryName("silver_birch_trunk_decorator");
+		
 	}
 
 	@Override
@@ -39,28 +44,14 @@ public class SilverBirchTrunkDecorator extends TrunkVineDecorator {
 	}
 
 	@Override
-	public void place(TreeDecorator.Context context) {
-		for(int i = 0; i < context.logs().size(); i++){
-			BlockPos newpos = context.logs().get(i);
-			if(i==0){
-				if(context.level().isStateAtPosition(newpos, SilverBirchTrunkDecorator::isGrass)){
-					context.setBlock(newpos.above(), RegionsUnexploredBlocks.SILVER_BIRCH_LOG_BASE.get().defaultBlockState());
-				}
-				else{
-					context.setBlock(newpos, RegionsUnexploredBlocks.SILVER_BIRCH_LOG_BASE.get().defaultBlockState());
-				}
+	public void place(LevelSimulatedReader levelReader, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> listBlockPos, List<BlockPos> listBlockPos2) {
+			int size = random.nextInt(3)+2;
+			for(int i = 0; i < listBlockPos.size(); i++){
+			BlockPos newpos = listBlockPos.get(i);
+			if(i==1){
+				biConsumer.accept(newpos, RegionsUnexploredBlocks.SILVER_BIRCH_LOG_BASE.get().defaultBlockState());
 			}
 		}
+		}
 	}
-	public static boolean isGrass(BlockState state) {
-		return state.is(Blocks.GRASS_BLOCK)
-				||state.is(Blocks.MYCELIUM)
-				||state.is(Blocks.DIRT)
-				||state.is(RegionsUnexploredBlocks.FOREST_GRASS_BLOCK.get())
-				||state.is(RegionsUnexploredBlocks.PLAINS_GRASS_BLOCK.get())
-				||state.is(RegionsUnexploredBlocks.ALPHA_GRASS_BLOCK.get())
-				||state.is(RegionsUnexploredBlocks.FOREST_DIRT.get())
-				||state.is(RegionsUnexploredBlocks.PLAINS_DIRT.get());
-	}
-}
 

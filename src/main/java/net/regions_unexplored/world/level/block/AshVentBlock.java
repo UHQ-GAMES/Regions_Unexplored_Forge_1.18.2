@@ -5,7 +5,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.*;
@@ -33,7 +33,7 @@ public class AshVentBlock extends Block {
         return RenderShape.MODEL;
     }
 
-    public void animateTick(BlockState state, Level level, BlockPos pos, RandomSource random) {
+    public void animateTick(BlockState state, Level level, BlockPos pos, Random random) {
         for(int i = 0; i < 10; ++i) {
             makeParticles(level, pos, true);
         }
@@ -50,11 +50,11 @@ public class AshVentBlock extends Block {
     }
 
     public static void makeParticles(Level level, BlockPos pos, boolean bool) {
-        RandomSource randomsource = level.getRandom();
+        Random Random = level.getRandom();
         SimpleParticleType simpleparticletype = ParticleTypes.SMOKE;
-        level.addAlwaysVisibleParticle(simpleparticletype, true, (double)pos.getX() + 0.5D + randomsource.nextDouble() / 3.0D * (double)(randomsource.nextBoolean() ? 1 : -1), (double)pos.getY() + randomsource.nextDouble() + randomsource.nextDouble(), (double)pos.getZ() + 0.5D + randomsource.nextDouble() / 3.0D * (double)(randomsource.nextBoolean() ? 1 : -1), 0.0D, 0.07D, 0.0D);
+        level.addAlwaysVisibleParticle(simpleparticletype, true, (double)pos.getX() + 0.5D + Random.nextDouble() / 3.0D * (double)(Random.nextBoolean() ? 1 : -1), (double)pos.getY() + Random.nextDouble() + Random.nextDouble(), (double)pos.getZ() + 0.5D + Random.nextDouble() / 3.0D * (double)(Random.nextBoolean() ? 1 : -1), 0.0D, 0.07D, 0.0D);
         if (bool) {
-            level.addParticle(ParticleTypes.SMOKE, (double)pos.getX() + 0.5D + randomsource.nextDouble() / 4.0D * (double)(randomsource.nextBoolean() ? 1 : -1), (double)pos.getY() + 0.4D, (double)pos.getZ() + 0.5D + randomsource.nextDouble() / 4.0D * (double)(randomsource.nextBoolean() ? 1 : -1), 0.0D, 0.005D, 0.0D);
+            level.addParticle(ParticleTypes.SMOKE, (double)pos.getX() + 0.5D + Random.nextDouble() / 4.0D * (double)(Random.nextBoolean() ? 1 : -1), (double)pos.getY() + 0.4D, (double)pos.getZ() + 0.5D + Random.nextDouble() / 4.0D * (double)(Random.nextBoolean() ? 1 : -1), 0.0D, 0.005D, 0.0D);
         }
 
     }

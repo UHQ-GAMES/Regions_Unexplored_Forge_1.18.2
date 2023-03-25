@@ -14,13 +14,18 @@
 */
 package net.regions_unexplored.world.features.treedecorators;
 
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.core.BlockPos;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
+
+import java.util.List;
+import java.util.Random;
+import java.util.function.BiConsumer;
 
 public class PineTrunkDecorator extends TrunkVineDecorator {
 	public static final PineTrunkDecorator INSTANCE = new PineTrunkDecorator();
@@ -29,6 +34,8 @@ public class PineTrunkDecorator extends TrunkVineDecorator {
 	static {
 		codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
 		tdt = new TreeDecoratorType<>(codec);
+		tdt.setRegistryName("pine_trunk_decorator");
+		
 	}
 
 	@Override
@@ -37,17 +44,17 @@ public class PineTrunkDecorator extends TrunkVineDecorator {
 	}
 
 	@Override
-	public void place(TreeDecorator.Context context) {
-			int size = context.random().nextInt(3)+2;
-			for(int i = 0; i < context.logs().size(); i++){
-			BlockPos newpos = context.logs().get(i);
-			if(Feature.isGrassOrDirt(context.level(), newpos)){continue;}
+	public void place(LevelSimulatedReader levelReader, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> listBlockPos, List<BlockPos> listBlockPos2) {
+			int size = random.nextInt(3)+2;
+			for(int i = 0; i < listBlockPos.size(); i++){
+			BlockPos newpos = listBlockPos.get(i);
+			if(Feature.isGrassOrDirt(levelReader, newpos)){continue;}
 			else{
 			if(i<size){
-				context.setBlock(newpos, RegionsUnexploredBlocks.STRIPPED_PINE_LOG.get().defaultBlockState());
+				biConsumer.accept(newpos, RegionsUnexploredBlocks.STRIPPED_PINE_LOG.get().defaultBlockState());
 			}
 			else if(i==size){
-				context.setBlock(newpos, RegionsUnexploredBlocks.PINE_LOG_TRANSITION.get().defaultBlockState());
+				biConsumer.accept(newpos, RegionsUnexploredBlocks.PINE_LOG_TRANSITION.get().defaultBlockState());
 			}
 		} 
 		}

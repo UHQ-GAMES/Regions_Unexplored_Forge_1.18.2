@@ -74,11 +74,11 @@ public class RuBiomeDefaultFeatures {
     }
 
     public static void addMeadowRocks(BiomeGenerationSettings.Builder p_194721_) {
-        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuPlacements.MEADOW_ROCKS);
+        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, MeadowRock.PLACED_FEATURE);
     }
 
     public static void addSpires(BiomeGenerationSettings.Builder p_194721_) {
-        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuPlacements.SPIRES);
+        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, Spires.PLACED_FEATURE);
     }
 
     public static void addRuDisks(BiomeGenerationSettings.Builder p_126823_) {
@@ -103,6 +103,7 @@ public class RuBiomeDefaultFeatures {
 
     public static void addRiverCattail(BiomeGenerationSettings.Builder p_194721_) {
             p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.CATTAIL_RIVER);
+        p_194721_.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.WATER_CATTAIL);
     }
 
     public static void addGrasslandTallGrass(BiomeGenerationSettings.Builder p_194721_) {

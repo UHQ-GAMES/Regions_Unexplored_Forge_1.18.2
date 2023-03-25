@@ -14,7 +14,8 @@
 */
 package net.regions_unexplored.world.features.treedecorators;
 
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
@@ -24,6 +25,10 @@ import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 
+import java.util.List;
+import java.util.Random;
+import java.util.function.BiConsumer;
+
 public class DeadStemDecorator extends TrunkVineDecorator {
 	public static final DeadStemDecorator INSTANCE = new DeadStemDecorator();
 	public static com.mojang.serialization.Codec<DeadStemDecorator> codec;
@@ -31,6 +36,8 @@ public class DeadStemDecorator extends TrunkVineDecorator {
 	static {
 		codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
 		tdt = new TreeDecoratorType<>(codec);
+		tdt.setRegistryName("dead_stem_decorator");
+		
 	}
 
 	@Override
@@ -39,21 +46,21 @@ public class DeadStemDecorator extends TrunkVineDecorator {
 	}
 
 	@Override
-	public void place(TreeDecorator.Context context) {
-			int size = context.random().nextInt(5);
-			int e = context.random().nextInt(4)+2;
-			BlockPos newpos = context.logs().get(e);
+	public void place(LevelSimulatedReader levelReader, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> listBlockPos, List<BlockPos> listBlockPos2) {
+			int size = random.nextInt(5);
+			int e = random.nextInt(4)+2;
+			BlockPos newpos = listBlockPos.get(e);
 			if(size==0){
-				context.setBlock(newpos.west(), RegionsUnexploredBlocks.DEAD_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X));
+				biConsumer.accept(newpos.west(), RegionsUnexploredBlocks.DEAD_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X));
 			}
 			else if(size==1){
-				context.setBlock(newpos.east(), RegionsUnexploredBlocks.DEAD_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X));
+				biConsumer.accept(newpos.east(), RegionsUnexploredBlocks.DEAD_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X));
 			}
 			else if(size==2){
-				context.setBlock(newpos.north(), RegionsUnexploredBlocks.DEAD_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z));
+				biConsumer.accept(newpos.north(), RegionsUnexploredBlocks.DEAD_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z));
 			}
 			else if(size==3){
-				context.setBlock(newpos.south(), RegionsUnexploredBlocks.DEAD_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z));
+				biConsumer.accept(newpos.south(), RegionsUnexploredBlocks.DEAD_LOG.get().defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z));
 			}
 		
 	}

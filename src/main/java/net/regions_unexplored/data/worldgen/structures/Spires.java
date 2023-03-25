@@ -36,11 +36,16 @@ public class Spires extends Feature<NoneFeatureConfiguration> {
 
     public static Feature<?> feature() {
         FEATURE = new Spires();
-        CONFIGURED_FEATURE = FeatureUtils.register("regions_unexplored:spires", FEATURE, FeatureConfiguration.NONE);
-        PLACED_FEATURE = PlacementUtils.register("regions_unexplored:spires", CONFIGURED_FEATURE, List.of(BiomeFilter.biome()));
+        CONFIGURED_FEATURE = FeatureUtils.register("regions_unexplored:ice_spires", FEATURE, FeatureConfiguration.NONE);
+        PLACED_FEATURE = PlacementUtils.register("regions_unexplored:ice_spires", CONFIGURED_FEATURE, List.of());
         return FEATURE;
     }
 
+    public static Holder<PlacedFeature> placedFeature() {
+        return PLACED_FEATURE;
+    }
+
+    public static final Set<ResourceLocation> GENERATE_BIOMES = Set.of(new ResourceLocation("regions_unexplored:spires"));
     private final Set<ResourceKey<Level>> generate_dimensions = Set.of(Level.OVERWORLD);
     private final List<Block> base_blocks;
     private StructureTemplate template = null;
@@ -60,16 +65,15 @@ public class Spires extends Feature<NoneFeatureConfiguration> {
             for (int a = 0; a < count; a++) {
 
                 Random random = new Random();
+                int struct = random.nextInt(5);
                 String o1 = "null";
-                int structure = random.nextInt(5);
-                if(structure==0)o1="spire1";
-                else if(structure==1)o1="spire2";
-                else if(structure==2)o1="spire3";
-                else if(structure==3)o1="spire4";
-                else if(structure==4)o1="spire5";
+                if(struct==0)o1="spire1";
+                else if(struct==1)o1="spire2";
+                else if(struct==2)o1="spire3";
+                else if(struct==3)o1="spire4";
+                else if(struct==4)o1="spire5";
 
                 template = context.level().getLevel().getStructureManager().getOrCreate(new ResourceLocation("regions_unexplored", o1));
-
                 int i = context.origin().getX() + context.random().nextInt(16);
                 int k = context.origin().getZ() + context.random().nextInt(16);
                 int j = context.level().getHeight(Heightmap.Types.OCEAN_FLOOR_WG, i, k) - 1;
@@ -93,7 +97,3 @@ public class Spires extends Feature<NoneFeatureConfiguration> {
         return anyPlaced;
     }
 }
-
-
-
-

@@ -56,9 +56,7 @@ public class AshVentFeature extends Feature<NoneFeatureConfiguration> {
             Blocks.NETHER_BRICK_FENCE,
             Blocks.NETHER_BRICK_STAIRS,
             Blocks.NETHER_WART,
-            Blocks.CHEST,
-            RegionsUnexploredBlocks.ASH_VENT.get(),
-            RegionsUnexploredBlocks.DEAD_LEAVES.get());
+            Blocks.CHEST);
 
     public AshVentFeature(Codec<NoneFeatureConfiguration> codec) {
         super(codec);

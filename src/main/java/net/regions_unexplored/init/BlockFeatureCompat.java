@@ -105,7 +105,6 @@ public class BlockFeatureCompat {
         registerCompostableItems(0.65F, RegionsUnexploredBlocks.TALL_RED_MAPLE_SAPLING.get());
         registerCompostableItems(0.65F, RegionsUnexploredBlocks.TALL_ORANGE_MAPLE_SAPLING.get());
         registerCompostableItems(0.65F, RegionsUnexploredBlocks.TALL_MAUVE_SAPLING.get());
-        registerCompostableItems(0.65F, RegionsUnexploredBlocks.TALL_MANGROVE_SAPLING.get());
         registerCompostableItems(0.65F, RegionsUnexploredBlocks.TALL_OAK_SAPLING.get());
         registerCompostableItems(0.65F, RegionsUnexploredBlocks.TALL_PALM_SAPLING.get());
         registerCompostableItems(0.65F, RegionsUnexploredBlocks.TALL_PINE_SAPLING.get());
@@ -412,7 +411,6 @@ public class BlockFeatureCompat {
         registerFlammableBlock(RegionsUnexploredBlocks.TALL_RED_MAPLE_SAPLING.get(), 60, 100);
         registerFlammableBlock(RegionsUnexploredBlocks.TALL_ORANGE_MAPLE_SAPLING.get(), 60, 100);
         registerFlammableBlock(RegionsUnexploredBlocks.TALL_MAUVE_SAPLING.get(), 60, 100);
-        registerFlammableBlock(RegionsUnexploredBlocks.TALL_MANGROVE_SAPLING.get(), 60, 100);
         registerFlammableBlock(RegionsUnexploredBlocks.TALL_OAK_SAPLING.get(), 60, 100);
         registerFlammableBlock(RegionsUnexploredBlocks.TALL_PALM_SAPLING.get(), 60, 100);
         registerFlammableBlock(RegionsUnexploredBlocks.TALL_PINE_SAPLING.get(), 60, 100);

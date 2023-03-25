@@ -5,7 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.util.valueproviders.FloatProvider;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
@@ -29,7 +29,7 @@ public class LargePointedRedstoneFeature extends Feature<LargePointedRedstoneCon
         WorldGenLevel level = context.level();
         BlockPos pos = context.origin();
         LargePointedRedstoneConfiguration largeRedstoneConfiguration = context.config();
-        RandomSource random = context.random();
+        Random random = context.random();
         if (!PointedRedstoneUtils.isEmptyOrWater(level, pos)) {
             return false;
         } else {
@@ -69,7 +69,7 @@ public class LargePointedRedstoneFeature extends Feature<LargePointedRedstoneCon
         }
     }
 
-    private static LargePointedRedstoneFeature.LargeRedstone makeRedstone(BlockPos pos, boolean pointingUp, RandomSource random, int radius, FloatProvider bluntness, FloatProvider scale) {
+    private static LargePointedRedstoneFeature.LargeRedstone makeRedstone(BlockPos pos, boolean pointingUp, Random random, int radius, FloatProvider bluntness, FloatProvider scale) {
         return new LargePointedRedstoneFeature.LargeRedstone(pos, pointingUp, radius, (double)bluntness.sample(random), (double)scale.sample(random));
     }
 
@@ -120,7 +120,7 @@ public class LargePointedRedstoneFeature extends Feature<LargePointedRedstoneCon
             return (int)PointedRedstoneUtils.getRedstoneHeight((double)v, (double)this.radius, this.scale, this.bluntness);
         }
 
-        void placeBlocks(WorldGenLevel level, RandomSource random, LargePointedRedstoneFeature.WindOffsetter windOffsetter) {
+        void placeBlocks(WorldGenLevel level, Random random, LargePointedRedstoneFeature.WindOffsetter windOffsetter) {
             for(int i = -this.radius; i <= this.radius; ++i) {
                 for(int j = -this.radius; j <= this.radius; ++j) {
                     float f = Mth.sqrt((float)(i * i + j * j));
@@ -164,7 +164,7 @@ public class LargePointedRedstoneFeature extends Feature<LargePointedRedstoneCon
         @Nullable
         private final Vec3 windSpeed;
 
-        WindOffsetter(int originY, RandomSource random, FloatProvider floatProvider) {
+        WindOffsetter(int originY, Random random, FloatProvider floatProvider) {
             this.originY = originY;
             float f = floatProvider.sample(random);
             float f1 = Mth.randomBetween(random, 0.0F, (float)Math.PI);

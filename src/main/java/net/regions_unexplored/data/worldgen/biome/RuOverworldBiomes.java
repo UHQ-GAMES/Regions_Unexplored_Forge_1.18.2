@@ -4,6 +4,7 @@ import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.data.worldgen.BiomeDefaultFeatures;
 import net.minecraft.data.worldgen.placement.VegetationPlacements;
+import net.minecraft.sounds.Music;
 import net.minecraft.sounds.Musics;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.util.Mth;
@@ -18,6 +19,8 @@ import net.regions_unexplored.client.particle.RegionsUnexploredParticleTypes;
 import net.regions_unexplored.data.worldgen.RuBiomeDefaultFeatures;
 import net.regions_unexplored.data.worldgen.placement.RuPlacements;
 import net.regions_unexplored.data.worldgen.placement.RuVegetationPlacements;
+
+import javax.annotation.Nullable;
 
 public class RuOverworldBiomes {
 
@@ -35,12 +38,16 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultSprings(builder);
         BiomeDefaultFeatures.addSurfaceFreezing(builder);
     }
+    
+    @Nullable
+    private static final Music NORMAL_MUSIC = null;
+    
     //CAVE BIOMES
     public static Biome scorch() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder()
                 .fogColor(-6384241).waterColor(-10129331).waterFogColor(-10989767).skyColor(-9146774).foliageColorOverride(-8949914).grassColorOverride(-8621472)
-                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.1F)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.1F)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
@@ -62,13 +69,13 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
 
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).temperature(2f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).biomeCategory(Biome.BiomeCategory.UNDERGROUND).temperature(2f)
                 .downfall(0.0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome lushDelta() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(-13369345).waterFogColor(329011)
-                .skyColor(7972607).foliageColorOverride(-10118056).grassColorOverride(-9658528).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .skyColor(7972607).foliageColorOverride(-10118056).grassColorOverride(-9658528).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.TROPICAL_FISH, 5, 1, 5));
@@ -87,13 +94,13 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1.125f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.UNDERGROUND).temperature(1.125f)
                 .downfall(0.8f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome redstoneCaves() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(-12619852).waterFogColor(-14007447)
-                .skyColor(7972607).foliageColorOverride(-16737793).grassColorOverride(-6625354).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .skyColor(7972607).foliageColorOverride(-16737793).grassColorOverride(-6625354).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
@@ -106,14 +113,14 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
         BiomeDefaultFeatures.addInfestedStone(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.8f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.UNDERGROUND).temperature(0.8f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome prismachasm() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(-14772238).waterFogColor(-15959346)
                 .skyColor(-13068579).foliageColorOverride(-16737793).grassColorOverride(-6625354)
-                .ambientParticle(new AmbientParticleSettings(ParticleTypes.FIREWORK, 0.002f)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .ambientParticle(new AmbientParticleSettings(ParticleTypes.FIREWORK, 0.002f)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
@@ -130,12 +137,11 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
         BiomeDefaultFeatures.addInfestedStone(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.925f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.UNDERGROUND).temperature(0.925f)
                 .downfall(0.9f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
-    //DONE_FOR_1_20
+
     public static Biome bioshroomCaves() {
-        //BIOME COLOURS AND SOUNDS
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder()
                 .skyColor(7972607)
                 .fogColor(12638463)
@@ -147,7 +153,6 @@ public class RuOverworldBiomes {
                 .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
                 .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_LUSH_CAVES))
                 .build();
-        //ADD SPAWNS
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.AXOLOTLS, new MobSpawnSettings.SpawnerData(EntityType.AXOLOTL, 10, 4, 6));
         spawnBuilder.addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.TROPICAL_FISH, 25, 8, 8));
@@ -155,15 +160,12 @@ public class RuOverworldBiomes {
 
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
-        //ADD GIANT_BIOSHROOMS
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.BIOSHROOM_CAVES_GIANT_GREEN_BIOSHROOM);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.BIOSHROOM_CAVES_GIANT_BLUE_BIOSHROOM);
 
-        //ADD GRASS
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.BIOSHROOM_CAVES_GRASS);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.BIOSHROOM_CAVES_TALL_GRASS);
 
-        //ADD BIOSHROOM_PLANTS
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.BIOSHROOM_CAVES_GREEN_BIOSHROOM);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.BIOSHROOM_CAVES_BLUE_BIOSHROOM);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.BIOSHROOM_CAVES_PINK_BIOSHROOM);
@@ -178,6 +180,7 @@ public class RuOverworldBiomes {
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN)
 
                 .temperature(1.25f)
+                .biomeCategory(Biome.BiomeCategory.UNDERGROUND)
                 .downfall(0.9f)
                 .specialEffects(effects)
                 .mobSpawnSettings(spawnBuilder.build())
@@ -187,7 +190,7 @@ public class RuOverworldBiomes {
     public static Biome pineSlopes() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(-12619852).waterFogColor(-14007447)
-                .skyColor(7972607).foliageColorOverride(-9075130).grassColorOverride(-8083622).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .skyColor(7972607).foliageColorOverride(-9075130).grassColorOverride(-8083622).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
@@ -208,13 +211,13 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
         BiomeDefaultFeatures.addInfestedStone(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.375f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.MOUNTAIN).temperature(0.375f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome mountains() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(-12619852).waterFogColor(-14007447)
-                .skyColor(7972607).foliageColorOverride(-9075130).grassColorOverride(-8083622).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .skyColor(7972607).foliageColorOverride(-9075130).grassColorOverride(-8083622).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
@@ -236,13 +239,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
         BiomeDefaultFeatures.addInfestedStone(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.28f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.MOUNTAIN).temperature(0.28f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome highlandFields() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011)
-                .skyColor(-1635927829).foliageColorOverride(-8275350).grassColorOverride(-9782677).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .skyColor(-1635927829).foliageColorOverride(-8275350).grassColorOverride(-9782677).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
@@ -263,13 +266,13 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
         BiomeDefaultFeatures.addInfestedStone(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.65f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.PLAINS).temperature(0.65f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome lushHills() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(-10566460).waterFogColor(-12229487)
-                .skyColor(-1635927829).foliageColorOverride(-8010658).grassColorOverride(-7493535).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .skyColor(-1635927829).foliageColorOverride(-8010658).grassColorOverride(-7493535).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
@@ -284,7 +287,6 @@ public class RuOverworldBiomes {
 
 
         globalOverworldGeneration(biomeBuilder);
-        RuBiomeDefaultFeatures.addMeadowRocks(biomeBuilder);
         RuBiomeDefaultFeatures.mediumGrass(biomeBuilder);
         BiomeDefaultFeatures.addForestFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
@@ -294,13 +296,13 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
         BiomeDefaultFeatures.addInfestedStone(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.775f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.EXTREME_HILLS).temperature(0.775f)
                 .downfall(0.55f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome muddyRiver() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-7159980).grassColorOverride(-6044317).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-7159980).grassColorOverride(-6044317).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
         MobSpawnSettings.Builder spawnBuilder = (new MobSpawnSettings.Builder()).addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SQUID, 2, 1, 4)).addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.SALMON, 5, 1, 5));
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
@@ -325,13 +327,13 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         RuBiomeDefaultFeatures.addSeagrass(biomeBuilder);
         BiomeDefaultFeatures.addLukeWarmKelp(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.75f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.RIVER).temperature(0.75f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome coldRiver() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-5718172).grassColorOverride(-4733087).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-5718172).grassColorOverride(-4733087).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
         MobSpawnSettings.Builder spawnBuilder = (new MobSpawnSettings.Builder()).addSpawn(MobCategory.WATER_CREATURE, new MobSpawnSettings.SpawnerData(EntityType.SQUID, 2, 1, 4)).addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.SALMON, 5, 1, 5));
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
@@ -352,12 +354,12 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         RuBiomeDefaultFeatures.addSeagrass(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.4f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.RIVER).temperature(0.4f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome grassyBeach() {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-8933043).grassColorOverride(-2697863).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-8933043).grassColorOverride(-2697863).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
@@ -375,12 +377,12 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         RuBiomeDefaultFeatures.addSeagrass(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.85f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.BEACH).temperature(0.85f)
                 .downfall(0.775f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome gravelBeach() {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-8673714).grassColorOverride(-7819420).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-8673714).grassColorOverride(-7819420).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
 
@@ -394,7 +396,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.BEACH).temperature(0.6f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     //DONE_FOR_1_20
@@ -403,7 +405,7 @@ public class RuOverworldBiomes {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
                 .foliageColorOverride(6462505).grassColorOverride(9550928)
                 .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 5, 4, 4));
@@ -427,13 +429,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.FOREST).temperature(0.6f)
                 .downfall(0.5f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome fen() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(-11629645).waterFogColor(-12884349)
-                .skyColor(7972607).foliageColorOverride(8754506).grassColorOverride(10858333).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .skyColor(7972607).foliageColorOverride(8754506).grassColorOverride(10858333).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = (new MobSpawnSettings.Builder()).addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.SALMON, 5, 1, 5));
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 8, 4, 4));
@@ -460,14 +462,14 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addDuckweed(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.85f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.SWAMP).temperature(0.85f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome blackwoodForest() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(-5322337).waterColor(-13668958).waterFogColor(-12557181)
                 .skyColor(-5322337).foliageColorOverride(-12430037).grassColorOverride(-12687577)
-                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.005F)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.005F)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = (new MobSpawnSettings.Builder()).addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.TROPICAL_FISH, 5, 1, 5));
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.SLIME, 8, 4, 4));
@@ -496,14 +498,14 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.825f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.TAIGA).temperature(0.825f)
                 .downfall(0.765f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     //TODO:NEW FLOWERS
     public static Biome flowerField() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-10635453).grassColorOverride(-9189045).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-10635453).grassColorOverride(-9189045).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 8, 4, 4));
@@ -545,13 +547,13 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.975f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.PLAINS).temperature(0.975f)
                 .downfall(0.8f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome grassland() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-7159980).grassColorOverride(-6044317).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-7159980).grassColorOverride(-6044317).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.plainsSpawns(spawnBuilder);
@@ -570,13 +572,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addRareBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.85f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.PLAINS).temperature(0.85f)
                 .downfall(0.45f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome baobabSavanna() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-6636971).grassColorOverride(-4670891).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-6636971).grassColorOverride(-4670891).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.plainsSpawns(spawnBuilder);
@@ -601,13 +603,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(2f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.SAVANNA).temperature(2f)
                 .downfall(0.35f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome shrubland() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-8999081).grassColorOverride(-6637733).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-8999081).grassColorOverride(-6637733).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.plainsSpawns(spawnBuilder);
@@ -632,13 +634,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addRareBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.575f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.PLAINS).temperature(0.575f)
                 .downfall(0.4f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome icyHeights() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(-3411969)
-                .foliageColorOverride(-9913745).grassColorOverride(-9059189).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-9913745).grassColorOverride(-9059189).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
@@ -656,13 +658,13 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.SNOW).temperature(-1.0f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.SNOW).biomeCategory(Biome.BiomeCategory.ICY).temperature(-1.0f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome oldGrowthRainforest() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(-13392941).waterFogColor(-11558718)
-                .skyColor(7972607).foliageColorOverride(-11032271).grassColorOverride(-9718455).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .skyColor(7972607).foliageColorOverride(-11032271).grassColorOverride(-9718455).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.baseJungleSpawns(spawnBuilder);
@@ -670,7 +672,6 @@ public class RuOverworldBiomes {
         BiomeGenerationSettings.Builder biomeBuilder = new BiomeGenerationSettings.Builder();
 
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.OLD_GROWTH_RAINFOREST_PALM);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.OLD_GROWTH_RAINFOREST_MANGROVE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.OLD_GROWTH_RAINFOREST_JUNGLE_TREE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.OLD_GROWTH_RAINFOREST_BIG_JUNGLE_TREE);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.OLD_GROWTH_RAINFOREST_SHRUB);
@@ -678,7 +679,7 @@ public class RuOverworldBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.OLD_GROWTH_RAINFOREST_GREEN_BIOSHROOM);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.OLD_GROWTH_RAINFOREST_BLUE_BIOSHROOM);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.OLD_GROWTH_RAINFOREST_ELEPHANT_EAR);
-        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TALL_PALM_MANGROVE_SAPLING_MIX);
+        biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TALL_PALM_SAPLING);
 
         globalOverworldGeneration(biomeBuilder);
         RuBiomeDefaultFeatures.mediumGrass(biomeBuilder);
@@ -689,13 +690,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addJungleMelons(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.JUNGLE).temperature(1f)
                 .downfall(1.0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome rainforest() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(-13392941).waterFogColor(-11558718)
-                .skyColor(7972607).foliageColorOverride(-11032271).grassColorOverride(-9718455).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .skyColor(7972607).foliageColorOverride(-11032271).grassColorOverride(-9718455).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.baseJungleSpawns(spawnBuilder);
@@ -721,12 +722,12 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addJungleMelons(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.JUNGLE).temperature(1f)
                 .downfall(0.95f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome tropics() {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(-13255466).waterFogColor(-11171160)
-                .skyColor(-1635927829).foliageColorOverride(-11617740).grassColorOverride(-11225797).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .skyColor(-1635927829).foliageColorOverride(-11617740).grassColorOverride(-11225797).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.baseJungleSpawns(spawnBuilder);
@@ -757,7 +758,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         RuBiomeDefaultFeatures.addSeagrass(biomeBuilder);
         BiomeDefaultFeatures.addLukeWarmKelp(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1.05f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.JUNGLE).temperature(1.05f)
                 .downfall(0.95f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     //DONE_FOR_1_20
@@ -771,7 +772,7 @@ public class RuOverworldBiomes {
                 .foliageColorOverride(9877306)
                 .grassColorOverride(11585358)
                 .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.plainsSpawns(spawnBuilder);
@@ -800,6 +801,7 @@ public class RuOverworldBiomes {
 
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN)
                 .temperature(0.225f)
+                .biomeCategory(Biome.BiomeCategory.PLAINS)
                 .downfall(0.3f)
                 .specialEffects(effects)
                 .mobSpawnSettings(spawnBuilder.build())
@@ -817,7 +819,7 @@ public class RuOverworldBiomes {
                 .foliageColorOverride(9877306)
                 .grassColorOverride(12896058)
                 .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST))
+                .backgroundMusic(NORMAL_MUSIC)
                 .build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
@@ -849,6 +851,7 @@ public class RuOverworldBiomes {
 
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN)
                 .temperature(0.225f)
+                .biomeCategory(Biome.BiomeCategory.FOREST)
                 .downfall(0.3f)
                 .specialEffects(effects)
                 .mobSpawnSettings(spawnBuilder.build())
@@ -858,7 +861,7 @@ public class RuOverworldBiomes {
     public static Biome mixedForest() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-8999072).grassColorOverride(-8739993).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-8999072).grassColorOverride(-8739993).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
@@ -886,13 +889,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addPinkFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.FOREST).temperature(0.6f)
                 .downfall(0.5f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome coldBorealForest() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-9922472).grassColorOverride(-9917084).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-9922472).grassColorOverride(-9917084).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
@@ -916,13 +919,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.SNOW).temperature(0.0f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.SNOW).biomeCategory(Biome.BiomeCategory.ICY).temperature(0.0f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome borealForest() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(-12619852).waterFogColor(-14007447)
-                .skyColor(7972607).foliageColorOverride(-8673714).grassColorOverride(-7819420).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .skyColor(7972607).foliageColorOverride(-8673714).grassColorOverride(-7819420).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
@@ -948,13 +951,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.5f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.TAIGA).temperature(0.5f)
                 .downfall(0.4f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome chalkCliffs() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-8414642).grassColorOverride(-6044317).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-8414642).grassColorOverride(-6044317).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
@@ -975,13 +978,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.775f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.BEACH).temperature(0.775f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome lupinePlains() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-6044317).grassColorOverride(-6044317).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-6044317).grassColorOverride(-6044317).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
@@ -1001,13 +1004,13 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1.35f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.PLAINS).temperature(1.35f)
                 .downfall(0.25f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome steppe() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-5589135).grassColorOverride(-5067675).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-5589135).grassColorOverride(-5067675).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.plainsSpawns(spawnBuilder);
@@ -1025,13 +1028,13 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1.5f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.SAVANNA).temperature(1.5f)
                 .downfall(0.25f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome aridMountains() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-6773446).grassColorOverride(-4279222).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-6773446).grassColorOverride(-4279222).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.desertSpawns(spawnBuilder);
@@ -1060,13 +1063,13 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addExtraEmeralds(biomeBuilder);
         BiomeDefaultFeatures.addInfestedStone(biomeBuilder);
         BiomeDefaultFeatures.addDesertExtraDecoration(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).temperature(2f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).biomeCategory(Biome.BiomeCategory.MOUNTAIN).temperature(2f)
                 .downfall(0.0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome joshuaDesert() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-8409523).grassColorOverride(-5213).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-8409523).grassColorOverride(-5213).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.desertSpawns(spawnBuilder);
@@ -1091,13 +1094,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDesertExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addDesertExtraDecoration(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).temperature(2f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).biomeCategory(Biome.BiomeCategory.DESERT).temperature(2f)
                 .downfall(0.0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome prairie() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-8933043).grassColorOverride(-2697863).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-8933043).grassColorOverride(-2697863).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.plainsSpawns(spawnBuilder);
@@ -1116,13 +1119,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.75f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.PLAINS).temperature(0.75f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome barleyFields() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-5256873).grassColorOverride(-5754).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-5256873).grassColorOverride(-5754).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.plainsSpawns(spawnBuilder);
@@ -1137,13 +1140,13 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.85f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.PLAINS).temperature(0.85f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome goldenBorealForest() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-4214704).grassColorOverride(-6376609).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-4214704).grassColorOverride(-6376609).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
@@ -1161,7 +1164,7 @@ public class RuOverworldBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TALL_GOLDEN_LARCH_SAPLING_MIX);
 
         globalOverworldGeneration(biomeBuilder);
-        RuBiomeDefaultFeatures.addMeadowRocks(biomeBuilder);
+        
         RuBiomeDefaultFeatures.mediumGrass(biomeBuilder);
         BiomeDefaultFeatures.addFerns(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
@@ -1170,7 +1173,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.45f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.TAIGA).temperature(0.45f)
                 .downfall(0.3f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     //DONE_TEMP
@@ -1183,7 +1186,7 @@ public class RuOverworldBiomes {
                 .foliageColorOverride(-10749125)
                 .grassColorOverride(-7876009)
                 .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
@@ -1198,7 +1201,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMonsterRoom(biomeBuilder);
         BiomeDefaultFeatures.addSurfaceFreezing(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.0f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.FOREST).temperature(0.0f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     //DONE_FOR_1_20
@@ -1212,7 +1215,7 @@ public class RuOverworldBiomes {
                 .foliageColorOverride(11585338)
                 .grassColorOverride(11585338)
                 .ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS)
-                .backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST))
+                .backgroundMusic(NORMAL_MUSIC)
                 .build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
@@ -1241,6 +1244,7 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN)
                 .temperature(0.6f)
+                .biomeCategory(Biome.BiomeCategory.FOREST)
                 .downfall(0.6f)
                 .specialEffects(effects)
                 .mobSpawnSettings(spawnBuilder.build())
@@ -1250,7 +1254,7 @@ public class RuOverworldBiomes {
     public static Biome deciduousForest() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-7491753).grassColorOverride(-7491753).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-7491753).grassColorOverride(-7491753).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
@@ -1272,13 +1276,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.75f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.FOREST).temperature(0.75f)
                 .downfall(0.8f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome orchard() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-6108056).grassColorOverride(-5059481).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-6108056).grassColorOverride(-5059481).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.RABBIT, 8, 4, 4));
@@ -1302,13 +1306,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.7f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.FOREST).temperature(0.7f)
                 .downfall(0.4f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome redwoodForest() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-9264584).grassColorOverride(-8537031).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-9264584).grassColorOverride(-8537031).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 8, 4, 4)).addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.FOX, 8, 2, 4));
@@ -1333,13 +1337,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.TAIGA).temperature(1f)
                 .downfall(0.8f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome sparseRedwoods() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-9264584).grassColorOverride(-8537031).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-9264584).grassColorOverride(-8537031).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 8, 4, 4));
@@ -1362,13 +1366,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.95f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.TAIGA).temperature(0.95f)
                 .downfall(0.8f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome giantBayou() {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(-5124939).waterColor(-12354486).waterFogColor(-10450614)
                 .skyColor(-6110795).foliageColorOverride(-9333940).grassColorOverride(-8609196)
-                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.01F)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.01F)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
@@ -1403,14 +1407,14 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addSparseLily(biomeBuilder);
         RuBiomeDefaultFeatures.addMuddyMarsh(biomeBuilder);
         BiomeDefaultFeatures.addSwampExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.SWAMP).temperature(1f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome bayou() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(-1350062718).waterColor(-12354486).waterFogColor(-10450614)
                 .skyColor(-1350062718).foliageColorOverride(-9333940).grassColorOverride(-8609196)
-                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.01F)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WHITE_ASH, 0.01F)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
@@ -1441,12 +1445,12 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addBayouCattail(biomeBuilder);
         BiomeDefaultFeatures.addSwampExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.95f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.SWAMP).temperature(0.95f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome bambooForest() {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(-5124939).waterColor(4159204).waterFogColor(329011).skyColor(-6110795)
-                .foliageColorOverride(-5636253).grassColorOverride(-4923788).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-5636253).grassColorOverride(-4923788).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.baseJungleSpawns(spawnBuilder);
@@ -1468,13 +1472,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuBamboo(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addJungleMelons(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.875f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.FOREST).temperature(0.875f)
                 .downfall(0.8f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome poppyFields() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-8414642).grassColorOverride(-6044317).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-8414642).grassColorOverride(-6044317).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.plainsSpawns(spawnBuilder);
@@ -1490,12 +1494,12 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.85f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.PLAINS).temperature(0.85f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome pineForest() {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-9075130).grassColorOverride(-8083622).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-9075130).grassColorOverride(-8083622).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.farmAnimals(spawnBuilder);
@@ -1521,13 +1525,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.6f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.TAIGA).temperature(0.6f)
                 .downfall(0.4f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome cherryHills() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-8929686).grassColorOverride(-9781654).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-8929686).grassColorOverride(-9781654).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.FOX, 8, 2, 4));
@@ -1556,13 +1560,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addPinkFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.95f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.FOREST).temperature(0.95f)
                 .downfall(0.8f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome temperateGrove() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-6705587).grassColorOverride(-7953067).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-6705587).grassColorOverride(-7953067).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
@@ -1580,19 +1584,19 @@ public class RuOverworldBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TALL_FLOWERING_SAPLING);
 
         globalOverworldGeneration(biomeBuilder);
-        RuBiomeDefaultFeatures.addMeadowRocks(biomeBuilder);
+        
         RuBiomeDefaultFeatures.mediumGrass(biomeBuilder);
         BiomeDefaultFeatures.addForestFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.775f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.FOREST).temperature(0.775f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome eucalyptusForest() {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011)
-                .skyColor(7972607).foliageColorOverride(-9651647).grassColorOverride(-9651647).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .skyColor(7972607).foliageColorOverride(-9651647).grassColorOverride(-9651647).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.baseJungleSpawns(spawnBuilder);
@@ -1617,13 +1621,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addJungleMelons(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1.15f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.JUNGLE).temperature(1.15f)
                 .downfall(0.85f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome mauveHills() {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(-11230855).waterFogColor(329011)
                 .skyColor(7972607).foliageColorOverride(-12810288).grassColorOverride(-9259116)
-                .ambientParticle(new AmbientParticleSettings((SimpleParticleType) (RegionsUnexploredParticleTypes.MAUVE.get()), 0.005f)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .ambientParticle(new AmbientParticleSettings((SimpleParticleType) (RegionsUnexploredParticleTypes.MAUVE.get()), 0.005f)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.baseJungleSpawns(spawnBuilder);
@@ -1649,13 +1653,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addPinkFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addCommonBerryBushes(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(1.1f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.FOREST).temperature(1.1f)
                 .downfall(0.85f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome toweringCliffs() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-7362208).grassColorOverride(-8482734).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-7362208).grassColorOverride(-8482734).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
@@ -1677,14 +1681,14 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.335f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.EXTREME_HILLS).temperature(0.335f)
                 .downfall(0.65f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome fungalFen() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(-435307641).waterFogColor(-435242116).skyColor(-427965270)
                 .foliageColorOverride(-433341681).grassColorOverride(-430585537)
-                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WARPED_SPORE, 0.01F)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .ambientParticle(new AmbientParticleSettings(ParticleTypes.WARPED_SPORE, 0.01F)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.MOOSHROOM, 8, 4, 8));
@@ -1711,13 +1715,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addSparseJungleMelons(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.975f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.SWAMP).temperature(0.975f)
                 .downfall(0.9f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome outback() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-8016810).grassColorOverride(-4670891).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-8016810).grassColorOverride(-4670891).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.commonSpawns(spawnBuilder);
@@ -1742,13 +1746,13 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         RuBiomeDefaultFeatures.addOutbackExtraVegetation(biomeBuilder);
         BiomeDefaultFeatures.addDesertExtraDecoration(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).temperature(2f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).biomeCategory(Biome.BiomeCategory.DESERT).temperature(2f)
                 .downfall(0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome saguaroDesert() {
 
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-6836695).grassColorOverride(-4212907).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-6836695).grassColorOverride(-4212907).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.desertSpawns(spawnBuilder);
@@ -1772,12 +1776,12 @@ public class RuOverworldBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_PUMPKIN);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.PATCH_CACTUS_OUTBACK);
         BiomeDefaultFeatures.addDesertExtraDecoration(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).temperature(1.75f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).biomeCategory(Biome.BiomeCategory.DESERT).temperature(1.75f)
                 .downfall(0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome frozenTundra() {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-5207984).grassColorOverride(-5215920).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-5207984).grassColorOverride(-5215920).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.POLAR_BEAR, 8, 4, 4));
@@ -1799,12 +1803,12 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.noiseAutumnBush(biomeBuilder);
         RuBiomeDefaultFeatures.noiseRocks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.SNOW).temperature(-1f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.SNOW).biomeCategory(Biome.BiomeCategory.ICY).temperature(-1f)
                 .downfall(0.0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome dryBushland() {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-5060484).grassColorOverride(-3552115).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-5060484).grassColorOverride(-3552115).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.desertSpawns(spawnBuilder);
@@ -1834,12 +1838,12 @@ public class RuOverworldBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_SUGAR_CANE_DESERT);
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, VegetationPlacements.PATCH_PUMPKIN);
         BiomeDefaultFeatures.addDesertExtraDecoration(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).temperature(1.5f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).biomeCategory(Biome.BiomeCategory.SAVANNA).temperature(1.5f)
                 .downfall(0.0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome coldDeciduousForest() {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-5718172).grassColorOverride(-4733087).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-5718172).grassColorOverride(-4733087).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 12, 4, 4));
@@ -1856,12 +1860,12 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.SNOW).temperature(0.0f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.SNOW).biomeCategory(Biome.BiomeCategory.ICY).temperature(0.0f)
                 .downfall(0.45f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome icyDesert() {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(-3411969)
-                .foliageColorOverride(-10247846).grassColorOverride(-10247846).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-10247846).grassColorOverride(-10247846).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.POLAR_BEAR, 8, 4, 4));
@@ -1876,12 +1880,12 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.SNOW).temperature(-2.0f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.SNOW).biomeCategory(Biome.BiomeCategory.ICY).temperature(-2.0f)
                 .downfall(0.0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome spires() {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(-3411969)
-                .foliageColorOverride(-11097502).grassColorOverride(-11097488).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-11097502).grassColorOverride(-11097488).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.POLAR_BEAR, 8, 4, 4));
@@ -1892,16 +1896,15 @@ public class RuOverworldBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuBiomePlacements.SPIRES_SNOWY_GRASS);
 
         globalOverworldGeneration(biomeBuilder);
-        RuBiomeDefaultFeatures.addSpires(biomeBuilder);
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.SNOW).temperature(-2f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.SNOW).biomeCategory(Biome.BiomeCategory.ICY).temperature(-2f)
                 .downfall(0.95f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome smoulderingWoodland() {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(-6384241).waterColor(-10073800).waterFogColor(-11585236).skyColor(-5400196)
-                .foliageColorOverride(-7901343).grassColorOverride(-6391454).ambientParticle(new AmbientParticleSettings(ParticleTypes.ASH, 0.05F)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-7901343).grassColorOverride(-6391454).ambientParticle(new AmbientParticleSettings(ParticleTypes.ASH, 0.05F)).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.MONSTER, new MobSpawnSettings.SpawnerData(EntityType.CREEPER, 100, 4, 4));
@@ -1925,12 +1928,12 @@ public class RuOverworldBiomes {
         BiomeDefaultFeatures.addDefaultOres(biomeBuilder);
         BiomeDefaultFeatures.addDefaultMushrooms(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).temperature(2f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.NONE).biomeCategory(Biome.BiomeCategory.NONE).temperature(2f)
                 .downfall(0.0f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome frozenForest() {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(4159204).skyColor(-3411969)
-                .foliageColorOverride(-9922472).grassColorOverride(-9917084).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-9922472).grassColorOverride(-9917084).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         spawnBuilder.addSpawn(MobCategory.CREATURE, new MobSpawnSettings.SpawnerData(EntityType.WOLF, 8, 4, 4));
@@ -1947,12 +1950,12 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.noiseRocks(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.SNOW).temperature(-0.5f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.SNOW).biomeCategory(Biome.BiomeCategory.ICY).temperature(-0.5f)
                 .downfall(0.6f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome meadow() {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(4159204).waterFogColor(329011).skyColor(7972607)
-                .foliageColorOverride(-9001891).grassColorOverride(-7486095).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-9001891).grassColorOverride(-7486095).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = new MobSpawnSettings.Builder();
         BiomeDefaultFeatures.plainsSpawns(spawnBuilder);
@@ -1964,7 +1967,7 @@ public class RuOverworldBiomes {
         biomeBuilder.addFeature(GenerationStep.Decoration.VEGETAL_DECORATION, RuVegetationPlacements.TALL_MAUVE_SAPLING);
 
         globalOverworldGeneration(biomeBuilder);
-        RuBiomeDefaultFeatures.addMeadowRocks(biomeBuilder);
+        
         RuBiomeDefaultFeatures.mediumGrass(biomeBuilder);
         RuBiomeDefaultFeatures.meadowFlowers(biomeBuilder);
         BiomeDefaultFeatures.addPlainGrass(biomeBuilder);
@@ -1973,12 +1976,12 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuDisks(biomeBuilder);
         RuBiomeDefaultFeatures.addPinkFlowers(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.825f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.PLAINS).temperature(0.825f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
     public static Biome floodedPlains() {
         BiomeSpecialEffects effects = new BiomeSpecialEffects.Builder().fogColor(12638463).waterColor(-12092489).waterFogColor(-13677218).skyColor(7972607)
-                .foliageColorOverride(-8339092).grassColorOverride(-8536223).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(Musics.createGameMusic(SoundEvents.MUSIC_BIOME_JUNGLE_AND_FOREST)).build();
+                .foliageColorOverride(-8339092).grassColorOverride(-8536223).ambientMoodSound(AmbientMoodSettings.LEGACY_CAVE_SETTINGS).backgroundMusic(NORMAL_MUSIC).build();
 
         MobSpawnSettings.Builder spawnBuilder = (new MobSpawnSettings.Builder().addSpawn(MobCategory.WATER_AMBIENT, new MobSpawnSettings.SpawnerData(EntityType.SALMON, 5, 1, 5)));
         BiomeDefaultFeatures.plainsSpawns(spawnBuilder);
@@ -1998,7 +2001,7 @@ public class RuOverworldBiomes {
         RuBiomeDefaultFeatures.addRuFlowers(biomeBuilder);
         RuBiomeDefaultFeatures.addMarsh(biomeBuilder);
         BiomeDefaultFeatures.addDefaultExtraVegetation(biomeBuilder);
-        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).temperature(0.85f)
+        return new Biome.BiomeBuilder().precipitation(Biome.Precipitation.RAIN).biomeCategory(Biome.BiomeCategory.SWAMP).temperature(0.85f)
                 .downfall(0.7f).specialEffects(effects).mobSpawnSettings(spawnBuilder.build()).generationSettings(biomeBuilder.build()).build();
     }
 }

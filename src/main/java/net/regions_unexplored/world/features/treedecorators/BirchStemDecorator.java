@@ -1,6 +1,7 @@
 package net.regions_unexplored.world.features.treedecorators;
 
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
@@ -12,6 +13,10 @@ import net.minecraft.world.level.block.Blocks;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.world.level.block.BranchBlock;
 
+import java.util.List;
+import java.util.Random;
+import java.util.function.BiConsumer;
+
 public class BirchStemDecorator extends TrunkVineDecorator {
 	public static final BirchStemDecorator INSTANCE = new BirchStemDecorator();
 	public static com.mojang.serialization.Codec<BirchStemDecorator> codec;
@@ -19,6 +24,8 @@ public class BirchStemDecorator extends TrunkVineDecorator {
 	static {
 		codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
 		tdt = new TreeDecoratorType<>(codec);
+		tdt.setRegistryName("birch_stem_decorator");
+		
 	}
 
 	@Override
@@ -27,40 +34,40 @@ public class BirchStemDecorator extends TrunkVineDecorator {
 	}
 
 	@Override
-	public void place(TreeDecorator.Context context) {
-			int size = context.random().nextInt(6);
-			BlockPos newpos = context.logs().get(6);
-			if(context.logs().size()>9){
+	public void place(LevelSimulatedReader levelReader, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> listBlockPos, List<BlockPos> listBlockPos2) {
+			int size = random.nextInt(6);
+			BlockPos newpos = listBlockPos.get(6);
+			if(listBlockPos.size()>9){
 			if(size==0){
-				if(context.random().nextInt(2)==0) {
-					context.setBlock(newpos.west(), Blocks.BIRCH_LOG.defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X));
+				if(random.nextInt(2)==0) {
+					biConsumer.accept(newpos.west(), Blocks.BIRCH_LOG.defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X));
 				}
 				else {
-					context.setBlock(newpos.west(), RegionsUnexploredBlocks.BIRCH_BRANCH.get().defaultBlockState().setValue(BranchBlock.FACING, Direction.WEST));
+					biConsumer.accept(newpos.west(), RegionsUnexploredBlocks.BIRCH_BRANCH.get().defaultBlockState().setValue(BranchBlock.FACING, Direction.WEST));
 				}
 			}
 			else if(size==1){
-				if(context.random().nextInt(2)==0) {
-					context.setBlock(newpos.east(), Blocks.BIRCH_LOG.defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X));
+				if(random.nextInt(2)==0) {
+					biConsumer.accept(newpos.east(), Blocks.BIRCH_LOG.defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.X));
 				}
 				else {
-					context.setBlock(newpos.east(), RegionsUnexploredBlocks.BIRCH_BRANCH.get().defaultBlockState().setValue(BranchBlock.FACING, Direction.EAST));
+					biConsumer.accept(newpos.east(), RegionsUnexploredBlocks.BIRCH_BRANCH.get().defaultBlockState().setValue(BranchBlock.FACING, Direction.EAST));
 				}
 			}
 			else if(size==2){
-				if(context.random().nextInt(2)==0) {
-					context.setBlock(newpos.north(), Blocks.BIRCH_LOG.defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z));
+				if(random.nextInt(2)==0) {
+					biConsumer.accept(newpos.north(), Blocks.BIRCH_LOG.defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z));
 				}
 				else {
-					context.setBlock(newpos.north(), RegionsUnexploredBlocks.BIRCH_BRANCH.get().defaultBlockState().setValue(BranchBlock.FACING, Direction.NORTH));
+					biConsumer.accept(newpos.north(), RegionsUnexploredBlocks.BIRCH_BRANCH.get().defaultBlockState().setValue(BranchBlock.FACING, Direction.NORTH));
 				}
 			}
 			else if(size==3){
-				if(context.random().nextInt(2)==0) {
-					context.setBlock(newpos.south(), Blocks.BIRCH_LOG.defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z));
+				if(random.nextInt(2)==0) {
+					biConsumer.accept(newpos.south(), Blocks.BIRCH_LOG.defaultBlockState().setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z));
 				}
 				else {
-					context.setBlock(newpos.south(), RegionsUnexploredBlocks.BIRCH_BRANCH.get().defaultBlockState().setValue(BranchBlock.FACING, Direction.SOUTH));
+					biConsumer.accept(newpos.south(), RegionsUnexploredBlocks.BIRCH_BRANCH.get().defaultBlockState().setValue(BranchBlock.FACING, Direction.SOUTH));
 				}
 			}
 		}

@@ -20,8 +20,13 @@ import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
+import net.minecraftforge.registries.ForgeRegistries;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.data.tags.RegionsUnexploredTags;
+
+import java.util.List;
+import java.util.Random;
+import java.util.function.BiConsumer;
 
 public class BigYellowBioshroomCaps extends TrunkVineDecorator {
 	public static final BigYellowBioshroomCaps INSTANCE = new BigYellowBioshroomCaps();
@@ -30,6 +35,8 @@ public class BigYellowBioshroomCaps extends TrunkVineDecorator {
 	static {
 		codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
 		tdt = new TreeDecoratorType<>(codec);
+		tdt.setRegistryName("big_yellow_bioshroom_caps");
+		
 	}
 
 	@Override
@@ -38,85 +45,85 @@ public class BigYellowBioshroomCaps extends TrunkVineDecorator {
 	}
 
 	@Override
-	public void place(Context context) {
-		BlockPos newpos1 = context.logs().get(context.logs().size()-1);
+	public void place(LevelSimulatedReader levelReader, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> listBlockPos, List<BlockPos> listBlockPos2) {
+		BlockPos newpos1 = listBlockPos.get(listBlockPos.size()-1);
 		BlockPos[] shroomlight = {newpos1.north(), newpos1.south(), newpos1.east(), newpos1.west(), newpos1.south().west(), newpos1.south().east(), newpos1.north().west(), newpos1.north().east()};
-		BlockPos newpos = context.logs().get(context.logs().size()-1);
-		int newposl = context.logs().size()-2;
+		BlockPos newpos = listBlockPos.get(listBlockPos.size()-1);
+		int newposl = listBlockPos.size()-2;
 
 		for(int j = 0; j< shroomlight.length; j++){
-			int doPlace = context.random().nextInt(4);
+			int doPlace = random.nextInt(4);
 			if(doPlace==0){
-				if (isReplaceable(context.level(), shroomlight[j])) {
-					context.setBlock(shroomlight[j], Blocks.SHROOMLIGHT.defaultBlockState());
+				if (isReplaceable(levelReader, shroomlight[j])) {
+					biConsumer.accept(shroomlight[j], Blocks.SHROOMLIGHT.defaultBlockState());
 				}
 			}
 		}
 
 		for(int i = 3; i< newposl; i++){
-			int doPlace = context.random().nextInt(4);
-			int directions = context.random().nextInt(4);
+			int doPlace = random.nextInt(4);
+			int directions = random.nextInt(4);
 			if(doPlace == 0){
 				//NORTHWEST
 				if(directions==0){
-					BlockPos do1 = context.logs().get(i).north();
-					BlockPos do2 = context.logs().get(i).west();
+					BlockPos do1 = listBlockPos.get(i).north();
+					BlockPos do2 = listBlockPos.get(i).west();
 					BlockPos do3 = do1.west();
-					if (isReplaceable(context.level(), do1)) {
-						context.setBlock(do1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+					if (isReplaceable(levelReader, do1)) {
+						biConsumer.accept(do1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 					}
-					if (isReplaceable(context.level(), do2)) {
-						context.setBlock(do2, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+					if (isReplaceable(levelReader, do2)) {
+						biConsumer.accept(do2, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 					}
-					if (isReplaceable(context.level(), do3)) {
-						context.setBlock(do3, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+					if (isReplaceable(levelReader, do3)) {
+						biConsumer.accept(do3, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 					}
 				}
 				//SOUTHWEST
 				if(directions==1){
-					BlockPos do1 = context.logs().get(i).south();
-					BlockPos do2 = context.logs().get(i).west();
+					BlockPos do1 = listBlockPos.get(i).south();
+					BlockPos do2 = listBlockPos.get(i).west();
 					BlockPos do3 = do1.west();
-					if (isReplaceable(context.level(), do1)) {
-						context.setBlock(do1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+					if (isReplaceable(levelReader, do1)) {
+						biConsumer.accept(do1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 					}
-					if (isReplaceable(context.level(), do2)) {
-						context.setBlock(do2, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+					if (isReplaceable(levelReader, do2)) {
+						biConsumer.accept(do2, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 					}
-					if (isReplaceable(context.level(), do3)) {
-						context.setBlock(do3, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+					if (isReplaceable(levelReader, do3)) {
+						biConsumer.accept(do3, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 					}
 
 				}
 				//NORTHEAST
 				if(directions==2){
-					BlockPos do1 = context.logs().get(i).north();
-					BlockPos do2 = context.logs().get(i).east();
+					BlockPos do1 = listBlockPos.get(i).north();
+					BlockPos do2 = listBlockPos.get(i).east();
 					BlockPos do3 = do1.east();
-					if (isReplaceable(context.level(), do1)) {
-						context.setBlock(do1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+					if (isReplaceable(levelReader, do1)) {
+						biConsumer.accept(do1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 					}
-					if (isReplaceable(context.level(), do2)) {
-						context.setBlock(do2, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+					if (isReplaceable(levelReader, do2)) {
+						biConsumer.accept(do2, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 					}
-					if (isReplaceable(context.level(), do3)) {
-						context.setBlock(do3, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+					if (isReplaceable(levelReader, do3)) {
+						biConsumer.accept(do3, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 					}
 
 				}
 				//SOUTHEAST
 				if(directions==3){
-					BlockPos do1 = context.logs().get(i).south();
-					BlockPos do2 = context.logs().get(i).east();
+					BlockPos do1 = listBlockPos.get(i).south();
+					BlockPos do2 = listBlockPos.get(i).east();
 					BlockPos do3 = do1.east();
-					if (isReplaceable(context.level(), do1)) {
-						context.setBlock(do1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+					if (isReplaceable(levelReader, do1)) {
+						biConsumer.accept(do1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 					}
-					if (isReplaceable(context.level(), do2)) {
-						context.setBlock(do2, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+					if (isReplaceable(levelReader, do2)) {
+						biConsumer.accept(do2, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 					}
-					if (isReplaceable(context.level(), do3)) {
-						context.setBlock(do3, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+					if (isReplaceable(levelReader, do3)) {
+						biConsumer.accept(do3, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 					}
 
 				}
@@ -172,144 +179,144 @@ public class BigYellowBioshroomCaps extends TrunkVineDecorator {
 		BlockPos s3w = new BlockPos(newpos.getX()-1,newpos.getY()+1,newpos.getZ()+3);
 		BlockPos s3ww = new BlockPos(newpos.getX()-2,newpos.getY()+1,newpos.getZ()+3);
 
-		if (isReplaceable(context.level(), px1)) {
-			context.setBlock(px1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1)) {
+			biConsumer.accept(px1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1e1)) {
-			context.setBlock(px1e1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1e1)) {
+			biConsumer.accept(px1e1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1e2)) {
-			context.setBlock(px1e2, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1e2)) {
+			biConsumer.accept(px1e2, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1w1)) {
-			context.setBlock(px1w1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1w1)) {
+			biConsumer.accept(px1w1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1w2)) {
-			context.setBlock(px1w2, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1w2)) {
+			biConsumer.accept(px1w2, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1s1)) {
-			context.setBlock(px1s1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1s1)) {
+			biConsumer.accept(px1s1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1s2)) {
-			context.setBlock(px1s2, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1s2)) {
+			biConsumer.accept(px1s2, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1n1)) {
-			context.setBlock(px1n1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1n1)) {
+			biConsumer.accept(px1n1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1n2)) {
-			context.setBlock(px1n2, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1n2)) {
+			biConsumer.accept(px1n2, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1se)) {
-			context.setBlock(px1se, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1se)) {
+			biConsumer.accept(px1se, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1see)) {
-			context.setBlock(px1see, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1see)) {
+			biConsumer.accept(px1see, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1sew)) {
-			context.setBlock(px1sew, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1sew)) {
+			biConsumer.accept(px1sew, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1sw)) {
-			context.setBlock(px1sw, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1sw)) {
+			biConsumer.accept(px1sw, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1sww)) {
-			context.setBlock(px1sww, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1sww)) {
+			biConsumer.accept(px1sww, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1swe)) {
-			context.setBlock(px1swe, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1swe)) {
+			biConsumer.accept(px1swe, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1ne)) {
-			context.setBlock(px1ne, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1ne)) {
+			biConsumer.accept(px1ne, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1nee)) {
-			context.setBlock(px1nee, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1nee)) {
+			biConsumer.accept(px1nee, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1new)) {
-			context.setBlock(px1new, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1new)) {
+			biConsumer.accept(px1new, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1nw)) {
-			context.setBlock(px1nw, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1nw)) {
+			biConsumer.accept(px1nw, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1nww)) {
-			context.setBlock(px1nww, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1nww)) {
+			biConsumer.accept(px1nww, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1nwe)) {
-			context.setBlock(px1nwe, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1nwe)) {
+			biConsumer.accept(px1nwe, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1nw1)) {
-			context.setBlock(px1nw1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1nw1)) {
+			biConsumer.accept(px1nw1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1ne1)) {
-			context.setBlock(px1ne1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1ne1)) {
+			biConsumer.accept(px1ne1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1se1)) {
-			context.setBlock(px1se1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1se1)) {
+			biConsumer.accept(px1se1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), px1sw1)) {
-			context.setBlock(px1sw1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
-		}
-
-		if (isReplaceable(context.level(), w3)) {
-			context.setBlock(w3, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
-		}
-		if (isReplaceable(context.level(), w3s)) {
-			context.setBlock(w3s, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
-		}
-		if (isReplaceable(context.level(), w3ss)) {
-			context.setBlock(w3ss, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
-		}
-		if (isReplaceable(context.level(), w3n)) {
-			context.setBlock(w3n, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
-		}
-		if (isReplaceable(context.level(), w3nn)) {
-			context.setBlock(w3nn, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, px1sw1)) {
+			biConsumer.accept(px1sw1, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
 
-		if (isReplaceable(context.level(), e3)) {
-			context.setBlock(e3, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, w3)) {
+			biConsumer.accept(w3, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), e3s)) {
-			context.setBlock(e3s, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, w3s)) {
+			biConsumer.accept(w3s, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), e3ss)) {
-			context.setBlock(e3ss, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, w3ss)) {
+			biConsumer.accept(w3ss, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), e3n)) {
-			context.setBlock(e3n, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, w3n)) {
+			biConsumer.accept(w3n, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), e3nn)) {
-			context.setBlock(e3nn, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
-		}
-
-		if (isReplaceable(context.level(), n3)) {
-			context.setBlock(n3, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
-		}
-		if (isReplaceable(context.level(), n3e)) {
-			context.setBlock(n3e, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
-		}
-		if (isReplaceable(context.level(), n3ee)) {
-			context.setBlock(n3ee, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
-		}
-		if (isReplaceable(context.level(), n3w)) {
-			context.setBlock(n3w, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
-		}
-		if (isReplaceable(context.level(), n3ww)) {
-			context.setBlock(n3ww, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, w3nn)) {
+			biConsumer.accept(w3nn, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
 
-		if (isReplaceable(context.level(), s3)) {
-			context.setBlock(s3, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, e3)) {
+			biConsumer.accept(e3, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), s3e)) {
-			context.setBlock(s3e, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, e3s)) {
+			biConsumer.accept(e3s, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), s3ee)) {
-			context.setBlock(s3ee, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, e3ss)) {
+			biConsumer.accept(e3ss, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), s3w)) {
-			context.setBlock(s3w, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, e3n)) {
+			biConsumer.accept(e3n, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
-		if (isReplaceable(context.level(), s3ww)) {
-			context.setBlock(s3ww, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		if (isReplaceable(levelReader, e3nn)) {
+			biConsumer.accept(e3nn, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		}
+
+		if (isReplaceable(levelReader, n3)) {
+			biConsumer.accept(n3, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		}
+		if (isReplaceable(levelReader, n3e)) {
+			biConsumer.accept(n3e, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		}
+		if (isReplaceable(levelReader, n3ee)) {
+			biConsumer.accept(n3ee, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		}
+		if (isReplaceable(levelReader, n3w)) {
+			biConsumer.accept(n3w, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		}
+		if (isReplaceable(levelReader, n3ww)) {
+			biConsumer.accept(n3ww, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		}
+
+		if (isReplaceable(levelReader, s3)) {
+			biConsumer.accept(s3, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		}
+		if (isReplaceable(levelReader, s3e)) {
+			biConsumer.accept(s3e, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		}
+		if (isReplaceable(levelReader, s3ee)) {
+			biConsumer.accept(s3ee, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		}
+		if (isReplaceable(levelReader, s3w)) {
+			biConsumer.accept(s3w, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
+		}
+		if (isReplaceable(levelReader, s3ww)) {
+			biConsumer.accept(s3ww, RegionsUnexploredBlocks.YELLOW_BIOSHROOM_BLOCK.get().defaultBlockState());
 		}
 	}
 

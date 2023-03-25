@@ -3,7 +3,7 @@ package net.regions_unexplored.world.level.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.item.context.BlockPlaceContext;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.LevelAccessor;
@@ -40,7 +40,7 @@ public class PlainsDirtPathBlock extends Block {
         return super.updateShape(state, direction, state1, level, pos, pos1);
     }
 
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         PlainsFarmBlock.turnToDirt(state, level, pos);
     }
 

@@ -11,7 +11,7 @@ import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.block.entity.custom.RuSignBlockEntity;
 
 public class RegionsUnexploredBlockEntities {
-    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITY_TYPES, RegionsUnexploredMod.MOD_ID);
+    public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES = DeferredRegister.create(ForgeRegistries.BLOCK_ENTITIES, RegionsUnexploredMod.MOD_ID);
 
     public static final RegistryObject<BlockEntityType<RuSignBlockEntity>> SIGN_BLOCK_ENTITIES = BLOCK_ENTITIES.register("sign_block_entity", () ->
             BlockEntityType.Builder.of(RuSignBlockEntity::new,

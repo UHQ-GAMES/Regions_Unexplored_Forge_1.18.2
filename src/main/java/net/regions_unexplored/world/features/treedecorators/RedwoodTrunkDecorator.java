@@ -14,13 +14,19 @@
 */
 package net.regions_unexplored.world.features.treedecorators;
 
-import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecorator;
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.core.BlockPos;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraft.world.level.block.Blocks;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
+
+import java.util.List;
+import java.util.Random;
+import java.util.function.BiConsumer;
 
 public class RedwoodTrunkDecorator extends TrunkVineDecorator {
 	public static final RedwoodTrunkDecorator INSTANCE = new RedwoodTrunkDecorator();
@@ -29,6 +35,8 @@ public class RedwoodTrunkDecorator extends TrunkVineDecorator {
 	static {
 		codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
 		tdt = new TreeDecoratorType<>(codec);
+		tdt.setRegistryName("redwood_trunk_decorator");
+		
 	}
 
 	@Override
@@ -37,67 +45,67 @@ public class RedwoodTrunkDecorator extends TrunkVineDecorator {
 	}
 
 	@Override
-	public void place(TreeDecorator.Context context) {
-			int i1 = context.random().nextInt(5)+5;
-			int i2 = context.random().nextInt(5)+5;
-			int i3 = context.random().nextInt(5)+5;
-			int i4 = context.random().nextInt(5)+5;
-			BlockPos newpos = context.logs().get(2);
+	public void place(LevelSimulatedReader levelReader, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> listBlockPos, List<BlockPos> listBlockPos2) {
+			int i1 = random.nextInt(5)+5;
+			int i2 = random.nextInt(5)+5;
+			int i3 = random.nextInt(5)+5;
+			int i4 = random.nextInt(5)+5;
+			BlockPos newpos = listBlockPos.get(2);
 			
 			BlockPos p1 = new BlockPos(newpos.getX()+1,newpos.getY(),newpos.getZ());
 			BlockPos p2 = new BlockPos(newpos.getX()+1,newpos.getY(),newpos.getZ()+1);
 			BlockPos p3 = new BlockPos(newpos.getX(),newpos.getY(),newpos.getZ()+1);
 			BlockPos p4 = new BlockPos(newpos.getX(),newpos.getY(),newpos.getZ());
 			
-			for(int i = 0; i < context.logs().size(); i++){
-			BlockPos posnorthwest = context.logs().get(i);
+			for(int i = 0; i < listBlockPos.size(); i++){
+			BlockPos posnorthwest = listBlockPos.get(i);
 			//northwest
 			BlockPos bpnw = posnorthwest.west();
 			if(i>0 && i<=i1){
-					context.setBlock(bpnw, RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
-					context.setBlock(bpnw.above(), RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
-					if (!context.isAir(bpnw)) {
+					biConsumer.accept(bpnw, RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
+					biConsumer.accept(bpnw.above(), RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
+					if (!Feature.isAir(levelReader, bpnw)) {
 						if(i==0){
-							context.setBlock(bpnw, RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
+							biConsumer.accept(bpnw, RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
 							}
-					context.setBlock(bpnw.below(), Blocks.DIRT.defaultBlockState());
+					biConsumer.accept(bpnw.below(), Blocks.DIRT.defaultBlockState());
 					}
 			}
 
 			BlockPos bpnw1 = posnorthwest.east();
 			
 			if(i>0 && i<=i2){
-					context.setBlock(bpnw1, RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
-					context.setBlock(bpnw1.above(), RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
-					if (!context.isAir(bpnw1)) {
+					biConsumer.accept(bpnw1, RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
+					biConsumer.accept(bpnw1.above(), RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
+					if (!Feature.isAir(levelReader, bpnw1)) {
 						if(i==0){
-							context.setBlock(bpnw1, RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
+							biConsumer.accept(bpnw1, RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
 							}
-					context.setBlock(bpnw1.below(), Blocks.DIRT.defaultBlockState());
+					biConsumer.accept(bpnw1.below(), Blocks.DIRT.defaultBlockState());
 					}
 			}
 			
 			BlockPos bpnw2 = posnorthwest.north();
 			if(i>0 && i<=i3){
-					context.setBlock(bpnw2, RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
-					context.setBlock(bpnw2.above(), RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
-					if (!context.isAir(bpnw2)) {
+					biConsumer.accept(bpnw2, RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
+					biConsumer.accept(bpnw2.above(), RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
+					if (!Feature.isAir(levelReader, bpnw2)) {
 						if(i==0){
-							context.setBlock(bpnw2, RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
+							biConsumer.accept(bpnw2, RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
 							}
-					context.setBlock(bpnw2.below(), Blocks.DIRT.defaultBlockState());
+					biConsumer.accept(bpnw2.below(), Blocks.DIRT.defaultBlockState());
 					}
 			}
 			
 			BlockPos bpnw3 = posnorthwest.south();
 			if(i>0 && i<=i4){
-					context.setBlock(bpnw3, RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
-					context.setBlock(bpnw3.above(), RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
-					if (!context.isAir(bpnw3)) {
+					biConsumer.accept(bpnw3, RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
+					biConsumer.accept(bpnw3.above(), RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
+					if (!Feature.isAir(levelReader, bpnw3)) {
 						if(i==0){
-							context.setBlock(bpnw3, RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
+							biConsumer.accept(bpnw3, RegionsUnexploredBlocks.REDWOOD_LOG.get().defaultBlockState());
 							}
-					context.setBlock(bpnw3.below(), Blocks.DIRT.defaultBlockState());
+					biConsumer.accept(bpnw3.below(), Blocks.DIRT.defaultBlockState());
 					}
 			}
 		}

@@ -15,10 +15,17 @@
 package net.regions_unexplored.world.features.treedecorators;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
+
+import java.util.List;
+import java.util.Random;
+import java.util.function.BiConsumer;
 
 public class WillowPalmPlacer extends TrunkVineDecorator {
 	public static final WillowPalmPlacer INSTANCE = new WillowPalmPlacer();
@@ -27,6 +34,8 @@ public class WillowPalmPlacer extends TrunkVineDecorator {
 	static {
 		codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
 		tdt = new TreeDecoratorType<>(codec);
+		tdt.setRegistryName("willow_palm_placer");
+		
 	}
 
 	@Override
@@ -35,8 +44,8 @@ public class WillowPalmPlacer extends TrunkVineDecorator {
 	}
 
 	@Override
-	public void place(Context context) {
-		BlockPos newpos = context.logs().get(context.logs().size()-1);
+	public void place(LevelSimulatedReader levelReader, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> listBlockPos, List<BlockPos> listBlockPos2) {
+		BlockPos newpos = listBlockPos.get(listBlockPos.size()-1);
 			BlockPos px1 = new BlockPos(newpos.getX()+1,newpos.getY()+1,newpos.getZ());
 			BlockPos px2 = new BlockPos(newpos.getX()+2,newpos.getY()+1,newpos.getZ());
 			BlockPos px3 = new BlockPos(newpos.getX()+3,newpos.getY()+1,newpos.getZ());
@@ -74,98 +83,98 @@ public class WillowPalmPlacer extends TrunkVineDecorator {
 			BlockPos fp2 = new BlockPos(newpos.getX()-1,newpos.getY()-1,newpos.getZ());
 			BlockPos fp3 = new BlockPos(newpos.getX(),newpos.getY()-1,newpos.getZ()+1);
 			BlockPos fp4 = new BlockPos(newpos.getX(),newpos.getY()-1,newpos.getZ()-1);
-			if (context.isAir(y1)) {
-			context.setBlock(y1, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, y1)) {
+			biConsumer.accept(y1, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
 			
-			if (context.isAir(fn1)) {
-			context.setBlock(fn1, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, fn1)) {
+			biConsumer.accept(fn1, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(fn2)) {
-			context.setBlock(fn2, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, fn2)) {
+			biConsumer.accept(fn2, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(fn3)) {
-			context.setBlock(fn3, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, fn3)) {
+			biConsumer.accept(fn3, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(fn4)) {
-			context.setBlock(fn4, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
-			}
-			
-			if (context.isAir(fp1)) {
-			context.setBlock(fp1, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(fp2)) {
-			context.setBlock(fp2, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(fp3)) {
-			context.setBlock(fp3, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(fp4)) {
-			context.setBlock(fp4, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, fn4)) {
+			biConsumer.accept(fn4, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
 			
-			if (context.isAir(px1)) {
-			context.setBlock(px1, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, fp1)) {
+			biConsumer.accept(fp1, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(px2)) {
-			context.setBlock(px2, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, fp2)) {
+			biConsumer.accept(fp2, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(px3)) {
-			context.setBlock(px3, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, fp3)) {
+			biConsumer.accept(fp3, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(px4)) {
-			context.setBlock(px4, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, fp4)) {
+			biConsumer.accept(fp4, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(px5)) {
-			context.setBlock(px5, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			
+			if (Feature.isAir(levelReader, px1)) {
+			biConsumer.accept(px1, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-
-			if (context.isAir(nx1)) {
-			context.setBlock(nx1, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, px2)) {
+			biConsumer.accept(px2, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(nx2)) {
-			context.setBlock(nx2, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, px3)) {
+			biConsumer.accept(px3, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(nx3)) {
-			context.setBlock(nx3, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, px4)) {
+			biConsumer.accept(px4, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(nx4)) {
-			context.setBlock(nx4, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
-			}
-			if (context.isAir(nx5)) {
-			context.setBlock(nx5, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, px5)) {
+			biConsumer.accept(px5, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
 
-			if (context.isAir(pz1)) {
-			context.setBlock(pz1, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, nx1)) {
+			biConsumer.accept(nx1, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(pz2)) {
-			context.setBlock(pz2, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, nx2)) {
+			biConsumer.accept(nx2, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(pz3)) {
-			context.setBlock(pz3, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, nx3)) {
+			biConsumer.accept(nx3, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(pz4)) {
-			context.setBlock(pz4, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, nx4)) {
+			biConsumer.accept(nx4, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(pz5)) {
-			context.setBlock(pz5, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, nx5)) {
+			biConsumer.accept(nx5, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
 
-			if (context.isAir(nz1)) {
-			context.setBlock(nz1, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, pz1)) {
+			biConsumer.accept(pz1, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(nz2)) {
-			context.setBlock(nz2, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, pz2)) {
+			biConsumer.accept(pz2, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(nz3)) {
-			context.setBlock(nz3, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, pz3)) {
+			biConsumer.accept(pz3, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(nz4)) {
-			context.setBlock(nz4, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, pz4)) {
+			biConsumer.accept(pz4, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
-			if (context.isAir(nz5)) {
-			context.setBlock(nz5, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			if (Feature.isAir(levelReader, pz5)) {
+			biConsumer.accept(pz5, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			}
+
+			if (Feature.isAir(levelReader, nz1)) {
+			biConsumer.accept(nz1, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nz2)) {
+			biConsumer.accept(nz2, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nz3)) {
+			biConsumer.accept(nz3, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nz4)) {
+			biConsumer.accept(nz4, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
+			}
+			if (Feature.isAir(levelReader, nz5)) {
+			biConsumer.accept(nz5, RegionsUnexploredBlocks.WILLOW_LEAVES.get().defaultBlockState());
 			}
 		}
 	}

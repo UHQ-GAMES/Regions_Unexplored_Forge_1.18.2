@@ -4,6 +4,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.BushBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.BlockState;
@@ -35,7 +36,7 @@ public class DeadShrubBlock extends BushBlock implements net.minecraftforge.comm
         }
     }
 
-    protected boolean mayPlaceOn(BlockState state, BlockGetter getter, BlockPos pos) {
-        return state.is(BlockTags.DEAD_BUSH_MAY_PLACE_ON);
+    protected boolean mayPlaceOn(BlockState p_52424_, BlockGetter p_52425_, BlockPos p_52426_) {
+        return p_52424_.is(Blocks.SAND) || p_52424_.is(Blocks.RED_SAND) || p_52424_.is(Blocks.TERRACOTTA) || p_52424_.is(Blocks.WHITE_TERRACOTTA) || p_52424_.is(Blocks.ORANGE_TERRACOTTA) || p_52424_.is(Blocks.MAGENTA_TERRACOTTA) || p_52424_.is(Blocks.LIGHT_BLUE_TERRACOTTA) || p_52424_.is(Blocks.YELLOW_TERRACOTTA) || p_52424_.is(Blocks.LIME_TERRACOTTA) || p_52424_.is(Blocks.PINK_TERRACOTTA) || p_52424_.is(Blocks.GRAY_TERRACOTTA) || p_52424_.is(Blocks.LIGHT_GRAY_TERRACOTTA) || p_52424_.is(Blocks.CYAN_TERRACOTTA) || p_52424_.is(Blocks.PURPLE_TERRACOTTA) || p_52424_.is(Blocks.BLUE_TERRACOTTA) || p_52424_.is(Blocks.BROWN_TERRACOTTA) || p_52424_.is(Blocks.GREEN_TERRACOTTA) || p_52424_.is(Blocks.RED_TERRACOTTA) || p_52424_.is(Blocks.BLACK_TERRACOTTA) || p_52424_.is(BlockTags.DIRT);
     }
 }

@@ -5,7 +5,7 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.Registry;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.LevelSimulatedReader;
@@ -32,7 +32,7 @@ public class SakuraTreeFeature extends Feature<RuTreeConfiguration> {
     public boolean place(FeaturePlaceContext<RuTreeConfiguration> context) {
         RuTreeConfiguration treeConfiguration = context.config();
         BlockPos pos = context.origin();
-        RandomSource randomSource = context.random();
+        Random Random = context.random();
         WorldGenLevel level = context.level();
 
         int limbDirection = context.random().nextInt(12);
@@ -58,245 +58,245 @@ public class SakuraTreeFeature extends Feature<RuTreeConfiguration> {
         BlockPos.MutableBlockPos placePos = pos.mutable();
         while (placeCheck <= height_main) {
             if(placeCheck == 0){
-                placeBase(level, placePos, randomSource, treeConfiguration);
+                placeBase(level, placePos, Random, treeConfiguration);
             }
             if(placeCheck == height_main){
-                placeLimbs(level, placePos, limbDirection, randomSource, treeConfiguration);
+                placeLimbs(level, placePos, limbDirection, Random, treeConfiguration);
             }
-            placeLog(level, placePos, randomSource, treeConfiguration);
+            placeLog(level, placePos, Random, treeConfiguration);
             placePos.move(Direction.UP);
             placeCheck = placeCheck + 1;
         }
         return true;
     }
 
-    public boolean placeLimbs(LevelAccessor level, BlockPos pos, int limbDirection, RandomSource randomSource, RuTreeConfiguration treeConfiguration) {
+    public boolean placeLimbs(LevelAccessor level, BlockPos pos, int limbDirection, Random Random, RuTreeConfiguration treeConfiguration) {
         if(limbDirection==0){
-            placeLog(level, pos.north(), randomSource, treeConfiguration);
-            placeLog(level, pos.north().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.north().above().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.north().above().above().north(), randomSource, treeConfiguration);
-            placeLog(level, pos.north().above().above().north().above(), randomSource, treeConfiguration);
-            placeLeavesBlobLeft(level, pos.north().above().above().north().above(), randomSource, treeConfiguration);
+            placeLog(level, pos.north(), Random, treeConfiguration);
+            placeLog(level, pos.north().above(), Random, treeConfiguration);
+            placeLog(level, pos.north().above().above(), Random, treeConfiguration);
+            placeLog(level, pos.north().above().above().north(), Random, treeConfiguration);
+            placeLog(level, pos.north().above().above().north().above(), Random, treeConfiguration);
+            placeLeavesBlobLeft(level, pos.north().above().above().north().above(), Random, treeConfiguration);
 
-            placeLogZ(level, pos.above().south(), randomSource, treeConfiguration);
-            placeLogZ(level, pos.above().south().south(), randomSource, treeConfiguration);
-            placeLogZ(level, pos.above().south().south().above().south(), randomSource, treeConfiguration);
+            placeLogZ(level, pos.above().south(), Random, treeConfiguration);
+            placeLogZ(level, pos.above().south().south(), Random, treeConfiguration);
+            placeLogZ(level, pos.above().south().south().above().south(), Random, treeConfiguration);
             placeBeehive(level, pos.above().south().south().south(), Direction.SOUTH);
-            placeLeavesBlobRight(level, pos.above().south().south().above().south(), randomSource, treeConfiguration);
+            placeLeavesBlobRight(level, pos.above().south().south().above().south(), Random, treeConfiguration);
         }
         if(limbDirection==1){
-            placeLog(level, pos.south(), randomSource, treeConfiguration);
-            placeLog(level, pos.south().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.south().above().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.south().above().above().south(), randomSource, treeConfiguration);
-            placeLog(level, pos.south().above().above().south().above(), randomSource, treeConfiguration);
-            placeLeavesBlobLeft(level, pos.south().above().above().south().above(), randomSource, treeConfiguration);
+            placeLog(level, pos.south(), Random, treeConfiguration);
+            placeLog(level, pos.south().above(), Random, treeConfiguration);
+            placeLog(level, pos.south().above().above(), Random, treeConfiguration);
+            placeLog(level, pos.south().above().above().south(), Random, treeConfiguration);
+            placeLog(level, pos.south().above().above().south().above(), Random, treeConfiguration);
+            placeLeavesBlobLeft(level, pos.south().above().above().south().above(), Random, treeConfiguration);
 
-            placeLogZ(level, pos.above().north(), randomSource, treeConfiguration);
-            placeLogZ(level, pos.above().north().north(), randomSource, treeConfiguration);
-            placeLogZ(level, pos.above().north().north().above().north(), randomSource, treeConfiguration);
+            placeLogZ(level, pos.above().north(), Random, treeConfiguration);
+            placeLogZ(level, pos.above().north().north(), Random, treeConfiguration);
+            placeLogZ(level, pos.above().north().north().above().north(), Random, treeConfiguration);
             placeBeehive(level, pos.above().north().north().north(), Direction.NORTH);
-            placeLeavesBlobRight(level, pos.above().north().north().above().north(), randomSource, treeConfiguration);
+            placeLeavesBlobRight(level, pos.above().north().north().above().north(), Random, treeConfiguration);
         }
         if(limbDirection==2){
-            placeLog(level, pos.east(), randomSource, treeConfiguration);
-            placeLog(level, pos.east().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.east().above().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.east().above().above().east(), randomSource, treeConfiguration);
-            placeLog(level, pos.east().above().above().east().above(), randomSource, treeConfiguration);
-            placeLeavesBlobLeft(level, pos.east().above().above().east().above(), randomSource, treeConfiguration);
+            placeLog(level, pos.east(), Random, treeConfiguration);
+            placeLog(level, pos.east().above(), Random, treeConfiguration);
+            placeLog(level, pos.east().above().above(), Random, treeConfiguration);
+            placeLog(level, pos.east().above().above().east(), Random, treeConfiguration);
+            placeLog(level, pos.east().above().above().east().above(), Random, treeConfiguration);
+            placeLeavesBlobLeft(level, pos.east().above().above().east().above(), Random, treeConfiguration);
 
-            placeLogX(level, pos.above().west(), randomSource, treeConfiguration);
-            placeLogX(level, pos.above().west().west(), randomSource, treeConfiguration);
-            placeLogX(level, pos.above().west().west().above().west(), randomSource, treeConfiguration);
+            placeLogX(level, pos.above().west(), Random, treeConfiguration);
+            placeLogX(level, pos.above().west().west(), Random, treeConfiguration);
+            placeLogX(level, pos.above().west().west().above().west(), Random, treeConfiguration);
             placeBeehive(level, pos.above().west().west().west(), Direction.WEST);
-            placeLeavesBlobRight(level, pos.above().west().west().above().west(), randomSource, treeConfiguration);
+            placeLeavesBlobRight(level, pos.above().west().west().above().west(), Random, treeConfiguration);
         }
         if(limbDirection==3){
-            placeLog(level, pos.west(), randomSource, treeConfiguration);
-            placeLog(level, pos.west().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.west().above().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.west().above().above().west(), randomSource, treeConfiguration);
-            placeLog(level, pos.west().above().above().west().above(), randomSource, treeConfiguration);
-            placeLeavesBlobLeft(level, pos.west().above().above().west().above(), randomSource, treeConfiguration);
+            placeLog(level, pos.west(), Random, treeConfiguration);
+            placeLog(level, pos.west().above(), Random, treeConfiguration);
+            placeLog(level, pos.west().above().above(), Random, treeConfiguration);
+            placeLog(level, pos.west().above().above().west(), Random, treeConfiguration);
+            placeLog(level, pos.west().above().above().west().above(), Random, treeConfiguration);
+            placeLeavesBlobLeft(level, pos.west().above().above().west().above(), Random, treeConfiguration);
 
-            placeLogX(level, pos.above().east(), randomSource, treeConfiguration);
-            placeLogX(level, pos.above().east().east(), randomSource, treeConfiguration);
-            placeLogX(level, pos.above().east().east().above().east(), randomSource, treeConfiguration);
+            placeLogX(level, pos.above().east(), Random, treeConfiguration);
+            placeLogX(level, pos.above().east().east(), Random, treeConfiguration);
+            placeLogX(level, pos.above().east().east().above().east(), Random, treeConfiguration);
             placeBeehive(level, pos.above().east().east().east(), Direction.EAST);
-            placeLeavesBlobRight(level, pos.above().east().east().above().east(), randomSource, treeConfiguration);
+            placeLeavesBlobRight(level, pos.above().east().east().above().east(), Random, treeConfiguration);
         }
         if(limbDirection==4){
-            placeLog(level, pos.east().north(), randomSource, treeConfiguration);
-            placeLog(level, pos.east().north().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.east().north().above().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.east().east().north().above().above().north(), randomSource, treeConfiguration);
-            placeLog(level, pos.east().east().north().above().above().north().above(), randomSource, treeConfiguration);
-            placeLeavesBlobLeft(level, pos.east().east().north().above().above().north().above(), randomSource, treeConfiguration);
+            placeLog(level, pos.east().north(), Random, treeConfiguration);
+            placeLog(level, pos.east().north().above(), Random, treeConfiguration);
+            placeLog(level, pos.east().north().above().above(), Random, treeConfiguration);
+            placeLog(level, pos.east().east().north().above().above().north(), Random, treeConfiguration);
+            placeLog(level, pos.east().east().north().above().above().north().above(), Random, treeConfiguration);
+            placeLeavesBlobLeft(level, pos.east().east().north().above().above().north().above(), Random, treeConfiguration);
 
-            placeLogZ(level, pos.west().above().south(), randomSource, treeConfiguration);
-            placeLogZ(level, pos.west().above().south().south(), randomSource, treeConfiguration);
-            placeLogZ(level, pos.west().west().above().south().south().above().south(), randomSource, treeConfiguration);
+            placeLogZ(level, pos.west().above().south(), Random, treeConfiguration);
+            placeLogZ(level, pos.west().above().south().south(), Random, treeConfiguration);
+            placeLogZ(level, pos.west().west().above().south().south().above().south(), Random, treeConfiguration);
             placeBeehive(level, pos.west().west().above().south().south().south(), Direction.SOUTH);
-            placeLeavesBlobRight(level, pos.west().west().above().south().south().above().south(), randomSource, treeConfiguration);
+            placeLeavesBlobRight(level, pos.west().west().above().south().south().above().south(), Random, treeConfiguration);
         }
         if(limbDirection==5){
-            placeLog(level, pos.west().north(), randomSource, treeConfiguration);
-            placeLog(level, pos.west().north().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.west().north().above().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.west().west().north().above().above().north(), randomSource, treeConfiguration);
-            placeLog(level, pos.west().west().north().above().above().north().above(), randomSource, treeConfiguration);
-            placeLeavesBlobLeft(level, pos.west().west().north().above().above().north().above(), randomSource, treeConfiguration);
+            placeLog(level, pos.west().north(), Random, treeConfiguration);
+            placeLog(level, pos.west().north().above(), Random, treeConfiguration);
+            placeLog(level, pos.west().north().above().above(), Random, treeConfiguration);
+            placeLog(level, pos.west().west().north().above().above().north(), Random, treeConfiguration);
+            placeLog(level, pos.west().west().north().above().above().north().above(), Random, treeConfiguration);
+            placeLeavesBlobLeft(level, pos.west().west().north().above().above().north().above(), Random, treeConfiguration);
 
-            placeLogZ(level, pos.east().above().south(), randomSource, treeConfiguration);
-            placeLogZ(level, pos.east().above().south().south(), randomSource, treeConfiguration);
-            placeLogZ(level, pos.east().east().above().south().south().above().south(), randomSource, treeConfiguration);
+            placeLogZ(level, pos.east().above().south(), Random, treeConfiguration);
+            placeLogZ(level, pos.east().above().south().south(), Random, treeConfiguration);
+            placeLogZ(level, pos.east().east().above().south().south().above().south(), Random, treeConfiguration);
             placeBeehive(level, pos.east().east().above().south().south().south(), Direction.SOUTH);
-            placeLeavesBlobRight(level, pos.east().east().above().south().south().above().south(), randomSource, treeConfiguration);
+            placeLeavesBlobRight(level, pos.east().east().above().south().south().above().south(), Random, treeConfiguration);
         }
         if(limbDirection==6){
-            placeLog(level, pos.east().south(), randomSource, treeConfiguration);
-            placeLog(level, pos.east().south().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.east().south().above().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.east().east().south().above().above().south(), randomSource, treeConfiguration);
-            placeLog(level, pos.east().east().south().above().above().south().above(), randomSource, treeConfiguration);
-            placeLeavesBlobLeft(level, pos.east().east().south().above().above().south().above(), randomSource, treeConfiguration);
+            placeLog(level, pos.east().south(), Random, treeConfiguration);
+            placeLog(level, pos.east().south().above(), Random, treeConfiguration);
+            placeLog(level, pos.east().south().above().above(), Random, treeConfiguration);
+            placeLog(level, pos.east().east().south().above().above().south(), Random, treeConfiguration);
+            placeLog(level, pos.east().east().south().above().above().south().above(), Random, treeConfiguration);
+            placeLeavesBlobLeft(level, pos.east().east().south().above().above().south().above(), Random, treeConfiguration);
 
-            placeLogZ(level, pos.west().above().north(), randomSource, treeConfiguration);
-            placeLogZ(level, pos.west().above().north().north(), randomSource, treeConfiguration);
-            placeLogZ(level, pos.west().west().above().north().north().above().north(), randomSource, treeConfiguration);
+            placeLogZ(level, pos.west().above().north(), Random, treeConfiguration);
+            placeLogZ(level, pos.west().above().north().north(), Random, treeConfiguration);
+            placeLogZ(level, pos.west().west().above().north().north().above().north(), Random, treeConfiguration);
             placeBeehive(level, pos.west().west().above().north().north().north(), Direction.NORTH);
-            placeLeavesBlobRight(level, pos.west().west().above().north().north().above().north(), randomSource, treeConfiguration);
+            placeLeavesBlobRight(level, pos.west().west().above().north().north().above().north(), Random, treeConfiguration);
         }
         if(limbDirection==7){
-            placeLog(level, pos.west().south(), randomSource, treeConfiguration);
-            placeLog(level, pos.west().south().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.west().south().above().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.west().west().south().above().above().south(), randomSource, treeConfiguration);
-            placeLog(level, pos.west().west().south().above().above().south().above(), randomSource, treeConfiguration);
-            placeLeavesBlobLeft(level, pos.west().west().south().above().above().south().above(), randomSource, treeConfiguration);
+            placeLog(level, pos.west().south(), Random, treeConfiguration);
+            placeLog(level, pos.west().south().above(), Random, treeConfiguration);
+            placeLog(level, pos.west().south().above().above(), Random, treeConfiguration);
+            placeLog(level, pos.west().west().south().above().above().south(), Random, treeConfiguration);
+            placeLog(level, pos.west().west().south().above().above().south().above(), Random, treeConfiguration);
+            placeLeavesBlobLeft(level, pos.west().west().south().above().above().south().above(), Random, treeConfiguration);
 
-            placeLogZ(level, pos.east().above().north(), randomSource, treeConfiguration);
-            placeLogZ(level, pos.east().above().north().north(), randomSource, treeConfiguration);
-            placeLogZ(level, pos.east().east().above().north().north().above().north(), randomSource, treeConfiguration);
+            placeLogZ(level, pos.east().above().north(), Random, treeConfiguration);
+            placeLogZ(level, pos.east().above().north().north(), Random, treeConfiguration);
+            placeLogZ(level, pos.east().east().above().north().north().above().north(), Random, treeConfiguration);
             placeBeehive(level, pos.east().east().above().north().north().north(), Direction.NORTH);
-            placeLeavesBlobRight(level, pos.east().east().above().north().north().above().north(), randomSource, treeConfiguration);
+            placeLeavesBlobRight(level, pos.east().east().above().north().north().above().north(), Random, treeConfiguration);
         }
         if(limbDirection==8){
-            placeLog(level, pos.north().east(), randomSource, treeConfiguration);
-            placeLog(level, pos.north().east().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.north().east().above().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.north().north().east().above().above().east(), randomSource, treeConfiguration);
-            placeLog(level, pos.north().north().east().above().above().east().above(), randomSource, treeConfiguration);
-            placeLeavesBlobLeft(level, pos.north().north().east().above().above().east().above(), randomSource, treeConfiguration);
+            placeLog(level, pos.north().east(), Random, treeConfiguration);
+            placeLog(level, pos.north().east().above(), Random, treeConfiguration);
+            placeLog(level, pos.north().east().above().above(), Random, treeConfiguration);
+            placeLog(level, pos.north().north().east().above().above().east(), Random, treeConfiguration);
+            placeLog(level, pos.north().north().east().above().above().east().above(), Random, treeConfiguration);
+            placeLeavesBlobLeft(level, pos.north().north().east().above().above().east().above(), Random, treeConfiguration);
 
-            placeLogX(level, pos.south().above().west(), randomSource, treeConfiguration);
-            placeLogX(level, pos.south().above().west().west(), randomSource, treeConfiguration);
-            placeLogX(level, pos.south().south().above().west().west().above().west(), randomSource, treeConfiguration);
+            placeLogX(level, pos.south().above().west(), Random, treeConfiguration);
+            placeLogX(level, pos.south().above().west().west(), Random, treeConfiguration);
+            placeLogX(level, pos.south().south().above().west().west().above().west(), Random, treeConfiguration);
             placeBeehive(level, pos.south().south().above().west().west().west(), Direction.WEST);
-            placeLeavesBlobRight(level, pos.south().south().above().west().west().above().west(), randomSource, treeConfiguration);
+            placeLeavesBlobRight(level, pos.south().south().above().west().west().above().west(), Random, treeConfiguration);
         }
         if(limbDirection==9){
-            placeLog(level, pos.north().west(), randomSource, treeConfiguration);
-            placeLog(level, pos.north().west().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.north().west().above().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.north().north().west().above().above().west(), randomSource, treeConfiguration);
-            placeLog(level, pos.north().north().west().above().above().west().above(), randomSource, treeConfiguration);
-            placeLeavesBlobLeft(level, pos.north().north().west().above().above().west().above(), randomSource, treeConfiguration);
+            placeLog(level, pos.north().west(), Random, treeConfiguration);
+            placeLog(level, pos.north().west().above(), Random, treeConfiguration);
+            placeLog(level, pos.north().west().above().above(), Random, treeConfiguration);
+            placeLog(level, pos.north().north().west().above().above().west(), Random, treeConfiguration);
+            placeLog(level, pos.north().north().west().above().above().west().above(), Random, treeConfiguration);
+            placeLeavesBlobLeft(level, pos.north().north().west().above().above().west().above(), Random, treeConfiguration);
 
-            placeLogX(level, pos.south().above().east(), randomSource, treeConfiguration);
-            placeLogX(level, pos.south().above().east().east(), randomSource, treeConfiguration);
-            placeLogX(level, pos.south().south().above().east().east().above().east(), randomSource, treeConfiguration);
+            placeLogX(level, pos.south().above().east(), Random, treeConfiguration);
+            placeLogX(level, pos.south().above().east().east(), Random, treeConfiguration);
+            placeLogX(level, pos.south().south().above().east().east().above().east(), Random, treeConfiguration);
             placeBeehive(level, pos.south().south().above().east().east().east(), Direction.EAST);
-            placeLeavesBlobRight(level, pos.south().south().above().east().east().above().east(), randomSource, treeConfiguration);
+            placeLeavesBlobRight(level, pos.south().south().above().east().east().above().east(), Random, treeConfiguration);
         }
         if(limbDirection==10){
-            placeLog(level, pos.south().east(), randomSource, treeConfiguration);
-            placeLog(level, pos.south().east().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.south().east().above().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.south().south().east().above().above().east(), randomSource, treeConfiguration);
-            placeLog(level, pos.south().south().east().above().above().east().above(), randomSource, treeConfiguration);
-            placeLeavesBlobLeft(level, pos.south().south().east().above().above().east().above(), randomSource, treeConfiguration);
+            placeLog(level, pos.south().east(), Random, treeConfiguration);
+            placeLog(level, pos.south().east().above(), Random, treeConfiguration);
+            placeLog(level, pos.south().east().above().above(), Random, treeConfiguration);
+            placeLog(level, pos.south().south().east().above().above().east(), Random, treeConfiguration);
+            placeLog(level, pos.south().south().east().above().above().east().above(), Random, treeConfiguration);
+            placeLeavesBlobLeft(level, pos.south().south().east().above().above().east().above(), Random, treeConfiguration);
 
-            placeLogX(level, pos.north().above().west(), randomSource, treeConfiguration);
-            placeLogX(level, pos.north().above().west().west(), randomSource, treeConfiguration);
-            placeLogX(level, pos.north().north().above().west().west().above().west(), randomSource, treeConfiguration);
+            placeLogX(level, pos.north().above().west(), Random, treeConfiguration);
+            placeLogX(level, pos.north().above().west().west(), Random, treeConfiguration);
+            placeLogX(level, pos.north().north().above().west().west().above().west(), Random, treeConfiguration);
             placeBeehive(level, pos.north().north().above().west().west().west(), Direction.WEST);
-            placeLeavesBlobRight(level, pos.north().north().above().west().west().above().west(), randomSource, treeConfiguration);
+            placeLeavesBlobRight(level, pos.north().north().above().west().west().above().west(), Random, treeConfiguration);
         }
         if(limbDirection==11){
-            placeLog(level, pos.south().west(), randomSource, treeConfiguration);
-            placeLog(level, pos.south().west().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.south().west().above().above(), randomSource, treeConfiguration);
-            placeLog(level, pos.south().south().west().above().above().west(), randomSource, treeConfiguration);
-            placeLog(level, pos.south().south().west().above().above().west().above(), randomSource, treeConfiguration);
-            placeLeavesBlobLeft(level, pos.south().south().west().above().above().west().above(), randomSource, treeConfiguration);
+            placeLog(level, pos.south().west(), Random, treeConfiguration);
+            placeLog(level, pos.south().west().above(), Random, treeConfiguration);
+            placeLog(level, pos.south().west().above().above(), Random, treeConfiguration);
+            placeLog(level, pos.south().south().west().above().above().west(), Random, treeConfiguration);
+            placeLog(level, pos.south().south().west().above().above().west().above(), Random, treeConfiguration);
+            placeLeavesBlobLeft(level, pos.south().south().west().above().above().west().above(), Random, treeConfiguration);
 
-            placeLogX(level, pos.north().above().east(), randomSource, treeConfiguration);
-            placeLogX(level, pos.north().above().east().east(), randomSource, treeConfiguration);
-            placeLogX(level, pos.north().north().above().east().east().above().east(), randomSource, treeConfiguration);
+            placeLogX(level, pos.north().above().east(), Random, treeConfiguration);
+            placeLogX(level, pos.north().above().east().east(), Random, treeConfiguration);
+            placeLogX(level, pos.north().north().above().east().east().above().east(), Random, treeConfiguration);
             placeBeehive(level, pos.north().north().above().east().east().east(), Direction.EAST);
-            placeLeavesBlobRight(level, pos.north().north().above().east().east().above().east(), randomSource, treeConfiguration);
+            placeLeavesBlobRight(level, pos.north().north().above().east().east().above().east(), Random, treeConfiguration);
         }
         return true;
     }
 
-    public boolean placeBase(LevelAccessor level, BlockPos pos, RandomSource randomSource, RuTreeConfiguration treeConfiguration) {
+    public boolean placeBase(LevelAccessor level, BlockPos pos, Random Random, RuTreeConfiguration treeConfiguration) {
         Random random = new Random();
         int rot = random.nextInt(8);
         if(rot==0){
-            placeLog(level, pos.north().east(), randomSource, treeConfiguration);
-            placeRoot(level, pos.north().east(), randomSource, treeConfiguration);
-            placeLogZ(level, pos.south(), randomSource, treeConfiguration);
-            placeRoot(level, pos.south(), randomSource, treeConfiguration);
+            placeLog(level, pos.north().east(), Random, treeConfiguration);
+            placeRoot(level, pos.north().east(), Random, treeConfiguration);
+            placeLogZ(level, pos.south(), Random, treeConfiguration);
+            placeRoot(level, pos.south(), Random, treeConfiguration);
         }
         if(rot==1){
-            placeLog(level, pos.north().west(), randomSource, treeConfiguration);
-            placeRoot(level, pos.north().west(), randomSource, treeConfiguration);
-            placeLogZ(level, pos.south(), randomSource, treeConfiguration);
-            placeRoot(level, pos.south(), randomSource, treeConfiguration);
+            placeLog(level, pos.north().west(), Random, treeConfiguration);
+            placeRoot(level, pos.north().west(), Random, treeConfiguration);
+            placeLogZ(level, pos.south(), Random, treeConfiguration);
+            placeRoot(level, pos.south(), Random, treeConfiguration);
         }
         if(rot==2){
-            placeLog(level, pos.south().east(), randomSource, treeConfiguration);
-            placeRoot(level, pos.south().east(), randomSource, treeConfiguration);
-            placeLogZ(level, pos.north(), randomSource, treeConfiguration);
-            placeRoot(level, pos.north(), randomSource, treeConfiguration);
+            placeLog(level, pos.south().east(), Random, treeConfiguration);
+            placeRoot(level, pos.south().east(), Random, treeConfiguration);
+            placeLogZ(level, pos.north(), Random, treeConfiguration);
+            placeRoot(level, pos.north(), Random, treeConfiguration);
         }
         if(rot==3){
-            placeLog(level, pos.south().west(), randomSource, treeConfiguration);
-            placeRoot(level, pos.south().west(), randomSource, treeConfiguration);
-            placeLogZ(level, pos.north(), randomSource, treeConfiguration);
-            placeRoot(level, pos.north(), randomSource, treeConfiguration);
+            placeLog(level, pos.south().west(), Random, treeConfiguration);
+            placeRoot(level, pos.south().west(), Random, treeConfiguration);
+            placeLogZ(level, pos.north(), Random, treeConfiguration);
+            placeRoot(level, pos.north(), Random, treeConfiguration);
         }
         if(rot==4){
-            placeLog(level, pos.east().north(), randomSource, treeConfiguration);
-            placeRoot(level, pos.east().north(), randomSource, treeConfiguration);
-            placeLogX(level, pos.west(), randomSource, treeConfiguration);
-            placeRoot(level, pos.west(), randomSource, treeConfiguration);
+            placeLog(level, pos.east().north(), Random, treeConfiguration);
+            placeRoot(level, pos.east().north(), Random, treeConfiguration);
+            placeLogX(level, pos.west(), Random, treeConfiguration);
+            placeRoot(level, pos.west(), Random, treeConfiguration);
         }
         if(rot==5){
-            placeLog(level, pos.east().south(), randomSource, treeConfiguration);
-            placeRoot(level, pos.east().south(), randomSource, treeConfiguration);
-            placeLogX(level, pos.west(), randomSource, treeConfiguration);
-            placeRoot(level, pos.west(), randomSource, treeConfiguration);
+            placeLog(level, pos.east().south(), Random, treeConfiguration);
+            placeRoot(level, pos.east().south(), Random, treeConfiguration);
+            placeLogX(level, pos.west(), Random, treeConfiguration);
+            placeRoot(level, pos.west(), Random, treeConfiguration);
         }
         if(rot==6){
-            placeLog(level, pos.west().north(), randomSource, treeConfiguration);
-            placeRoot(level, pos.west().north(), randomSource, treeConfiguration);
-            placeLogX(level, pos.east(), randomSource, treeConfiguration);
-            placeRoot(level, pos.east(), randomSource, treeConfiguration);
+            placeLog(level, pos.west().north(), Random, treeConfiguration);
+            placeRoot(level, pos.west().north(), Random, treeConfiguration);
+            placeLogX(level, pos.east(), Random, treeConfiguration);
+            placeRoot(level, pos.east(), Random, treeConfiguration);
         }
         if(rot==7){
-            placeLog(level, pos.west().south(), randomSource, treeConfiguration);
-            placeRoot(level, pos.west().south(), randomSource, treeConfiguration);
-            placeLogX(level, pos.east(), randomSource, treeConfiguration);
-            placeRoot(level, pos.east(), randomSource, treeConfiguration);
+            placeLog(level, pos.west().south(), Random, treeConfiguration);
+            placeRoot(level, pos.west().south(), Random, treeConfiguration);
+            placeLogX(level, pos.east(), Random, treeConfiguration);
+            placeRoot(level, pos.east(), Random, treeConfiguration);
         }
         return true;
     }
 
-    public boolean placeLog(LevelAccessor level, BlockPos pos, RandomSource randomSource, RuTreeConfiguration treeConfiguration) {
+    public boolean placeLog(LevelAccessor level, BlockPos pos, Random Random, RuTreeConfiguration treeConfiguration) {
         Random random = new Random();
         if(level.isOutsideBuildHeight(pos)){
             return true;
@@ -314,7 +314,7 @@ public class SakuraTreeFeature extends Feature<RuTreeConfiguration> {
             level.setBlock(pos, Blocks.DIRT.defaultBlockState(), 2);
         }
         else if(isReplaceable(level, pos)) {
-            level.setBlock(pos, treeConfiguration.trunkProvider.getState(randomSource, pos), 2);
+            level.setBlock(pos, treeConfiguration.trunkProvider.getState(Random, pos), 2);
         }
         else{
             return true;
@@ -334,7 +334,7 @@ public class SakuraTreeFeature extends Feature<RuTreeConfiguration> {
         }
         return true;
     }
-    public boolean placeLogX(LevelAccessor level, BlockPos pos, RandomSource randomSource, RuTreeConfiguration treeConfiguration) {
+    public boolean placeLogX(LevelAccessor level, BlockPos pos, Random Random, RuTreeConfiguration treeConfiguration) {
         Random random = new Random();
         if(level.isOutsideBuildHeight(pos)){
             return true;
@@ -352,7 +352,7 @@ public class SakuraTreeFeature extends Feature<RuTreeConfiguration> {
             level.setBlock(pos, Blocks.DIRT.defaultBlockState(), 2);
         }
         else if(isReplaceable(level, pos)) {
-            level.setBlock(pos, treeConfiguration.trunkProvider.getState(randomSource, pos).setValue(RotatedPillarBlock.AXIS, Direction.Axis.X), 2);
+            level.setBlock(pos, treeConfiguration.trunkProvider.getState(Random, pos).setValue(RotatedPillarBlock.AXIS, Direction.Axis.X), 2);
         }
         else{
             return true;
@@ -372,7 +372,7 @@ public class SakuraTreeFeature extends Feature<RuTreeConfiguration> {
         }
         return true;
     }
-    public boolean placeLogZ(LevelAccessor level, BlockPos pos, RandomSource randomSource, RuTreeConfiguration treeConfiguration) {
+    public boolean placeLogZ(LevelAccessor level, BlockPos pos, Random Random, RuTreeConfiguration treeConfiguration) {
         Random random = new Random();
         if(level.isOutsideBuildHeight(pos)){
             return true;
@@ -390,7 +390,7 @@ public class SakuraTreeFeature extends Feature<RuTreeConfiguration> {
             level.setBlock(pos, Blocks.DIRT.defaultBlockState(), 2);
         }
         else if(isReplaceable(level, pos)) {
-            level.setBlock(pos, treeConfiguration.trunkProvider.getState(randomSource, pos).setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z), 2);
+            level.setBlock(pos, treeConfiguration.trunkProvider.getState(Random, pos).setValue(RotatedPillarBlock.AXIS, Direction.Axis.Z), 2);
         }
         else{
             return true;
@@ -411,136 +411,136 @@ public class SakuraTreeFeature extends Feature<RuTreeConfiguration> {
         return true;
     }
 
-    public boolean placeRoot(LevelAccessor level, BlockPos pos, RandomSource randomSource, RuTreeConfiguration treeConfiguration) {
+    public boolean placeRoot(LevelAccessor level, BlockPos pos, Random Random, RuTreeConfiguration treeConfiguration) {
         Random random = new Random();
         int rd = 2;
         int i = 0;
         BlockPos.MutableBlockPos placePos = pos.mutable();
         while(i<=rd){
-            placeLog(level, placePos, randomSource, treeConfiguration);
+            placeLog(level, placePos, Random, treeConfiguration);
             placePos.move(Direction.DOWN);
             i++;
         }
         return true;
     }
 
-    public boolean placeLeavesBlobLeft(LevelAccessor level, BlockPos pos, RandomSource randomSource, RuTreeConfiguration treeConfiguration) {
+    public boolean placeLeavesBlobLeft(LevelAccessor level, BlockPos pos, Random Random, RuTreeConfiguration treeConfiguration) {
         Random random = new Random();
-        placeLeavesTopLeft(level, pos, randomSource, treeConfiguration);
-        placeLeavesMiddle(level, pos.above(), randomSource, treeConfiguration);
-        placeLeavesTopLeft(level, pos.above().above(), randomSource, treeConfiguration);
+        placeLeavesTopLeft(level, pos, Random, treeConfiguration);
+        placeLeavesMiddle(level, pos.above(), Random, treeConfiguration);
+        placeLeavesTopLeft(level, pos.above().above(), Random, treeConfiguration);
         return true;
     }
-    public boolean placeLeavesBlobRight(LevelAccessor level, BlockPos pos, RandomSource randomSource, RuTreeConfiguration treeConfiguration) {
+    public boolean placeLeavesBlobRight(LevelAccessor level, BlockPos pos, Random Random, RuTreeConfiguration treeConfiguration) {
         Random random = new Random();
-        placeLeavesTopRight(level, pos, randomSource, treeConfiguration);
-        placeLeavesMiddle(level, pos.above(), randomSource, treeConfiguration);
-        placeLeavesTopRight(level, pos.above().above(), randomSource, treeConfiguration);
+        placeLeavesTopRight(level, pos, Random, treeConfiguration);
+        placeLeavesMiddle(level, pos.above(), Random, treeConfiguration);
+        placeLeavesTopRight(level, pos.above().above(), Random, treeConfiguration);
         return true;
     }
 
-    public boolean placeLeavesMiddle(LevelAccessor level, BlockPos pos, RandomSource randomSource, RuTreeConfiguration treeConfiguration) {
+    public boolean placeLeavesMiddle(LevelAccessor level, BlockPos pos, Random Random, RuTreeConfiguration treeConfiguration) {
         Random random = new Random();
-        placeLeavesBlock(level,pos, randomSource, treeConfiguration);
+        placeLeavesBlock(level,pos, Random, treeConfiguration);
 
-        placeLeavesBlock(level,pos.north(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().east().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().east().east().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().west().west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().west().west().west(), randomSource, treeConfiguration);
+        placeLeavesBlock(level,pos.north(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().east().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().east().east().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().west().west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().west().west().west(), Random, treeConfiguration);
 
-        placeLeavesBlock(level,pos.north().north(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().north().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().north().east().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().north().east().east().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().north().west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().north().west().west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().north().west().west().west(), randomSource, treeConfiguration);
+        placeLeavesBlock(level,pos.north().north(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().north().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().north().east().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().north().east().east().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().north().west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().north().west().west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().north().west().west().west(), Random, treeConfiguration);
 
-        placeLeavesBlock(level,pos.north().north().north(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().north().north().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().north().north().east().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().north().north().west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().north().north().west().west(), randomSource, treeConfiguration);
+        placeLeavesBlock(level,pos.north().north().north(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().north().north().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().north().north().east().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().north().north().west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().north().north().west().west(), Random, treeConfiguration);
 
-        placeLeavesBlock(level,pos.south(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().east().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().east().east().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().west().west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().west().west().west(), randomSource, treeConfiguration);
+        placeLeavesBlock(level,pos.south(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().east().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().east().east().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().west().west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().west().west().west(), Random, treeConfiguration);
 
-        placeLeavesBlock(level,pos.south().south(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().south().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().south().east().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().south().east().east().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().south().west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().south().west().west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().south().west().west().west(), randomSource, treeConfiguration);
+        placeLeavesBlock(level,pos.south().south(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().south().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().south().east().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().south().east().east().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().south().west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().south().west().west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().south().west().west().west(), Random, treeConfiguration);
 
-        placeLeavesBlock(level,pos.south().south().south(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().south().south().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().south().south().east().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().south().south().west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().south().south().west().west(), randomSource, treeConfiguration);
+        placeLeavesBlock(level,pos.south().south().south(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().south().south().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().south().south().east().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().south().south().west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().south().south().west().west(), Random, treeConfiguration);
 
-        placeLeavesBlock(level,pos.east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.east().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.east().east().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.west().west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.west().west().west(), randomSource, treeConfiguration);
+        placeLeavesBlock(level,pos.east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.east().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.east().east().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.west().west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.west().west().west(), Random, treeConfiguration);
         return true;
     }
-    public boolean placeLeavesTopLeft(LevelAccessor level, BlockPos pos, RandomSource randomSource, RuTreeConfiguration treeConfiguration) {
+    public boolean placeLeavesTopLeft(LevelAccessor level, BlockPos pos, Random Random, RuTreeConfiguration treeConfiguration) {
         Random random = new Random();
-        placeLeavesBlock(level,pos, randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().north(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().north().west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().south(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().south().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.east().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.east().north(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.east().east().north(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.west().west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.west().south(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.west().west().south(), randomSource, treeConfiguration);
+        placeLeavesBlock(level,pos, Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().north(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().north().west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().south(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().south().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.east().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.east().north(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.east().east().north(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.west().west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.west().south(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.west().west().south(), Random, treeConfiguration);
         return true;
     }
-    public void placeLeavesTopRight(LevelAccessor level, BlockPos pos, RandomSource randomSource, RuTreeConfiguration treeConfiguration) {
-        placeLeavesBlock(level,pos, randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().north(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.north().north().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().south(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.south().south().west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.east().east(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.east().south(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.east().east().south(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.west().west(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.west().north(), randomSource, treeConfiguration);
-        placeLeavesBlock(level,pos.west().west().north(), randomSource, treeConfiguration);
+    public void placeLeavesTopRight(LevelAccessor level, BlockPos pos, Random Random, RuTreeConfiguration treeConfiguration) {
+        placeLeavesBlock(level,pos, Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().north(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.north().north().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().south(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.south().south().west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.east().east(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.east().south(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.east().east().south(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.west().west(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.west().north(), Random, treeConfiguration);
+        placeLeavesBlock(level,pos.west().west().north(), Random, treeConfiguration);
     }
-    public void placeLeavesBlock(LevelAccessor level, BlockPos pos, RandomSource randomSource, RuTreeConfiguration treeConfiguration) {
+    public void placeLeavesBlock(LevelAccessor level, BlockPos pos, Random Random, RuTreeConfiguration treeConfiguration) {
         if(level.isOutsideBuildHeight(pos)){
             return;
         }
         if(level.getBlockState(pos).getMaterial().isReplaceable()) {
-            level.setBlock(pos, treeConfiguration.foliageProvider.getState(randomSource, pos), 2);
+            level.setBlock(pos, treeConfiguration.foliageProvider.getState(Random, pos), 2);
 
         }
     }

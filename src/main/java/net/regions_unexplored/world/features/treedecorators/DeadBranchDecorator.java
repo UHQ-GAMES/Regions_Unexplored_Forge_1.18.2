@@ -16,13 +16,18 @@ package net.regions_unexplored.world.features.treedecorators;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
-import net.minecraft.world.level.block.RotatedPillarBlock;
+import net.minecraft.world.level.LevelSimulatedReader;
+import net.minecraft.world.level.block.state.BlockState;
+import net.minecraft.world.level.levelgen.feature.Feature;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TreeDecoratorType;
 import net.minecraft.world.level.levelgen.feature.treedecorators.TrunkVineDecorator;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.world.level.block.BranchBlock;
+
+import java.util.List;
+import java.util.Random;
+import java.util.function.BiConsumer;
 
 public class DeadBranchDecorator extends TrunkVineDecorator {
 	public static final DeadBranchDecorator INSTANCE = new DeadBranchDecorator();
@@ -31,6 +36,8 @@ public class DeadBranchDecorator extends TrunkVineDecorator {
 	static {
 		codec = com.mojang.serialization.Codec.unit(() -> INSTANCE);
 		tdt = new TreeDecoratorType<>(codec);
+		tdt.setRegistryName("dead_branch_decorator");
+		
 	}
 
 	@Override
@@ -39,31 +46,31 @@ public class DeadBranchDecorator extends TrunkVineDecorator {
 	}
 
 	@Override
-	public void place(Context context) {
-		for(int i = 3; i < context.logs().size(); i++){
-			int random1 = context.random().nextInt(5);
-			int random2 = context.random().nextInt(5);
-			int random3 = context.random().nextInt(5);
-			int random4 = context.random().nextInt(5);
+	public void place(LevelSimulatedReader levelReader, BiConsumer<BlockPos, BlockState> biConsumer, Random random, List<BlockPos> listBlockPos, List<BlockPos> listBlockPos2) {
+		for(int i = 3; i < listBlockPos.size(); i++){
+			int random1 = random.nextInt(5);
+			int random2 = random.nextInt(5);
+			int random3 = random.nextInt(5);
+			int random4 = random.nextInt(5);
 		if (random1 == 0) {
-			BlockPos bp1 = context.logs().get(i).west();
-			if (context.isAir(bp1)) {
-				context.setBlock(bp1, RegionsUnexploredBlocks.DEAD_BRANCH.get().defaultBlockState().setValue(BranchBlock.FACING, Direction.WEST));
+			BlockPos bp1 = listBlockPos.get(i).west();
+			if (Feature.isAir(levelReader, bp1)) {
+				biConsumer.accept(bp1, RegionsUnexploredBlocks.DEAD_BRANCH.get().defaultBlockState().setValue(BranchBlock.FACING, Direction.WEST));
 			}
 		} else if (random2 == 0) {
-			BlockPos bp2 = context.logs().get(i).east();
-			if (context.isAir(bp2)) {
-				context.setBlock(bp2, RegionsUnexploredBlocks.DEAD_BRANCH.get().defaultBlockState().setValue(BranchBlock.FACING, Direction.EAST));
+			BlockPos bp2 = listBlockPos.get(i).east();
+			if (Feature.isAir(levelReader, bp2)) {
+				biConsumer.accept(bp2, RegionsUnexploredBlocks.DEAD_BRANCH.get().defaultBlockState().setValue(BranchBlock.FACING, Direction.EAST));
 			}
 		} else if (random3 == 0) {
-			BlockPos bp3 = context.logs().get(i).north();
-			if (context.isAir(bp3)) {
-				context.setBlock(bp3, RegionsUnexploredBlocks.DEAD_BRANCH.get().defaultBlockState().setValue(BranchBlock.FACING, Direction.NORTH));
+			BlockPos bp3 = listBlockPos.get(i).north();
+			if (Feature.isAir(levelReader, bp3)) {
+				biConsumer.accept(bp3, RegionsUnexploredBlocks.DEAD_BRANCH.get().defaultBlockState().setValue(BranchBlock.FACING, Direction.NORTH));
 			}
 		} else if (random4 == 0) {
-			BlockPos bp4 = context.logs().get(i).south();
-			if (context.isAir(bp4)) {
-				context.setBlock(bp4, RegionsUnexploredBlocks.DEAD_BRANCH.get().defaultBlockState().setValue(BranchBlock.FACING, Direction.SOUTH));
+			BlockPos bp4 = listBlockPos.get(i).south();
+			if (Feature.isAir(levelReader, bp4)) {
+				biConsumer.accept(bp4, RegionsUnexploredBlocks.DEAD_BRANCH.get().defaultBlockState().setValue(BranchBlock.FACING, Direction.SOUTH));
 			}
 		}
 	}

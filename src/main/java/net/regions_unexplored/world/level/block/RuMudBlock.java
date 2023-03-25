@@ -2,7 +2,7 @@ package net.regions_unexplored.world.level.block;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
@@ -24,7 +24,7 @@ public class RuMudBlock extends Block {
         return SHAPE;
     }
 
-    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void randomTick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         if (level.getBlockState(pos.below()).canOcclude()) {
             if ((level.getBlockState(pos.below().below())).getBlock() == Blocks.POINTED_DRIPSTONE) {
                 if (Math.random() < 0.05) {
@@ -51,7 +51,7 @@ public class RuMudBlock extends Block {
     }
 
     @Override
-    public void tick(BlockState state, ServerLevel level, BlockPos pos, RandomSource random) {
+    public void tick(BlockState state, ServerLevel level, BlockPos pos, Random random) {
         super.tick(state, level, pos, random);
         int x = pos.getX();
         int y = pos.getY();

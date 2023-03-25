@@ -18,7 +18,7 @@ import net.regions_unexplored.data.tags.RegionsUnexploredTags;
 
 public class SculkSaplingBlock extends SaplingBlock {
     public SculkSaplingBlock(AbstractTreeGrower tree) {
-        super(tree, Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.WOOD).noCollission().instabreak().sound(SoundType.SCULK_VEIN).randomTicks());
+        super(tree, Properties.of(Material.REPLACEABLE_PLANT, MaterialColor.WOOD).noCollission().instabreak().sound(SoundType.SCULK_SENSOR).randomTicks());
     }
 
     @Override

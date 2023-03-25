@@ -4,7 +4,7 @@ import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.util.Mth;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Blocks;
@@ -25,7 +25,7 @@ public class HangingEarlightFeature extends Feature<NoneFeatureConfiguration> {
     public boolean place(FeaturePlaceContext<NoneFeatureConfiguration> context) {
         WorldGenLevel level = context.level();
         BlockPos pos = context.origin();
-        RandomSource random = context.random();
+        Random random = context.random();
         if (!level.isEmptyBlock(pos)) {
             return false;
         } else {
@@ -40,7 +40,7 @@ public class HangingEarlightFeature extends Feature<NoneFeatureConfiguration> {
         }
     }
 
-    private void placeRoofCobaltObsidian(LevelAccessor level, RandomSource random, BlockPos pos) {
+    private void placeRoofCobaltObsidian(LevelAccessor level, Random random, BlockPos pos) {
         level.setBlock(pos, RegionsUnexploredBlocks.COBALT_OBSIDIAN.get().defaultBlockState(), 2);
         BlockPos.MutableBlockPos pos1 = new BlockPos.MutableBlockPos();
         BlockPos.MutableBlockPos pos2 = new BlockPos.MutableBlockPos();
@@ -69,7 +69,7 @@ public class HangingEarlightFeature extends Feature<NoneFeatureConfiguration> {
 
     }
 
-    private void placeRoofHangingEarlight(LevelAccessor level, RandomSource random, BlockPos pos) {
+    private void placeRoofHangingEarlight(LevelAccessor level, Random random, BlockPos pos) {
         BlockPos.MutableBlockPos pos1 = new BlockPos.MutableBlockPos();
 
         for(int i = 0; i < 100; ++i) {
@@ -93,7 +93,7 @@ public class HangingEarlightFeature extends Feature<NoneFeatureConfiguration> {
 
     }
 
-    public static void placeHangingEarlightColumn(LevelAccessor level, RandomSource random, BlockPos.MutableBlockPos pos, int length, int low, int high) {
+    public static void placeHangingEarlightColumn(LevelAccessor level, Random random, BlockPos.MutableBlockPos pos, int length, int low, int high) {
         for(int i = 0; i <= length; ++i) {
             if (level.isEmptyBlock(pos)) {
                 if (i == length || !level.isEmptyBlock(pos.below())) {

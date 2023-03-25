@@ -4,7 +4,6 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.serialization.Codec;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.util.RandomSource;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.WorldGenLevel;
 import net.minecraft.world.level.block.Block;
@@ -17,6 +16,7 @@ import net.regions_unexplored.block.RegionsUnexploredBlocks;
 import net.regions_unexplored.data.tags.RegionsUnexploredTags;
 
 import javax.annotation.Nullable;
+import java.util.Random;
 
 public class BasaltBlobFeature extends Feature<ColumnFeatureConfiguration> {
     private static final ImmutableList<Block> CANNOT_PLACE_ON = ImmutableList.of(
@@ -59,9 +59,7 @@ public class BasaltBlobFeature extends Feature<ColumnFeatureConfiguration> {
             Blocks.NETHER_BRICK_FENCE,
             Blocks.NETHER_BRICK_STAIRS,
             Blocks.NETHER_WART,
-            Blocks.CHEST,
-            RegionsUnexploredBlocks.ASH_VENT.get(),
-            RegionsUnexploredBlocks.DEAD_LEAVES.get());
+            Blocks.CHEST);
 
     public BasaltBlobFeature(Codec<ColumnFeatureConfiguration> codec) {
         super(codec);
@@ -71,21 +69,21 @@ public class BasaltBlobFeature extends Feature<ColumnFeatureConfiguration> {
         int i = context.chunkGenerator().getSeaLevel();
         BlockPos blockpos = context.origin();
         WorldGenLevel worldgenlevel = context.level();
-        RandomSource randomsource = context.random();
+        Random Random = context.random();
         ColumnFeatureConfiguration columnfeatureconfiguration = context.config();
         if (!canPlaceAt(worldgenlevel, i, blockpos.mutable())) {
             return false;
         } else {
-            int j = columnfeatureconfiguration.height().sample(randomsource);
-            boolean flag = randomsource.nextFloat() < 0.9F;
+            int j = columnfeatureconfiguration.height().sample(Random);
+            boolean flag = Random.nextFloat() < 0.9F;
             int k = Math.min(j, flag ? 5 : 8);
             int l = flag ? 50 : 15;
             boolean flag1 = false;
 
-            for(BlockPos blockpos1 : BlockPos.randomBetweenClosed(randomsource, l, blockpos.getX() - k, blockpos.getY(), blockpos.getZ() - k, blockpos.getX() + k, blockpos.getY(), blockpos.getZ() + k)) {
+            for(BlockPos blockpos1 : BlockPos.randomBetweenClosed(Random, l, blockpos.getX() - k, blockpos.getY(), blockpos.getZ() - k, blockpos.getX() + k, blockpos.getY(), blockpos.getZ() + k)) {
                 int i1 = j - blockpos1.distManhattan(blockpos);
                 if (i1 >= 0) {
-                    flag1 |= this.placeColumn(worldgenlevel, i, blockpos1, i1, columnfeatureconfiguration.reach().sample(randomsource));
+                    flag1 |= this.placeColumn(worldgenlevel, i, blockpos1, i1, columnfeatureconfiguration.reach().sample(Random));
                 }
             }
 

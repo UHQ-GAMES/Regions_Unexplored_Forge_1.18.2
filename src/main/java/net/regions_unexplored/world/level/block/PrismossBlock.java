@@ -3,7 +3,7 @@ package net.regions_unexplored.world.level.block;
 import net.minecraft.core.BlockPos;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.tags.BlockTags;
-import net.minecraft.util.RandomSource;
+import java.util.Random;
 import net.minecraft.world.level.BlockGetter;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelReader;
@@ -22,11 +22,11 @@ public class PrismossBlock extends Block implements BonemealableBlock {
       return level.getBlockState(pos.above()).isAir();
    }
 
-   public boolean isBonemealSuccess(Level level, RandomSource random, BlockPos pos, BlockState state) {
+   public boolean isBonemealSuccess(Level level, Random random, BlockPos pos, BlockState state) {
       return true;
    }
 
-   public void performBonemeal(ServerLevel level, RandomSource random, BlockPos pos, BlockState state) {
+   public void performBonemeal(ServerLevel level, Random random, BlockPos pos, BlockState state) {
       //NORTH
       if(level.getBlockState(pos.north()).is(BlockTags.STONE_ORE_REPLACEABLES)){
          if(random.nextInt(2)==0){
