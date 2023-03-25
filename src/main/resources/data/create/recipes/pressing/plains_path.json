@@ -1,0 +1,18 @@
+{
+  "type": "create:pressing",
+  "ingredients": [
+    [
+      {
+        "item": "regions_unexplored:plains_grass_block"
+      },
+      {
+        "item": "regions_unexplored:plains_dirt"
+      }
+    ]
+  ],
+  "results": [
+    {
+      "item": "regions_unexplored:plains_dirt_path"
+    }
+  ]
+}

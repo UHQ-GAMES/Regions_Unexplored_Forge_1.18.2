@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "regions_unexplored:mauve_log"
+    }
+  ],
+  "results": [
+    {
+      "item": "regions_unexplored:stripped_mauve_log"
+    }
+  ],
+  "processingTime": 50
+}

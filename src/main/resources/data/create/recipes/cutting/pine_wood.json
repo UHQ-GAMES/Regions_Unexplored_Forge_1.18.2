@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "regions_unexplored:pine_wood"
+    }
+  ],
+  "results": [
+    {
+      "item": "regions_unexplored:stripped_pine_wood"
+    }
+  ],
+  "processingTime": 50
+}

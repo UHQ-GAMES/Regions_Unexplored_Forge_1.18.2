@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "regions_unexplored:palm_wood"
+    }
+  ],
+  "results": [
+    {
+      "item": "regions_unexplored:stripped_palm_wood"
+    }
+  ],
+  "processingTime": 50
+}

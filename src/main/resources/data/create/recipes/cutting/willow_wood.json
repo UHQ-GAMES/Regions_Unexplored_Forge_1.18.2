@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "regions_unexplored:willow_wood"
+    }
+  ],
+  "results": [
+    {
+      "item": "regions_unexplored:stripped_willow_wood"
+    }
+  ],
+  "processingTime": 50
+}

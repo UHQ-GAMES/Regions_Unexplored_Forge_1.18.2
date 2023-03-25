@@ -31,8 +31,6 @@ public class RuVegetationFeatures {
     public static final WeightedStateProvider cobaltWeights = new WeightedStateProvider(SimpleWeightedRandomList.<BlockState>builder().add(RegionsUnexploredBlocks.COBALT_ROOTS.get().defaultBlockState(), 100).add(RegionsUnexploredBlocks.COBALT_EARLIGHT.get().defaultBlockState(), 1));
 
     //1.19.4 Features
-    public static final Holder<ConfiguredFeature<GiantBioshroomConfiguration, ?>> GIANT_BLUE_BIOSHROOM = FeatureUtils.register("regions_unexplored:giant_blue_bioshroom", RuFeatureRegistry.GIANT_BLUE_BIOSHROOM, new GiantBioshroomConfiguration(BlockStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.BLUE_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.GLOWING_BLUE_BIOSHROOM_BLOCK.get().defaultBlockState()), 7, 7));
-    public static final Holder<ConfiguredFeature<GiantBioshroomConfiguration, ?>> GIANT_GREEN_BIOSHROOM = FeatureUtils.register("regions_unexplored:giant_green_bioshroom", RuFeatureRegistry.GIANT_GREEN_BIOSHROOM, new GiantBioshroomConfiguration(BlockStateProvider.simple(Blocks.MUSHROOM_STEM.defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.GREEN_BIOSHROOM_BLOCK.get().defaultBlockState()), BlockStateProvider.simple(RegionsUnexploredBlocks.GLOWING_GREEN_BIOSHROOM_BLOCK.get().defaultBlockState()), 8, 5));
 
     public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> WATER_CATTAIL = FeatureUtils.register("regions_unexplored:water_cattail", RuFeatureRegistry.WATER_CATTAIL, FeatureConfiguration.NONE);
     //TALL_SAPLINGS
@@ -80,8 +78,6 @@ public class RuVegetationFeatures {
 
     public static final Holder<ConfiguredFeature<ProbabilityFeatureConfiguration, ?>> PATCH_SEAGRASS = FeatureUtils.register("regions_unexplored:patch_seagrass", Feature.SEAGRASS, new ProbabilityFeatureConfiguration(0.6F));
     public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> PATCH_LILY_PAD = FeatureUtils.register("regions_unexplored:patch_lily_pad", Feature.RANDOM_PATCH, new RandomPatchConfiguration(10, 7, 3, PlacementUtils.onlyWhenEmpty(Feature.SIMPLE_BLOCK, new SimpleBlockConfiguration(BlockStateProvider.simple(Blocks.LILY_PAD)))));
-
-    public static final Holder<ConfiguredFeature<NoneFeatureConfiguration, ?>> GIANT_PINK_BIOSHROOM = FeatureUtils.register("regions_unexplored:giant_pink_bioshroom", RuFeatureRegistry.GIANT_PINK_BIOSHROOM, FeatureConfiguration.NONE);
 
     public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> PATCH_BARLEY = FeatureUtils.register("regions_unexplored:patch_barley", Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.BARLEY.get().defaultBlockState()), 32));
     public static final Holder<ConfiguredFeature<RandomPatchConfiguration, ?>> PATCH_MEDIUM_GRASS = FeatureUtils.register("regions_unexplored:patch_medium_grass", Feature.RANDOM_PATCH, grassPatch(BlockStateProvider.simple(RegionsUnexploredBlocks.MEDIUM_GRASS.get().defaultBlockState()), 32));

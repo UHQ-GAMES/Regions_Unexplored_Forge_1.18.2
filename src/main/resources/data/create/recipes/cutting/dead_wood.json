@@ -1,0 +1,14 @@
+{
+  "type": "create:cutting",
+  "ingredients": [
+    {
+      "item": "regions_unexplored:dead_wood"
+    }
+  ],
+  "results": [
+    {
+      "item": "regions_unexplored:stripped_dead_wood"
+    }
+  ],
+  "processingTime": 50
+}

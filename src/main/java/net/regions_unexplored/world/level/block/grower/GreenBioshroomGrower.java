@@ -9,6 +9,6 @@ import net.regions_unexplored.data.worldgen.features.RuVegetationFeatures;
 
 public class GreenBioshroomGrower extends AbstractTreeGrower {
     protected Holder<? extends ConfiguredFeature<?, ?>> getConfiguredFeature(Random random, boolean bool) {
-        return RuVegetationFeatures.GIANT_GREEN_BIOSHROOM;
+        return RuTreeFeatures.GIANT_GREEN_BIOSHROOM;
    }
 }
